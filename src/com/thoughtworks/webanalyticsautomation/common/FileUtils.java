@@ -1,0 +1,31 @@
+package com.thoughtworks.webanalyticsautomation.common;
+
+import com.thoughtworks.webanalyticsautomation.inputdata.Section;
+import com.thoughtworks.webanalyticsautomation.inputdata.TestData;
+import com.thoughtworks.xstream.XStream;
+
+import java.io.*;
+import java.util.ArrayList;
+
+public class FileUtils implements Serializable {
+    public static ArrayList deserializeSectionsFromFile(String absoluteFilePath, XStream xStream) {
+        TestData deserializedTestData = (TestData) xStream.fromXML(getXMLContentFromFile(absoluteFilePath));
+
+        for (Object sectionObject : deserializedTestData.getSectionsLoadedFromFile()) {
+            Section section = (Section) sectionObject;
+            section.setup();
+        }
+        return deserializedTestData.getSectionsLoadedFromFile();
+    }
+
+    public static String getXMLContentFromFile(String absoluteFilePath) {
+        byte[] buffer = new byte[(int) new File(absoluteFilePath).length()];
+        try {
+            BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(absoluteFilePath));
+            inputStream.read(buffer);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return new String(buffer);
+    }
+}

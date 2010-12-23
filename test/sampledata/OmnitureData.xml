@@ -1,0 +1,59 @@
+<Sections>
+    <Section actionName="OpenScheduler_Omniture_Tag_ForAll"
+             keyList="pageactionName=scheduler start now|
+                                pev2=Scheduler Open|"
+             tagList="events=scOpen|
+                                cc=USD|
+                                c3=Home|
+                                c4=Start|
+                                c12=Scheduler|"/>
+
+    <Section actionName="HI_Scheduler_Step1_Complete_Tags"
+             keyList="pageactionName=scheduler step 1|
+                              pev2=Scheduler Step 1|"
+             tagList="pageactionName=scheduler step 1|
+                              cc=USD|
+                              events=event17|
+                              products=;1|
+                              c3=Home|
+                              c4=Step 1|
+                              c23=home improvement|
+                              v23=home improvement|"/>
+
+    <Section actionName="Clean_Scheduler_Step1_Complete_Tags"
+             keyList="pageactionName=scheduler step 1|
+                              pev2=Scheduler Step 1|"
+             tagList="pageactionName=scheduler step 1|
+                              c23=cleaning|
+                              v11=301-400|
+                              pev2=Scheduler Step 1|"/>
+
+    <Section actionName="Repair_Scheduler_Step1_Complete_Tags"
+             keyList="pageactionName=scheduler step 1|
+                              pev2=Scheduler Step 1|"
+             tagList="pageactionName=scheduler step 1|
+                              events=event17|
+                              products=;|
+                              c3=Home|
+                              c4=Step 1|
+                              pev2=Scheduler Step 1|"/>
+
+    <Section actionName="Install_Scheduler_Step1_Complete_Tags"
+             keyList="pageactionName=scheduler step 1|
+                              pev2=Scheduler Step 1|"
+             tagList="pageactionName=scheduler step 1|
+                               events=event17|
+                              products=;|
+                              c3=Home|
+                              c4=Step 1|
+                              pev2=Scheduler Step 1|"/>
+
+    <Section actionName="HI_Scheduler_Step2_Complete_Tags"
+             keyList="pageactionName=scheduler step 2|
+                              pev2=Scheduler Step 2|"
+             tagList="pageactionName=scheduler step 2|
+                              cc=USD|
+                              events=event18|
+                              c3=Home|
+                              c4=Step 2|"/>
+</Sections>

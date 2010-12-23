@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="waat" default="all" basedir=".">
+
+    <property file="resources//waat.properties"/>
+
+    <path id="library.lib.test.classpath">
+        <fileset dir="${basedir}/lib" includes="**/*.jar"/>
+        <path location="${basedir}/lib"/>
+    </path>
+
+    <path id="library.lib.classpath">
+        <fileset dir="${basedir}/lib" includes="*.jar"/>
+        <path location="${basedir}/lib"/>
+    </path>
+
+    <property name="out.dir" value="${basedir}/out"/>
+    <property name="waat.output.dir" value="${out.dir}/production"/>
+    <property name="waat.testoutput.dir" value="${out.dir}/test"/>
+    <property name="testNGOutput.dir" value="${basedir}/testNGReports"/>
+
+    <taskdef name="testNG" classpathref="library.lib.test.classpath" classname="org.testng.TestNGAntTask"/>
+
+    <path id="waat.module.sourcepath">
+        <dirset dir="${basedir}">
+            <include name="${SRC_DIR}"/>
+        </dirset>
+    </path>
+
+    <path id="waat.module.test.sourcepath">
+        <dirset dir="${basedir}">
+            <include name="${TEST_TYPE}"/>
+        </dirset>
+    </path>
+
+    <target name="compile.production" description="Compile module WAAT; production classes">
+        <javac destdir="${waat.output.dir}" debug="on" excludes="">
+            <classpath refid="library.lib.classpath"/>
+            <src refid="waat.module.sourcepath"/>
+        </javac>
+    </target>
+
+    <target name="compile.test" description="compile module WAAT; test classes" unless="skip.tests">
+        <javac destdir="${waat.testoutput.dir}" debug="on" excludes="">
+            <classpath refid="library.lib.test.classpath"/>
+            <src refid="waat.module.test.sourcepath"/>
+            <src refid="waat.module.sourcepath"/>
+        </javac>
+        <antcall target="runTests"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${out.dir}"/>
+        <delete dir="${testNGOutput.dir}"/>
+        <delete file="waat.log"/>
+        <delete file="velocity.log"/>
+    </target>
+    
+    <target name="init" description="Build initialization">
+        <mkdir dir="${out.dir}/dist"/>
+        <mkdir dir="${waat.output.dir}"/>
+        <mkdir dir="${waat.testoutput.dir}"/>
+    </target>
+
+    <target name="runTests">
+        <delete dir="${testNGOutput.dir}"/>
+        <mkdir dir="${testNGOutput.dir}"/>
+
+        <property name="testGroup" value=""/>
+        <echo message="testGroup: ${testGroup}"/>
+        
+        <testNG classpathref="library.lib.test.classpath" groups="${testGroup}"
+                parallel="methods" outputdir="${testNGOutput.dir}" threadcount="${threadCount}"
+                listeners="org.uncommons.reportng.HTMLReporter" listener="com.thoughtworks.webanalyticsautomation.utils.CustomTestListener">
+            <sysproperty key="org.uncommons.reportng.title" value="WAAT Test Report"/>
+            <classpath>
+                <pathelement path="${out.dir}/${TEST_TYPE}"/>
+            </classpath>
+            <classfileset dir="${out.dir}/${TEST_TYPE}" includes="**/*Test.class"/>
+        </testNG>
+    </target>
+
+<!--
+    <target name="runTests">
+        <delete dir="${testNGOutput.dir}"/>
+        <mkdir dir="${testNGOutput.dir}"/>
+        <junit printsummary="yes" showoutput="yes">
+            <classpath refid="library.lib.classpath"/>
+            <classpath>
+                <pathelement path="${out.dir}/${TEST_TYPE}"/>
+            </classpath>
+
+            <batchtest fork="yes" todir="${testNGOutput.dir}">
+                <formatter type="xml" usefile="true"/>
+                <formatter type="plain" usefile="true" />
+                <fileset dir="${out.dir}/${TEST_TYPE}">
+                    <include name="**/*Test.class"/>
+                </fileset>
+            </batchtest>
+        </junit>
+        <antcall target="generateJUnitReport"/>
+    </target>
+
+    <target name="generateJUnitReport">
+        <junitreport todir="${testNGOutput.dir}">
+            <fileset dir="${testNGOutput.dir}" includes="TEST-*.xml"/>
+            <report todir="${testNGOutput.dir}"/>
+        </junitreport>
+    </target>
+
+-->
+    <target name="buildJAR_test">
+        <antcall target="buildJAR">
+            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${TEST_TYPE}_${VERSION}.jar"/>
+            <param name="JAR_BASE_DIR" value="${out.dir}/${TEST_TYPE}"/>
+            <param name="JAR_LIB_DIR" value="**/*.jar"/>
+        </antcall>
+    </target>
+
+    <target name="buildJAR_production">
+        <antcall target="buildJAR">
+            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${VERSION}.jar"/>
+            <param name="JAR_BASE_DIR" value="${out.dir}/${PRODUCTION_TYPE}"/>
+            <param name="JAR_LIB_DIR" value="*.jar"/>
+        </antcall>
+    </target>
+
+    <target name="buildJAR">
+        <jar destfile="${out.dir}/dist/${JAR_FILE_NAME}"
+                basedir="${JAR_BASE_DIR}">
+            <fileset dir="${basedir}" includes="lib/${JAR_LIB_DIR}"/>
+            <fileset dir="${basedir}/test" includes="sampledata/*.xml"/> 
+        </jar>
+        <antcall target="deploy"/>
+    </target>
+
+    <target name="deploy" if="DEPLOY">
+        <copy file="${out.dir}/dist/${JAR_FILE_NAME}" todir="${basedir}/dist" overwrite="false" verbose="true"/>
+    </target>
+
+    <target name="package" depends="init">
+        <property name="type" value="${TEST_TYPE}"/>
+        <antcall target="compile.${type}"/>
+        <antcall target="buildJAR_${type}"/>
+    </target>
+
+    <target name="all" depends="clean" description="build all">
+        <antcall target="package">
+            <param name="type" value="${TEST_TYPE}"/>
+        </antcall>
+        <antcall target="package">
+            <param name="type" value="${PRODUCTION_TYPE}"/>
+        </antcall>
+    </target>
+</project>

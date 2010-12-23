@@ -1,0 +1,6 @@
+*.iws
+*.class
+out
+testNGReports
+waat.log
+velocity.log

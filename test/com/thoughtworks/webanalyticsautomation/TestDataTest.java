@@ -23,7 +23,6 @@ public class TestDataTest extends TestBase {
         actionName = "OpenUpcomingPage";
         ArrayList sections = TestData.sectionsFor(inputDataFileName, actionName);
         assertEquals(sections.size(), 1);
-        assertEquals(((Section)sections.get(0)).getLoadedKeyList().size(), 3);
         assertEquals(((Section)sections.get(0)).getLoadedTagList().size(), 13);
         logger.info("loadOmnitureDataInMemory test complete");
     }

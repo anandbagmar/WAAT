@@ -23,7 +23,8 @@ public class SeleniumScriptRunner implements IScriptRunner {
         try {
             logger.info ("Running script: " + OMNITURE_DEBUGGER_URL);
             selenium.runScript(OMNITURE_DEBUGGER_URL);
-            // Thread.sleep(5000);
+
+            Thread.sleep(5000);
             logger.debug("*** Debugger window title: " + selenium.getTitle());
             selenium.selectWindow(OMNITURE_DEBUGGER_WINDOW_TITLE);
             selenium.click(OMNITURE_DEBUGGER_URL_DECODE_CHECKBOX);

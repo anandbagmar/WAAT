@@ -62,50 +62,6 @@ public class Engine extends CONFIG {
     }
 
     private Result verifyWebAnalyticsData(ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
-        ArrayList<Section> filteredActualSectionListByKeyList = getFilteredSectionListFromPlugin(actualSectionList, expectedSectionList);
-        return verifyTagLists(filteredActualSectionListByKeyList, expectedSectionList);
-    }
-
-    private ArrayList<Section> getFilteredSectionListFromPlugin(ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
-        ArrayList<Section> filteredActualSectionListByKeyList = new ArrayList<Section>();
-
-        for (Section expectedSection: expectedSectionList) {
-            filteredActualSectionListByKeyList.addAll(getActualSectionsWithMatchingKeyList(actualSectionList, expectedSection.getLoadedKeyList()));
-        }
-        return filteredActualSectionListByKeyList;
-    }
-
-    private Collection<? extends Section> getActualSectionsWithMatchingKeyList(ArrayList<Section> actualSectionList, ArrayList<String> expectedKeyList) {
-        ArrayList <Section> matchingActualSections = new ArrayList<Section>();
-        boolean isExpectedKeyPresent;
-
-        for (Section actualSection: actualSectionList) {
-            isExpectedKeyPresent = false;
-            for (String expectedKey: expectedKeyList) {
-                isExpectedKeyPresent = isExpectedKeyPresentInActualSectionKeyList (actualSection.getLoadedKeyList(), expectedKey);
-                if (!isExpectedKeyPresent){
-                    break;
-                }
-            }
-            if (isExpectedKeyPresent) {
-                matchingActualSections.add(actualSection);
-            }
-        }
-        return matchingActualSections;
-    }
-
-    private boolean isExpectedKeyPresentInActualSectionKeyList(ArrayList<String> actualKeyList, String expectedKey) {
-        boolean isExpectedKeyPresent = false;
-        for (String actualKey: actualKeyList) {
-            if (actualKey.contains(expectedKey)) {
-                isExpectedKeyPresent = true;
-                break;
-            }
-        }
-        return isExpectedKeyPresent;
-    }
-
-    private Result verifyTagLists (ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
         ArrayList<String> errorList = new ArrayList<String>();
         if ((actualSectionList.size() == 0) && (expectedSectionList.size() != 0)) {
             return new Result (Status.FAIL, getAllTagsFromExpectedSectionList (expectedSectionList));
@@ -114,20 +70,6 @@ public class Engine extends CONFIG {
             for (Section expectedSection: expectedSectionList) {
                 errorList.addAll(getListOfMissingTagsInActualSections(actualSectionList, expectedSection.getLoadedTagList()));
             }
-/*
-            for (Section actualSection: actualSectionList) {
-                ArrayList<String> actualSectionLoadedTagList = actualSection.getLoadedTagList();
-
-                for (Section expectedSection: expectedSectionList){
-                    ArrayList<String> expectedSectionLoadedTagList = expectedSection.getLoadedTagList();
-                    for (String expectedTag: expectedSectionLoadedTagList) {
-                        if(!actualSectionLoadedTagList.contains(expectedTag)){
-                            errorList.add(expectedTag);
-                        }
-                    }
-                }
-            }
-*/
             return new Result(errorList);
         }
     }

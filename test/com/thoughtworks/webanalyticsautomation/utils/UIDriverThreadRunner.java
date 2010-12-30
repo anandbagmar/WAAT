@@ -64,6 +64,5 @@ public class UIDriverThreadRunner implements Runnable {
     public void stop() {
         logger.info ("Calling stop in the thread");
         process.destroy();
-
     }
 }

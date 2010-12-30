@@ -38,7 +38,7 @@ public class OmnitureDebugger implements IWAATPlugin {
         ArrayList<Section> capturedSections = new ArrayList<Section>();
         ArrayList<String> convertedCapturedSections = Utils.convertStringArrayToArrayList(sSource.split(OMNITURE_DEBUGGER_SPLITTER));
         for (String convertedCapturedSection: convertedCapturedSections) {
-            capturedSections.add(new Section("", convertedCapturedSection, convertedCapturedSection));
+            capturedSections.add(new Section("", convertedCapturedSection));
         }
         return capturedSections;
     }

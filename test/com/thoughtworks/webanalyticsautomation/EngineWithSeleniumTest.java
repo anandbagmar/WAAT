@@ -27,6 +27,7 @@ public class EngineWithSeleniumTest extends TestBase {
     private String webAnalyticTool = "omniture";
     private String inputFileType = "xml";
     private boolean keepLoadedFileInMemory = true;
+    private String log4jPropertiesAbsoluteFilePath = System.getProperty("user.dir") + "\\resources\\log4j.properties";
 
     private String inputDataFileName = System.getProperty("user.dir") + "\\test\\sampledata\\OmnitureTestData.xml";
 
@@ -39,7 +40,7 @@ public class EngineWithSeleniumTest extends TestBase {
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_Selenium_IE() throws Exception {
         String actionName = "OpenUpcomingPage";
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory);
+        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         engine.enableWebAnalyticsTesting();
 
         startSeleniumDriver(BROWSER.iehta);
@@ -57,7 +58,7 @@ public class EngineWithSeleniumTest extends TestBase {
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_Selenium_Firefox() throws Exception {
         String actionName = "OpenUpcomingPage";
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory);
+        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         engine.enableWebAnalyticsTesting();
 
         startSeleniumDriver(BROWSER.firefox);
@@ -84,28 +85,4 @@ public class EngineWithSeleniumTest extends TestBase {
         seleniumScriptRunnerHelper = new SeleniumScriptRunnerHelper(logger, browser);
         seleniumScriptRunnerHelper.startSeleniumDriver();
     }
-
-/*
-    public void nullActionNameTest() throws Exception {
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, logDirectory);
-        String actionName = null;
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, null);
-        assertEquals (verificationResult.getVerificationStatus(), false, "Verification Status should be FALSE");
-    }
-
-    public void emptyActionNameTest() throws Exception {
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, logDirectory);
-        String actionName = "";
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, null);
-
-    }
-
-    public void invalidActionNameTest() throws Exception {
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, logDirectory);
-        String inputDataFileName = "E:\\Work\\src\\WAAT\\test\\sampledata\\OmnitureTestData.xml";
-        String actionName = "OpenScheduler_Omniture_Tag_ForAll";
-
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, null);
-    }
-*/
 }

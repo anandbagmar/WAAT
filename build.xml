@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="waat" default="all" basedir=".">
+<project name="WAAT" default="all" basedir=".">
 
     <property file="resources//waat.properties"/>
 
     <path id="library.lib.test.classpath">
         <fileset dir="${basedir}/lib" includes="**/*.jar"/>
-        <path location="${basedir}/lib"/>
+        <path location="${basedir}/resources"/>
     </path>
 
     <path id="library.lib.classpath">
@@ -14,6 +14,7 @@
     </path>
 
     <property name="out.dir" value="${basedir}/out"/>
+    <property name="zip.dir" value="${out.dir}/zip"/>
     <property name="waat.output.dir" value="${out.dir}/production"/>
     <property name="waat.testoutput.dir" value="${out.dir}/test"/>
     <property name="testNGOutput.dir" value="${basedir}/testNGReports"/>
@@ -83,38 +84,9 @@
         </testNG>
     </target>
 
-<!--
-    <target name="runTests">
-        <delete dir="${testNGOutput.dir}"/>
-        <mkdir dir="${testNGOutput.dir}"/>
-        <junit printsummary="yes" showoutput="yes">
-            <classpath refid="library.lib.classpath"/>
-            <classpath>
-                <pathelement path="${out.dir}/${TEST_TYPE}"/>
-            </classpath>
-
-            <batchtest fork="yes" todir="${testNGOutput.dir}">
-                <formatter type="xml" usefile="true"/>
-                <formatter type="plain" usefile="true" />
-                <fileset dir="${out.dir}/${TEST_TYPE}">
-                    <include name="**/*Test.class"/>
-                </fileset>
-            </batchtest>
-        </junit>
-        <antcall target="generateJUnitReport"/>
-    </target>
-
-    <target name="generateJUnitReport">
-        <junitreport todir="${testNGOutput.dir}">
-            <fileset dir="${testNGOutput.dir}" includes="TEST-*.xml"/>
-            <report todir="${testNGOutput.dir}"/>
-        </junitreport>
-    </target>
-
--->
     <target name="buildJAR_test">
         <antcall target="buildJAR">
-            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${TEST_TYPE}_${VERSION}.jar"/>
+            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${TEST_TYPE}_${VERSION}"/>
             <param name="JAR_BASE_DIR" value="${out.dir}/${TEST_TYPE}"/>
             <param name="JAR_LIB_DIR" value="**/*.jar"/>
         </antcall>
@@ -122,23 +94,56 @@
 
     <target name="buildJAR_production">
         <antcall target="buildJAR">
-            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${VERSION}.jar"/>
+            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${VERSION}"/>
             <param name="JAR_BASE_DIR" value="${out.dir}/${PRODUCTION_TYPE}"/>
             <param name="JAR_LIB_DIR" value="*.jar"/>
         </antcall>
     </target>
 
     <target name="buildJAR">
-        <jar destfile="${out.dir}/dist/${JAR_FILE_NAME}"
+        <jar destfile="${out.dir}/dist/${JAR_FILE_NAME}.jar"
                 basedir="${JAR_BASE_DIR}">
             <fileset dir="${basedir}" includes="lib/${JAR_LIB_DIR}"/>
-            <fileset dir="${basedir}/test" includes="sampledata/*.xml"/> 
         </jar>
+        <antcall target="zip">
+            <param name="ZIP_FILE_NAME" value="${JAR_FILE_NAME}"/>
+            <param name="JAR_FILE_IN_ZIP" value="${out.dir}/dist/${JAR_FILE_NAME}.jar"/>
+        </antcall>
+    </target>
+
+    <target name="zip">
+        <mkdir dir="${zip.dir}"/>
+        <mkdir dir="${zip.dir}/WAAT"/>
+        <mkdir dir="${zip.dir}/WAAT/resources"/>
+        <mkdir dir="${zip.dir}/WAAT/docs"/>
+
+        <!--Copy the appropriate WAAT.jar-->
+        <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT" overwrite="true" verbose="true"/>
+
+        <!--Copy the resources files-->
+        <copy todir="${zip.dir}/WAAT">
+            <fileset dir="${basedir}/test" includes="sampledata/*.xml"/>
+        </copy>
+
+        <!--Copy the sample test data files-->
+        <copy todir="${zip.dir}/WAAT/resources">
+            <fileset dir="${basedir}/resources" includes="log*.*"/>
+        </copy>
+
+        <!--Copy the docs-->
+        <copy todir="${zip.dir}/WAAT/docs">
+            <fileset dir="${basedir}/docs" includes="*.*"/>
+        </copy>
+
+        <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}.zip" basedir="${zip.dir}"/>
+
+        <delete dir="${zip.dir}/WAAT" verbose="true"/>
+
         <antcall target="deploy"/>
     </target>
 
     <target name="deploy" if="DEPLOY">
-        <copy file="${out.dir}/dist/${JAR_FILE_NAME}" todir="${basedir}/dist" overwrite="false" verbose="true"/>
+        <copy file="${out.dir}/dist/${ZIP_FILE_NAME}.zip" todir="${basedir}/dist" overwrite="false" verbose="true"/>
     </target>
 
     <target name="package" depends="init">

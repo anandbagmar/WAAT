@@ -18,6 +18,7 @@ public class TestBase {
     protected String webAnalyticTool = "omniture";
     protected String inputFileType = "xml";
     protected boolean keepLoadedFileInMemory = true;
+    protected String log4jPropertiesAbsoluteFilePath = System.getProperty("user.dir") + "\\resources\\log4j.properties";
 
     protected String inputDataFileName = System.getProperty("user.dir") + "\\test\\sampledata\\OmnitureTestData.xml";
 }

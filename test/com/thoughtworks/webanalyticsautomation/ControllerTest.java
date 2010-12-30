@@ -12,17 +12,18 @@ public class ControllerTest extends TestBase {
 
     @Test
     public void getInstanceTest() throws Exception {
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory);
+        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         assertNotNull(engine);
         assertEquals(webAnalyticTool.toUpperCase(), CONFIG.getWEB_ANALYTIC_TOOL().name(), "WebAnalyticTool not set correctly");
         assertEquals(inputFileType.toUpperCase(), CONFIG.getINPUT_FILE_TYPE().name(), "Input file type not set correctly");
         assertEquals(keepLoadedFileInMemory, CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
+        assertEquals(log4jPropertiesAbsoluteFilePath, CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH(), "log4j Properties file path not set correctly");
     }
 
     @Test
     public void getInstanceTestDefaultParameters() throws Exception {
         engine = getInstance();
-        assertNotNull(engine);
+        assertNotNull(engine, "Engine should not be null");
     }
 
     @Test

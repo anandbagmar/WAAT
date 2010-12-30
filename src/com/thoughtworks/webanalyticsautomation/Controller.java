@@ -21,30 +21,31 @@ public class Controller extends CONFIG {
 
     public static Engine getInstance(String webAnalyticTool,
                                      String inputFileType,
-                                     boolean keepLoadedInputFileInMemory
-    ) throws IllegalArgumentException {
-        return getEngineInstance(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory);
+                                     boolean keepLoadedInputFileInMemory,
+                                     String log4jPropertiesAbsoluteFilePath) throws IllegalArgumentException {
+        return getEngineInstance(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, log4jPropertiesAbsoluteFilePath);
     }
 
     public static Engine getInstance () throws IllegalArgumentException {
-        return getEngineInstance(WebAnalyticTool.OMNITURE.name(), InputFileType.XML.name(), true);
+        return getEngineInstance(WebAnalyticTool.OMNITURE.name(), InputFileType.XML.name(), true, CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
     }
 
-    private static Engine getEngineInstance(String webAnalyticTool, String inputFileType, boolean keepLoadedInputFileInMemory) {
+    private static Engine getEngineInstance(String webAnalyticTool, String inputFileType, boolean keepLoadedInputFileInMemory, String log4jPropertiesAbsoluteFilePath) {
         if (null != engine) {
             logger.info("Returning existing Engine reference");
             return engine;
         }
         else {
-            engine = createNewEngine(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory);
+            engine = createNewEngine(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, log4jPropertiesAbsoluteFilePath);
             return engine;
         }
     }
 
     private static Engine createNewEngine(String webAnalyticTool,
                                           String inputFileType,
-                                          boolean keepLoadedInputFileInMemory) {
-        setUpConfig(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory);
+                                          boolean keepLoadedInputFileInMemory,
+                                          String log4jPropertiesAbsoluteFilePath) {
+        setUpConfig(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, log4jPropertiesAbsoluteFilePath);
         logger.info("Creating new Engine reference");
         return new Engine ();
     }

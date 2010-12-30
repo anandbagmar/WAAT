@@ -27,6 +27,12 @@ public class CustomTestListener implements ITestListener {
             "-----------------------------------\n" +
             "------------------------------------------------------------------------------------\n";
 
+/*
+    {
+        PropertyConfigurator.configure(CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
+    }
+*/
+
     private Logger logger = Logger.getLogger(getClass());
 
     public void onTestStart(ITestResult iTestResult) {

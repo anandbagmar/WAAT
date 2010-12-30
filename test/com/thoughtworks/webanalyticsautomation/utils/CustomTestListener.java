@@ -1,5 +1,12 @@
 package com.thoughtworks.webanalyticsautomation.utils;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Date: Dec 29, 2010
+ * Time: 9:34:02 AM
+ */
+
 import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;

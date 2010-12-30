@@ -1,5 +1,12 @@
 package com.thoughtworks.webanalyticsautomation.inputdata;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Date: Dec 29, 2010
+ * Time: 9:34:02 AM
+ */
+
 import com.thoughtworks.webanalyticsautomation.common.CONFIG;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -20,7 +27,7 @@ public class TestData extends CONFIG implements Serializable {
     private static HashMap<String, ArrayList> loadedSections = new HashMap <String, ArrayList>();
     private ArrayList <Section> sectionsLoadedFromFile = new ArrayList<Section>();
 
-    public static ArrayList sectionsFor(String absoluteFilePath, String actionName) {
+    public static ArrayList<Section> sectionsFor(String absoluteFilePath, String actionName) {
         logger.info ("Loading input data file: " + absoluteFilePath);
         loadFile(absoluteFilePath);
         ArrayList<Section> subsetList = primeLoadedSections(absoluteFilePath, actionName);

@@ -1,10 +1,16 @@
 package com.thoughtworks.webanalyticsautomation.plugins;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Date: Dec 29, 2010
+ * Time: 9:34:02 AM
+ */
+
 import com.thoughtworks.webanalyticsautomation.IWAATPlugin;
-import org.apache.log4j.Logger;
 
 public class PluginFactory {
-    private Logger logger = Logger.getLogger(getClass());
+    //private Logger logger = Logger.getLogger(getClass());
 
     public IWAATPlugin getWebAnalyticsPluginInstance(WebAnalyticTool webAnalyticTool) {
         if (webAnalyticTool.equals(WebAnalyticTool.OMNITURE)) {

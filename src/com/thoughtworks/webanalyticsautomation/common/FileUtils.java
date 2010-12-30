@@ -1,10 +1,18 @@
 package com.thoughtworks.webanalyticsautomation.common;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Date: Dec 29, 2010
+ * Time: 9:34:02 AM
+ */
+
 import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.inputdata.TestData;
 import com.thoughtworks.xstream.XStream;
 
-import java.io.*;
+import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FileUtils implements Serializable {
@@ -20,12 +28,14 @@ public class FileUtils implements Serializable {
 
     public static String getXMLContentFromFile(String absoluteFilePath) {
         byte[] buffer = new byte[(int) new File(absoluteFilePath).length()];
+/*
         try {
             BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(absoluteFilePath));
             inputStream.read(buffer);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
+*/
         return new String(buffer);
     }
 }

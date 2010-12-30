@@ -1,0 +1,62 @@
+<!--
+        Sample Test Specification File
+
+        * Created by: Anand Bagmar
+        * Email: anandb@thoughtworks.com, abagmar@gmail.com
+        * Date: Dec 29, 2010
+        * Time: 4:29:12 PM
+-->
+
+<!--
+        Section:        A set of test data which includes the actionName, list
+                        of keys, and list of tags that needs to be verified.
+
+        actionName:     A (String) name representing the action done in the UI,
+                        for which we want to do Web Analytics Testing.
+
+        tagList:        A delimited set of tags for each action that we want to
+                        verify if exists in the events reported to the
+                        Web Analytics Tool.
+
+        keyList:        A delimited subset of the tag list which allows
+                        filtering out events that should be parsed when doing
+                        Web Analytics verification.
+
+        delimiter:      A separator used to distinguish between a list of keys / tags.
+                        || is the delimiter used in WAAT.
+-->
+
+<Sections>
+    <Section actionName="OpenHomePage"
+             keyList="s.eVar23 = 'topnews:index';||
+                                s.heir1 = 'topnews';||"
+             tagList="s.pageName = 'topnews:index';||
+                                s.eVar23 = 'topnews:index';||
+                                s.heir1 = 'topnews';||
+                                s.heir2 = 'index';||
+                                s.channel = 'topnews';||
+                                s.eVar22 = 'topnews';||
+                                s.prop5 = 'anonymous';||
+                                s.eVar5 = 'anonymous';||
+                                s.prop9 = 'all';||
+                                s.eVar9 = 'all';||
+                                s.events = 'event2';||"/>
+
+    <Section actionName="OpenUpcomingPage"
+             keyList="s.pageName = 'upcoming:index';||
+                                s.heir1 = 'upcoming';||
+                                s.heir2 = 'index';||"
+             tagList="s.pageName = 'upcoming:index';||
+                                s.eVar23 = 'upcoming:index';||
+                                s.heir1 = 'upcoming';||
+                                s.heir2 = 'index';||
+                                s.channel = 'upcoming';||
+                                s.eVar22 = 'upcoming';||
+                                s.prop5 = 'anonymous';||
+                                s.eVar5 = 'anonymous';||
+                                s.prop4 = 'anonymous';||
+                                s.eVar4 = 'anonymous';||
+                                s.prop9 = 'all';||
+                                s.eVar9 = 'all';||
+                                s.events = 'event2';||"/>
+</Sections>

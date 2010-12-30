@@ -1,5 +1,12 @@
 package com.thoughtworks.webanalyticsautomation;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Date: Dec 29, 2010
+ * Time: 9:34:02 AM
+ */
+
 import com.thoughtworks.webanalyticsautomation.common.CONFIG;
 import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
@@ -12,33 +19,32 @@ public class Controller extends CONFIG {
         logger = Logger.getLogger(Controller.class.getName());
     }
 
-    public static Engine getInstance (String webAnalyticTool,
-                                      String inputFileType,
-                                      boolean keepLoadedInputFileInMemory,
-                                      String outputLogDirectory) throws IllegalArgumentException {
-        return getEngineInstance(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, outputLogDirectory);
+    public static Engine getInstance(String webAnalyticTool,
+                                     String inputFileType,
+                                     boolean keepLoadedInputFileInMemory
+    ) throws IllegalArgumentException {
+        return getEngineInstance(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory);
     }
 
     public static Engine getInstance () throws IllegalArgumentException {
-        return getEngineInstance(WebAnalyticTool.OMNITURE.name(), InputFileType.XML.name(), true, System.getProperty("user.directory"));
+        return getEngineInstance(WebAnalyticTool.OMNITURE.name(), InputFileType.XML.name(), true);
     }
 
-    private static Engine getEngineInstance(String webAnalyticTool, String inputFileType, boolean keepLoadedInputFileInMemory, String outputLogDirectory) {
+    private static Engine getEngineInstance(String webAnalyticTool, String inputFileType, boolean keepLoadedInputFileInMemory) {
         if (null != engine) {
             logger.info("Returning existing Engine reference");
             return engine;
         }
         else {
-            engine = createNewEngine(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, outputLogDirectory);
+            engine = createNewEngine(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory);
             return engine;
         }
     }
 
     private static Engine createNewEngine(String webAnalyticTool,
                                           String inputFileType,
-                                          boolean keepLoadedInputFileInMemory,
-                                          String outputLogDirectory) {
-        setUpConfig(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, outputLogDirectory);
+                                          boolean keepLoadedInputFileInMemory) {
+        setUpConfig(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory);
         logger.info("Creating new Engine reference");
         return new Engine ();
     }

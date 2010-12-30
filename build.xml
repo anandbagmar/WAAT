@@ -39,12 +39,16 @@
         </javac>
     </target>
 
-    <target name="compile.test" description="compile module WAAT; test classes" unless="skip.tests">
+    <target name="compileOnly">
         <javac destdir="${waat.testoutput.dir}" debug="on" excludes="">
             <classpath refid="library.lib.test.classpath"/>
             <src refid="waat.module.test.sourcepath"/>
             <src refid="waat.module.sourcepath"/>
         </javac>
+    </target>
+
+    <target name="compile.test" description="compile module WAAT; test classes" unless="skip.tests">
+        <antcall target="compileOnly"/>
         <antcall target="runTests"/>
     </target>
 

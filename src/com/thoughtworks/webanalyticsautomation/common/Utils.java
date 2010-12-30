@@ -1,9 +1,16 @@
 package com.thoughtworks.webanalyticsautomation.common;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Date: Dec 29, 2010
+ * Time: 9:34:02 AM
+ */
+
 import java.util.ArrayList;
 
 public class Utils {
-    public final static String TEST_DATA_DELIMITER = "\\|";
+    public final static String TEST_DATA_DELIMITER = "\\|\\|";
     private static String REQUIRES_WEBANALYTICS_TESTING = "requiresOmnitureTesting";
     
     public static ArrayList<String> convertStringArrayToArrayList(String[] arrayElements) {

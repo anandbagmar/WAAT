@@ -1,5 +1,12 @@
 package com.thoughtworks.webanalyticsautomation.inputdata;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Date: Dec 29, 2010
+ * Time: 9:34:02 AM
+ */
+
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.xstream.XStream;
 
@@ -13,6 +20,13 @@ public class Section {
     private String actionName;
     private String keyList;
     private String tagList;
+
+    public Section(String actionName, String keyList, String tagList) {
+        this.actionName = actionName;
+        this.keyList = keyList;
+        this.tagList = tagList;
+        setup();
+    }
 
     public boolean hasAction(String actionName) {
         return (this.actionName.equals(actionName));

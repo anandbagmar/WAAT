@@ -26,7 +26,7 @@ public class Controller extends CONFIG {
         return getEngineInstance(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, log4jPropertiesAbsoluteFilePath);
     }
 
-    public static Engine getInstance () throws IllegalArgumentException {
+    static Engine getInstance () throws IllegalArgumentException {
         return getEngineInstance(WebAnalyticTool.OMNITURE.name(), InputFileType.XML.name(), true, CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
     }
 

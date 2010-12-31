@@ -22,7 +22,6 @@ import java.util.Collection;
 
 public class Engine extends CONFIG {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<String>();
-    private PluginFactory pluginFactory;
 
     public Engine () {
         logger = Logger.getLogger(getClass());
@@ -34,7 +33,7 @@ public class Engine extends CONFIG {
         threadLocal.set(threadLocalID);
     }
 
-    public boolean isWebAnalyticsTestingEnabled() {
+    boolean isWebAnalyticsTestingEnabled() {
         String threadLocalID = Utils.getThreadLocalID();
         logger.info("Getting variable value from ThreadLocal: " + threadLocalID);
         boolean status = StringUtils.equals(threadLocal.get(), threadLocalID);
@@ -50,7 +49,7 @@ public class Engine extends CONFIG {
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, IScriptRunner scriptRunner) {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
-            pluginFactory = new PluginFactory();
+            PluginFactory pluginFactory = new PluginFactory();
             IWAATPlugin pluginInstance = pluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> actualSectionList = pluginInstance.captureSections (scriptRunner);
             return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);

@@ -31,6 +31,9 @@ public class TestData extends CONFIG implements Serializable {
         logger.info ("Loading input data file: " + absoluteFilePath);
         loadFile(absoluteFilePath);
         ArrayList<Section> subsetList = getExpectedSectionsForActionNameFromLoadedSections(absoluteFilePath, actionName);
+        if (!CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY()) {
+            loadedSections.remove(absoluteFilePath);
+        }
         return subsetList;
     }
 
@@ -58,8 +61,10 @@ public class TestData extends CONFIG implements Serializable {
         }
     }
 
-    private static boolean isFileLoaded(String absoluteFilePath) {
-        return loadedSections.containsKey(absoluteFilePath);
+    static boolean isFileLoaded(String absoluteFilePath) {
+        boolean isTestDataFileLoaded = loadedSections.containsKey(absoluteFilePath); 
+        logger.debug (absoluteFilePath + " file loaded: " + isTestDataFileLoaded);
+        return isTestDataFileLoaded;
     }
 
     private static XStream configureXStream() {

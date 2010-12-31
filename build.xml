@@ -2,22 +2,23 @@
 <project name="WAAT" default="all" basedir=".">
 
     <property file="resources//waat.properties"/>
-
-    <path id="library.lib.test.classpath">
-        <fileset dir="${basedir}/lib" includes="**/*.jar"/>
-        <path location="${basedir}/resources"/>
-    </path>
-
-    <path id="library.lib.classpath">
-        <fileset dir="${basedir}/lib" includes="*.jar"/>
-        <path location="${basedir}/lib"/>
-    </path>
-
+    <property name="lib.dir" value="${basedir}/lib"/>
     <property name="out.dir" value="${basedir}/out"/>
     <property name="zip.dir" value="${out.dir}/zip"/>
     <property name="prod.output.dir" value="${out.dir}/${PRODUCTION_TYPE}"/>
     <property name="test.output.dir" value="${out.dir}/${TEST_TYPE}"/>
     <property name="testNGOutput.dir" value="${out.dir}/testNGReports"/>
+
+
+    <path id="library.lib.test.classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        <path location="${basedir}/resources"/>
+    </path>
+
+    <path id="library.lib.classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+        <path location="${lib.dir}"/>
+    </path>
 
     <taskdef name="testNG" classpathref="library.lib.test.classpath" classname="org.testng.TestNGAntTask"/>
 
@@ -90,7 +91,7 @@
         <antcall target="buildJAR">
             <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${TEST_TYPE}_${VERSION}"/>
             <param name="JAR_BASE_DIR" value="${out.dir}/${TEST_TYPE}"/>
-            <param name="JAR_LIB_DIR" value="**/*.jar"/>
+            <param name="JAR_LIB_FILTER" value="**/*.jar"/>
         </antcall>
     </target>
 
@@ -98,29 +99,35 @@
         <antcall target="buildJAR">
             <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${VERSION}"/>
             <param name="JAR_BASE_DIR" value="${out.dir}/${PRODUCTION_TYPE}"/>
-            <param name="JAR_LIB_DIR" value="*.jar"/>
+            <param name="JAR_LIB_FILTER" value="*.jar"/>
         </antcall>
     </target>
 
     <target name="buildJAR">
         <jar destfile="${out.dir}/dist/${JAR_FILE_NAME}.jar"
                 basedir="${JAR_BASE_DIR}">
-            <fileset dir="${basedir}" includes="lib/${JAR_LIB_DIR}"/>
         </jar>
         <antcall target="zip">
             <param name="ZIP_FILE_NAME" value="${JAR_FILE_NAME}"/>
             <param name="JAR_FILE_IN_ZIP" value="${out.dir}/dist/${JAR_FILE_NAME}.jar"/>
+            <param name="JAR_LIB_FILTER" value="${JAR_LIB_FILTER}"/>
         </antcall>
     </target>
 
     <target name="zip">
         <mkdir dir="${zip.dir}/WAAT"/>
+        <mkdir dir="${zip.dir}/WAAT/lib"/>
         <mkdir dir="${zip.dir}/WAAT/samplescripts"/>
         <mkdir dir="${zip.dir}/WAAT/resources"/>
         <mkdir dir="${zip.dir}/WAAT/docs"/>
 
-        <!--Copy the appropriate WAAT.jar-->
-        <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT" overwrite="true" verbose="true"/>
+        <!--Copy the appropriate WAAT.jar in the lib folder -->
+        <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT/lib" overwrite="true" verbose="true"/>
+
+        <!--Copy the lib files-->
+        <copy todir="${zip.dir}/WAAT/lib">
+            <fileset dir="${lib.dir}" includes="${JAR_LIB_FILTER}"/>
+        </copy>
 
         <!--Copy the sample test data files-->
         <copy todir="${zip.dir}/WAAT">

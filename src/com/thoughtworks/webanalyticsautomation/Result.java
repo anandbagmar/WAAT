@@ -14,21 +14,15 @@ import java.util.ArrayList;
 public class Result {
     private ArrayList<String> listOfErrors;
     private Status verificationStatus;
+    private String actionName;
 
-    public Result(Status verificationStatus, ArrayList<String> listOfErrors) {
+    public Result(String actionName, Status verificationStatus, ArrayList<String> listOfErrors) {
         this.verificationStatus = verificationStatus;
-        this.listOfErrors = listOfErrors;
+        setupResult(actionName, listOfErrors);
     }
 
-    public Result(ArrayList<String> errorList) {
-        this.listOfErrors = errorList;
-        if (this.listOfErrors.size()!=0){
-            this.listOfErrors.add(0, "Following tags found missing: ");
-            verificationStatus = Status.FAIL;
-        }
-        else {
-            verificationStatus = Status.PASS;
-        }
+    public Result(String actionName, ArrayList<String> errorList) {
+        setupResult(actionName, errorList);
     }
 
     public ArrayList<String> getListOfErrors() {
@@ -37,5 +31,17 @@ public class Result {
 
     public Status getVerificationStatus() {
         return this.verificationStatus;
+    }
+
+    private void setupResult(String actionName, ArrayList<String> listOfErrors) {
+        this.actionName = actionName;
+        this.listOfErrors = listOfErrors;
+        if (this.listOfErrors.size()!=0){
+            this.listOfErrors.add(0, "Action Name: " + this.actionName);
+            verificationStatus = Status.FAIL;
+        }
+        else if (verificationStatus != Status.SKIPPED) {
+            verificationStatus = Status.PASS;
+        }        
     }
 }

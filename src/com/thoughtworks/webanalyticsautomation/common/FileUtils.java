@@ -15,7 +15,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileUtils implements Serializable {
-    public static ArrayList deserializeSectionsFromFile(String absoluteFilePath, XStream xStream) {
+    public static ArrayList<Section> deserializeSectionsFromFile(String absoluteFilePath, XStream xStream) {
         TestData deserializedTestData = (TestData) xStream.fromXML(getXMLContentFromFile(absoluteFilePath));
 
         for (Object sectionObject : deserializedTestData.getSectionsLoadedFromFile()) {

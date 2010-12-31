@@ -136,6 +136,14 @@
       <jarDirectory url="file://$PROJECT_DIR$/lib/test" recursive="false" />
       <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks" recursive="false" />
     </library>
+    <library name="resources">
+      <CLASSES>
+        <root url="file://$PROJECT_DIR$/resources" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+      <jarDirectory url="file://$PROJECT_DIR$/resources" recursive="false" />
+    </library>
   </component>
 </project>
 

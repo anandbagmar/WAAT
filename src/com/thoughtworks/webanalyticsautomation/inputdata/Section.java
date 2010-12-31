@@ -18,10 +18,21 @@ public class Section {
     private ArrayList<String> loadedTagList = new ArrayList<String>();
     private String actionName;
     private String tagList;
+    private int numberOfEventsTriggered;
+
+/*
+    public Section(String actionName, String tagList, int numberOfEventsTriggered) {
+        this.actionName = actionName;
+        this.tagList = tagList;
+        this.numberOfEventsTriggered = numberOfEventsTriggered;
+        setup();
+    }
+*/
 
     public Section(String actionName, String tagList) {
         this.actionName = actionName;
         this.tagList = tagList;
+        this.numberOfEventsTriggered = 0;
         setup();
     }
 
@@ -32,12 +43,17 @@ public class Section {
     public static XStream configurePageLayoutXStream(XStream xStream) {
         xStream.useAttributeFor(Section.class, "actionName");
         xStream.useAttributeFor(Section.class, "tagList");
+        xStream.useAttributeFor(Section.class, "numberOfEventsTriggered");
         xStream.omitField(Section.class, "loadedTagList");
         return xStream;
     }
 
     public ArrayList<String> getLoadedTagList() {
         return loadedTagList;
+    }
+
+    public int getNumberOfEventsTriggered() {
+        return numberOfEventsTriggered;
     }
 
     public void setup() {

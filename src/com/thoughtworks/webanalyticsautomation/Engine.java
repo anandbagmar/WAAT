@@ -49,35 +49,52 @@ public class Engine extends CONFIG {
     
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, IScriptRunner scriptRunner) {
         if (isWebAnalyticsTestingEnabled()) {
-            ArrayList<Section> expectedSectionList = TestData.sectionsFor(testDataFileName, actionName);
+            ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
             pluginFactory = new PluginFactory();
             IWAATPlugin pluginInstance = pluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> actualSectionList = pluginInstance.captureSections (scriptRunner);
-            return verifyWebAnalyticsData (actualSectionList, expectedSectionList);
+            return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);
         }
         else {
             logger.info("Web Analytics testing is disabled.");
-            return new Result(Status.SKIPPED, new ArrayList<String> ());
+            return new Result(actionName, Status.SKIPPED, new ArrayList<String> ());
         }
     }
 
-    private Result verifyWebAnalyticsData(ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
-        ArrayList<String> errorList = new ArrayList<String>();
+    private Result verifyWebAnalyticsData(String actionName, ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
         if ((actualSectionList.size() == 0) && (expectedSectionList.size() != 0)) {
-            return new Result (Status.FAIL, getAllTagsFromExpectedSectionList (expectedSectionList));
+            return new Result (actionName, Status.FAIL, getAllTagsFromExpectedSectionList (expectedSectionList));
         }
         else {
+            ArrayList<String> errorList = new ArrayList<String>();
             for (Section expectedSection: expectedSectionList) {
-                errorList.addAll(getListOfMissingTagsInActualSections(actualSectionList, expectedSection.getLoadedTagList()));
+                errorList.addAll(getListOfMissingTagsInActualSections(actualSectionList, expectedSection));
             }
-            return new Result(errorList);
+            return new Result(actionName, errorList);
         }
     }
 
-    private Collection<? extends String> getListOfMissingTagsInActualSections(ArrayList<Section> actualSectionList, ArrayList<String> expectedTagList) {
+    private Collection<? extends String> getListOfMissingTagsInActualSections(ArrayList<Section> actualSectionList, Section expectedSection) {
+        ArrayList<String> errorList = new ArrayList<String>();
+        int actualNumberOfEventsTriggered = actualSectionList.size();
+        int expectedNumberOfEventsToBeTriggered = expectedSection.getNumberOfEventsTriggered();
+        errorList.addAll(verifyNumberOfEventsForEachExpectedSection(actualNumberOfEventsTriggered, expectedNumberOfEventsToBeTriggered));
+        errorList.addAll(verifyTagsForEachExpectedSection(actualSectionList, expectedSection));
+        return errorList;
+    }
+
+    private ArrayList<String> verifyTagsForEachExpectedSection(ArrayList<Section> actualSectionList, Section expectedSection) {
         ArrayList<String> errorList = new ArrayList<String>();
         for (Section actualSection: actualSectionList) {
-            errorList.addAll(getListOfMissingTagsFromEachActualSection (actualSection.getLoadedTagList(), expectedTagList));
+            errorList.addAll(getListOfMissingTagsFromEachActualSection (actualSection.getLoadedTagList(), expectedSection.getLoadedTagList()));
+        }
+        return errorList;
+    }
+
+    private ArrayList<String> verifyNumberOfEventsForEachExpectedSection(int actualNumberOfEventsTriggered, int expectedNumberOfEventsToBeTriggered) {
+        ArrayList<String> errorList = new ArrayList<String>();
+        if (actualNumberOfEventsTriggered != expectedNumberOfEventsToBeTriggered) {
+            errorList.add("Number of events triggered (" + actualNumberOfEventsTriggered + ") NOT equal to expected number of events (" + expectedNumberOfEventsToBeTriggered + ").");
         }
         return errorList;
     }
@@ -88,6 +105,9 @@ public class Engine extends CONFIG {
             if (!isExpectedTagPresentInActualTagList(actualSectionTagList, expectedTag)) {
                 errorList.add(expectedTag);
             }
+        }
+        if (errorList.size() != 0) {
+            errorList.add(0, "Following tags found missing: ");
         }
         return errorList;
     }
@@ -106,6 +126,7 @@ public class Engine extends CONFIG {
 
     private ArrayList<String> getAllTagsFromExpectedSectionList(ArrayList<Section> expectedSectionList) {
         ArrayList<String> allTags = new ArrayList<String> ();
+        allTags.add("Following tags found missing: ");
         for (Section expectedSection: expectedSectionList) {
             allTags.addAll(expectedSection.getLoadedTagList());
         }

@@ -21,7 +21,7 @@ public class TestDataTest extends TestBase {
     @Test
     public void loadOmnitureDataInMemoryTest() {
         actionName = "OpenUpcomingPage";
-        ArrayList sections = TestData.sectionsFor(inputDataFileName, actionName);
+        ArrayList sections = TestData.getSectionsFor(inputDataFileName, actionName);
         assertEquals(sections.size(), 1);
         assertEquals(((Section)sections.get(0)).getLoadedTagList().size(), 13);
         logger.info("loadOmnitureDataInMemory test complete");

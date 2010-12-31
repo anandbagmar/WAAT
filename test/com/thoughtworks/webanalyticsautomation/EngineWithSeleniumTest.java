@@ -20,6 +20,7 @@ import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
+@Test (singleThreaded = true)
 public class EngineWithSeleniumTest extends TestBase {
     private SeleniumScriptRunnerHelper seleniumScriptRunnerHelper;
 

@@ -8,22 +8,32 @@
 -->
 
 <!--
-        Section:        A set of test data which includes the actionName for which
+        Section:
+                        A set of test data which includes the actionName for which
                         the provided list of tags needs to be verified.
 
-        actionName:     A (String) name representing the action done in the UI,
+        actionName:
+                        A (String) name representing the action done in the UI,
                         for which we want to do Web Analytics Testing.
 
-        tagList:        A delimited set of tags for each action that we want to
+        numberOfEventsTriggered:
+                        The number of events that "should" be triggered for the
+                        actionName specified.
+                        Default value is "1".
+
+        tagList:
+                        A delimited set of tags for each action that we want to
                         verify if exists in the events reported to the
                         Web Analytics Tool.
 
-        delimiter:      A separator used to distinguish between a list of tags.
+        delimiter:
+                        A separator used to distinguish between a list of tags.
                         || is the delimiter used in WAAT.
 -->
 
 <Sections>
     <Section actionName="OpenHomePage"
+             numberOfEventsTriggered="1"
              tagList="s.pageName = 'topnews:index';||
                                 s.eVar23 = 'topnews:index';||
                                 s.heir1 = 'topnews';||
@@ -37,6 +47,7 @@
                                 s.events = 'event2';||"/>
 
     <Section actionName="OpenUpcomingPage"
+             numberOfEventsTriggered="1"
              tagList="s.pageName = 'upcoming:index';||
                                 s.eVar23 = 'upcoming:index';||
                                 s.heir1 = 'upcoming';||

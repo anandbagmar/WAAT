@@ -24,20 +24,19 @@ public class TestData extends CONFIG implements Serializable {
         logger = Logger.getLogger(TestData.class.getName());
     }
 
-    private static HashMap<String, ArrayList> loadedSections = new HashMap <String, ArrayList>();
+    private static HashMap<String, ArrayList<Section>> loadedSections = new HashMap <String, ArrayList<Section>>();
     private ArrayList <Section> sectionsLoadedFromFile = new ArrayList<Section>();
 
-    public static ArrayList<Section> sectionsFor(String absoluteFilePath, String actionName) {
+    public static ArrayList<Section> getSectionsFor(String absoluteFilePath, String actionName) {
         logger.info ("Loading input data file: " + absoluteFilePath);
         loadFile(absoluteFilePath);
-        ArrayList<Section> subsetList = primeLoadedSections(absoluteFilePath, actionName);
+        ArrayList<Section> subsetList = getExpectedSectionsForActionNameFromLoadedSections(absoluteFilePath, actionName);
         return subsetList;
     }
 
-    private static ArrayList<Section> primeLoadedSections(String absoluteFilePath, String actionName) {
+    private static ArrayList<Section> getExpectedSectionsForActionNameFromLoadedSections(String absoluteFilePath, String actionName) {
         ArrayList<Section> subsetList = new ArrayList<Section>();
-        for (Object sectionObject: loadedSections.get(absoluteFilePath)) {
-            Section section = (Section) sectionObject;
+        for (Section section: loadedSections.get(absoluteFilePath)) {
             if (section.hasAction(actionName)) {
                 subsetList.add(section);
             }

@@ -15,9 +15,9 @@
 
     <property name="out.dir" value="${basedir}/out"/>
     <property name="zip.dir" value="${out.dir}/zip"/>
-    <property name="waat.output.dir" value="${out.dir}/production"/>
-    <property name="waat.testoutput.dir" value="${out.dir}/test"/>
-    <property name="testNGOutput.dir" value="${basedir}/testNGReports"/>
+    <property name="prod.output.dir" value="${out.dir}/${PRODUCTION_TYPE}"/>
+    <property name="test.output.dir" value="${out.dir}/${TEST_TYPE}"/>
+    <property name="testNGOutput.dir" value="${out.dir}/testNGReports"/>
 
     <taskdef name="testNG" classpathref="library.lib.test.classpath" classname="org.testng.TestNGAntTask"/>
 
@@ -33,15 +33,15 @@
         </dirset>
     </path>
 
-    <target name="compile.production" description="Compile module WAAT; production classes">
-        <javac destdir="${waat.output.dir}" debug="on" excludes="">
+    <target name="compile.prod" description="Compile module WAAT; production classes">
+        <javac destdir="${prod.output.dir}" debug="on" excludes="">
             <classpath refid="library.lib.classpath"/>
             <src refid="waat.module.sourcepath"/>
         </javac>
     </target>
 
     <target name="compileOnly">
-        <javac destdir="${waat.testoutput.dir}" debug="on" excludes="">
+        <javac destdir="${test.output.dir}" debug="on" excludes="">
             <classpath refid="library.lib.test.classpath"/>
             <src refid="waat.module.test.sourcepath"/>
             <src refid="waat.module.sourcepath"/>
@@ -61,9 +61,10 @@
     </target>
     
     <target name="init" description="Build initialization">
+        <mkdir dir="${prod.output.dir}"/>
+        <mkdir dir="${test.output.dir}"/>
         <mkdir dir="${out.dir}/dist"/>
-        <mkdir dir="${waat.output.dir}"/>
-        <mkdir dir="${waat.testoutput.dir}"/>
+        <mkdir dir="${zip.dir}"/>
     </target>
 
     <target name="runTests">
@@ -72,6 +73,7 @@
 
         <property name="testGroup" value=""/>
         <echo message="testGroup: ${testGroup}"/>
+        <echo message="*** Running tests in ${threadCount} threads ***"/>
         
         <testNG classpathref="library.lib.test.classpath" groups="${testGroup}"
                 parallel="methods" outputdir="${testNGOutput.dir}" threadcount="${threadCount}"
@@ -92,7 +94,7 @@
         </antcall>
     </target>
 
-    <target name="buildJAR_production">
+    <target name="buildJAR_prod">
         <antcall target="buildJAR">
             <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${VERSION}"/>
             <param name="JAR_BASE_DIR" value="${out.dir}/${PRODUCTION_TYPE}"/>
@@ -112,20 +114,25 @@
     </target>
 
     <target name="zip">
-        <mkdir dir="${zip.dir}"/>
         <mkdir dir="${zip.dir}/WAAT"/>
+        <mkdir dir="${zip.dir}/WAAT/samplescripts"/>
         <mkdir dir="${zip.dir}/WAAT/resources"/>
         <mkdir dir="${zip.dir}/WAAT/docs"/>
 
         <!--Copy the appropriate WAAT.jar-->
         <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT" overwrite="true" verbose="true"/>
 
-        <!--Copy the resources files-->
+        <!--Copy the sample test data files-->
         <copy todir="${zip.dir}/WAAT">
-            <fileset dir="${basedir}/test" includes="sampledata/*.xml"/>
+            <fileset dir="${basedir}/${TEST_TYPE}" includes="sampledata/*.xml"/>
         </copy>
 
-        <!--Copy the sample test data files-->
+        <!--Copy the sample Script files-->
+        <copy todir="${zip.dir}/WAAT/samplescripts">
+            <fileset dir="${basedir}/${TEST_TYPE}" includes="**/scriptrunner/*.java"/>
+        </copy>
+
+        <!--Copy the resources files-->
         <copy todir="${zip.dir}/WAAT/resources">
             <fileset dir="${basedir}/resources" includes="log*.*"/>
         </copy>
@@ -133,6 +140,7 @@
         <!--Copy the docs-->
         <copy todir="${zip.dir}/WAAT/docs">
             <fileset dir="${basedir}/docs" includes="*.*"/>
+            <fileset dir="${basedir}" includes="README*"/>
         </copy>
 
         <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}.zip" basedir="${zip.dir}"/>

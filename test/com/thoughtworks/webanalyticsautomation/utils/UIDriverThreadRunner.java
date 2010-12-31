@@ -33,7 +33,7 @@ public class UIDriverThreadRunner implements Runnable {
     public void run() {
         logger.info("Running command in a new thread: " + command);
         try {
-            logger.info ("*** Current dir: " + System.getProperty("user.dir"));
+            logger.debug("*** Current dir: " + System.getProperty("user.dir"));
             process = Runtime.getRuntime().exec(command);
             InputStream is = process.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);

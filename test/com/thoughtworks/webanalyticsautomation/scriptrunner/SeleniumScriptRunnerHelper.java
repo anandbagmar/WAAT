@@ -1,5 +1,7 @@
-package com.thoughtworks.webanalyticsautomation.utils;
+package com.thoughtworks.webanalyticsautomation.scriptrunner;
 
+import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
+import com.thoughtworks.webanalyticsautomation.utils.UIDriverThreadRunner;
 import org.apache.log4j.Logger;
 
 import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.*;

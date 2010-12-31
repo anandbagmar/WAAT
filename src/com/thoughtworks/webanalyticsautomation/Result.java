@@ -7,8 +7,6 @@ package com.thoughtworks.webanalyticsautomation;
  * Time: 9:34:02 AM
  */
 
-import com.thoughtworks.webanalyticsautomation.plugins.Status;
-
 import java.util.ArrayList;
 
 public class Result {

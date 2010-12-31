@@ -7,11 +7,10 @@ package com.thoughtworks.webanalyticsautomation;
  * Time: 9:34:02 AM
  */
 
-import com.thoughtworks.webanalyticsautomation.plugins.Status;
+import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunner;
+import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunnerHelper;
 import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
-import com.thoughtworks.webanalyticsautomation.utils.SeleniumScriptRunnerHelper;
-import com.thoughtworks.webanalyticsautomation.utils.TestBase;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 

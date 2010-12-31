@@ -30,6 +30,11 @@ public class Controller extends CONFIG {
         return getEngineInstance(WebAnalyticTool.OMNITURE.name(), InputFileType.XML.name(), true, CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
     }
 
+    public static void releaseInstance() {
+        logger.info ("Resetting Engine to null");
+        engine = null;
+    }
+
     private static Engine getEngineInstance(String webAnalyticTool, String inputFileType, boolean keepLoadedInputFileInMemory, String log4jPropertiesAbsoluteFilePath) {
         if (null != engine) {
             logger.info("Returning existing Engine reference");

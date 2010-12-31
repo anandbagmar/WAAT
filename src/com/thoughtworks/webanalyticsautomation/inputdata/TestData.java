@@ -32,6 +32,7 @@ public class TestData extends CONFIG implements Serializable {
         loadFile(absoluteFilePath);
         ArrayList<Section> subsetList = getExpectedSectionsForActionNameFromLoadedSections(absoluteFilePath, actionName);
         if (!CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY()) {
+            logger.info("Removing input data file " + absoluteFilePath + " from memory");
             loadedSections.remove(absoluteFilePath);
         }
         return subsetList;

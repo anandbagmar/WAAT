@@ -20,15 +20,6 @@ public class Section {
     private String tagList;
     private int numberOfEventsTriggered;
 
-/*
-    public Section(String actionName, String tagList, int numberOfEventsTriggered) {
-        this.actionName = actionName;
-        this.tagList = tagList;
-        this.numberOfEventsTriggered = numberOfEventsTriggered;
-        setup();
-    }
-*/
-
     public Section(String actionName, String tagList) {
         this.actionName = actionName;
         this.tagList = tagList;

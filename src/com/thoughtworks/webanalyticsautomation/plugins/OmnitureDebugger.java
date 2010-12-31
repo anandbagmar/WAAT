@@ -7,7 +7,6 @@ package com.thoughtworks.webanalyticsautomation.plugins;
  * Time: 9:34:02 AM
  */
 
-import com.thoughtworks.webanalyticsautomation.IWAATPlugin;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.IScriptRunner;

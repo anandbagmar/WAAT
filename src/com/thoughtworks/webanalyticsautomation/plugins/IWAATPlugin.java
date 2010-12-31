@@ -1,4 +1,4 @@
-package com.thoughtworks.webanalyticsautomation;
+package com.thoughtworks.webanalyticsautomation.plugins;
 
 /**
  * Created by: Anand Bagmar

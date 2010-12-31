@@ -1,7 +1,7 @@
 package com.thoughtworks.webanalyticsautomation;
 
 import com.thoughtworks.webanalyticsautomation.common.CONFIG;
-import com.thoughtworks.webanalyticsautomation.utils.TestBase;
+import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import org.testng.annotations.Test;
 
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;

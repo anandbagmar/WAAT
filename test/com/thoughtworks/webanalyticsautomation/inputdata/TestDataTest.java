@@ -1,12 +1,13 @@
 package com.thoughtworks.webanalyticsautomation.inputdata;
 
 import com.thoughtworks.webanalyticsautomation.common.CONFIG;
-import com.thoughtworks.webanalyticsautomation.utils.TestBase;
+import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
+import static com.thoughtworks.webanalyticsautomation.Controller.releaseInstance;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
@@ -29,6 +30,9 @@ public class TestDataTest extends TestBase {
 
     @Test
     public void keepLoadedFileInMemoryTest() throws Exception {
+        keepLoadedFileInMemory = true;
+        releaseInstance();
+        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         TestData.getSectionsFor(inputDataFileName, actionName);
         assertEquals(keepLoadedFileInMemory, CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
         boolean isFileLoaded = TestData.isFileLoaded(inputDataFileName);
@@ -38,6 +42,7 @@ public class TestDataTest extends TestBase {
     @Test
     public void removeLoadedFileFromMemoryTest() throws Exception {
         keepLoadedFileInMemory = false;
+        releaseInstance();
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         assertNotNull(engine, "Engine should not be null");
         TestData.getSectionsFor(inputDataFileName, actionName);
@@ -45,5 +50,4 @@ public class TestDataTest extends TestBase {
         boolean isFileLoaded = TestData.isFileLoaded(inputDataFileName);
         assertEquals(keepLoadedFileInMemory, isFileLoaded, "File should NOT be loaded in memory");
     }
-
 }

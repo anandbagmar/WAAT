@@ -136,7 +136,9 @@
 
         <!--Copy the sample Script files-->
         <copy todir="${zip.dir}/WAAT/samplescripts">
-            <fileset dir="${basedir}/${TEST_TYPE}" includes="**/scriptrunner/*.java"/>
+            <fileset dir="${basedir}/${TEST_TYPE}"
+                     includes="**/scriptrunner/*.java"
+                     excludes="**/*Helper.java"/>
         </copy>
 
         <!--Copy the resources files-->

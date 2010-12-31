@@ -18,12 +18,6 @@ public class Utils {
         for (String arrayElement : arrayElements) {
             convertedArrayList.add(arrayElement.trim());
         }
-/*
-
-        for(int i=0;i<arrayElements.length;i++){
-               convertedArrayList.add(arrayElements[i].trim());
-        }
-*/
         return convertedArrayList;
     }
 

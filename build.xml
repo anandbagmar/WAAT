@@ -9,11 +9,11 @@
     <property name="test.output.dir" value="${out.dir}/${TEST_TYPE}"/>
     <property name="testNGOutput.dir" value="${out.dir}/testNGReports"/>
 
-
     <path id="library.lib.test.classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
         <path location="${basedir}/resources"/>
     </path>
+    
 
     <path id="library.lib.classpath">
         <fileset dir="${lib.dir}" includes="*.jar"/>

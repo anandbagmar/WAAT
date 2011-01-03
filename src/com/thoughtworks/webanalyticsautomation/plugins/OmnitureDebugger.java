@@ -41,5 +41,4 @@ public class OmnitureDebugger implements IWAATPlugin {
         }
         return capturedSections;
     }
-
 }

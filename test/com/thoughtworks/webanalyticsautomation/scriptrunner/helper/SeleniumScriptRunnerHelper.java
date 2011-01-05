@@ -1,4 +1,4 @@
-package com.thoughtworks.webanalyticsautomation.scriptrunner;
+package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
 import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
 import com.thoughtworks.webanalyticsautomation.utils.UIDriverThreadRunner;

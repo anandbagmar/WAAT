@@ -10,7 +10,7 @@ package com.thoughtworks.webanalyticsautomation;
 import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunner;
-import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunnerHelper;
+import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.SeleniumScriptRunnerHelper;
 import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;

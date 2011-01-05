@@ -1,9 +1,8 @@
  package com.thoughtworks.webanalyticsautomation;
 
  import com.thoughtworks.webanalyticsautomation.common.TestBase;
- import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunnerHelper;
  import com.thoughtworks.webanalyticsautomation.scriptrunner.WebDriverScriptRunner;
- import com.thoughtworks.webanalyticsautomation.scriptrunner.WebDriverScriptRunnerHelper;
+ import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScriptRunnerHelper;
  import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
  import org.openqa.selenium.WebDriver;
  import org.testng.annotations.AfterMethod;
@@ -45,7 +44,7 @@ public class EngineWithWebDriverTest extends TestBase {
         engine.enableWebAnalyticsTesting();
 
         startWebDriver(BROWSER.iehta);
-        driverInstance.get(ScriptRunnerHelper.BASE_URL + "/upcoming");
+        driverInstance.get(WebDriverScriptRunnerHelper.BASE_URL + "/upcoming");
 
         Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new WebDriverScriptRunner(driverInstance));
 
@@ -62,7 +61,7 @@ public class EngineWithWebDriverTest extends TestBase {
         engine.enableWebAnalyticsTesting();
 
         startWebDriver(BROWSER.firefox);
-        driverInstance.get(ScriptRunnerHelper.BASE_URL + "/upcoming");
+        driverInstance.get(WebDriverScriptRunnerHelper.BASE_URL + "/upcoming");
 
         Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new WebDriverScriptRunner(driverInstance));
 

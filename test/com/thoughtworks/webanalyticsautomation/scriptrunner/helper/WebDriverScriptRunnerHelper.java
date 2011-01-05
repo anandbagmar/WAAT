@@ -1,4 +1,4 @@
-package com.thoughtworks.webanalyticsautomation.scriptrunner;
+package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
 import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
 import org.apache.log4j.Logger;
@@ -13,7 +13,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  * Time: 10:38:05 AM
  */
 
-public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper{
+public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
 
     WebDriver driver;
 

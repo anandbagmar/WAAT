@@ -7,6 +7,7 @@ package com.thoughtworks.webanalyticsautomation;
  * Time: 9:34:02 AM
  */
 
+import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunner;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunnerHelper;
@@ -14,7 +15,6 @@ import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.session;
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -22,8 +22,9 @@ import static org.testng.Assert.assertNotNull;
 @Test (singleThreaded = true)
 public class EngineWithSeleniumTest extends TestBase {
     private SeleniumScriptRunnerHelper seleniumScriptRunnerHelper;
-
+    private Selenium selenium;
     private Engine engine;
+    private String actionName = "OpenUpcomingPage_Selenium";
     private String webAnalyticTool = "omniture";
     private String inputFileType = "xml";
     private boolean keepLoadedFileInMemory = true;
@@ -34,19 +35,18 @@ public class EngineWithSeleniumTest extends TestBase {
     @AfterMethod()
     public void tearDown() throws Exception {
         engine.disableWebAnalyticsTesting();
-        seleniumScriptRunnerHelper.stopSeleniumDriver();
+        seleniumScriptRunnerHelper.stopDriver();
     }
 
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_Selenium_IE() throws Exception {
-        String actionName = "OpenUpcomingPage";
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         engine.enableWebAnalyticsTesting();
 
         startSeleniumDriver(BROWSER.iehta);
-        session().open(SeleniumScriptRunnerHelper.BASE_URL + "/upcoming");
+        selenium.open(SeleniumScriptRunnerHelper.BASE_URL + "/upcoming");
 
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(session()));
+        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(selenium));
 
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
         assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
@@ -57,14 +57,13 @@ public class EngineWithSeleniumTest extends TestBase {
 
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_Selenium_Firefox() throws Exception {
-        String actionName = "OpenUpcomingPage";
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         engine.enableWebAnalyticsTesting();
 
         startSeleniumDriver(BROWSER.firefox);
-        session().open(SeleniumScriptRunnerHelper.BASE_URL + "/upcoming");
+        selenium.open(SeleniumScriptRunnerHelper.BASE_URL + "/upcoming");
 
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(session()));
+        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(selenium));
 
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
         assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
@@ -73,16 +72,9 @@ public class EngineWithSeleniumTest extends TestBase {
         assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
     }
 
-    private void logVerificationErrors(Result verificationResult) {
-        if (verificationResult.getListOfErrors().size()>0){
-            for (String error: verificationResult.getListOfErrors()) {
-                logger.info (error);
-            }
-        }
-    }
-
     private void startSeleniumDriver(BROWSER browser) {
         seleniumScriptRunnerHelper = new SeleniumScriptRunnerHelper(logger, browser);
-        seleniumScriptRunnerHelper.startSeleniumDriver();
+        seleniumScriptRunnerHelper.startDriver();
+        selenium = (Selenium) seleniumScriptRunnerHelper.getDriverInstance();
     }
 }

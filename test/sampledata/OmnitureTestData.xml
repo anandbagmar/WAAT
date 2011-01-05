@@ -32,21 +32,7 @@
 -->
 
 <Sections>
-    <Section actionName="OpenHomePage"
-             numberOfEventsTriggered="1"
-             tagList="s.pageName = 'topnews:index';||
-                                s.eVar23 = 'topnews:index';||
-                                s.heir1 = 'topnews';||
-                                s.heir2 = 'index';||
-                                s.channel = 'topnews';||
-                                s.eVar22 = 'topnews';||
-                                s.prop5 = 'anonymous';||
-                                s.eVar5 = 'anonymous';||
-                                s.prop9 = 'all';||
-                                s.eVar9 = 'all';||
-                                s.events = 'event2';||"/>
-
-    <Section actionName="OpenUpcomingPage"
+    <Section actionName="OpenUpcomingPage_Selenium"
              numberOfEventsTriggered="1"
              tagList="s.pageName = 'upcoming:index';||
                                 s.eVar23 = 'upcoming:index';||
@@ -61,4 +47,11 @@
                                 s.prop9 = 'all';||
                                 s.eVar9 = 'all';||
                                 s.events = 'event2';||"/>
+
+    <Section actionName="OpenUpcomingPage_WebDriver"
+             numberOfEventsTriggered="1"
+             tagList="pageName=upcoming:index||
+                                cc=USD||
+                                ch=upcoming||
+                                events=event2||"/>
 </Sections>

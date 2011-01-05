@@ -18,7 +18,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Engine extends CONFIG {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<String>();
@@ -69,11 +68,26 @@ public class Engine extends CONFIG {
             for (Section expectedSection: expectedSectionList) {
                 errorList.addAll(getListOfMissingTagsInActualSections(actualSectionList, expectedSection));
             }
+            if (errorList.size()!= 0) {
+                errorList.addAll(addActualSectionsInErrorList(actualSectionList));
+            }
             return new Result(actionName, errorList);
         }
     }
 
-    private Collection<? extends String> getListOfMissingTagsInActualSections(ArrayList<Section> actualSectionList, Section expectedSection) {
+    private ArrayList <String> addActualSectionsInErrorList(ArrayList<Section> actualSectionList) {
+        ArrayList <String> errorList = new ArrayList<String>();
+        int count = 1;
+        for (Section actualSection: actualSectionList) {
+            errorList.add("Adding Actual Section List: " + count++);
+            for(String actualTag: actualSection.getLoadedTagList()) {
+                errorList.add(actualTag);
+            }
+        }
+        return errorList;
+    }
+
+    private ArrayList <String> getListOfMissingTagsInActualSections(ArrayList<Section> actualSectionList, Section expectedSection) {
         ArrayList<String> errorList = new ArrayList<String>();
         int actualNumberOfEventsTriggered = actualSectionList.size();
         int expectedNumberOfEventsToBeTriggered = expectedSection.getNumberOfEventsTriggered();
@@ -98,7 +112,7 @@ public class Engine extends CONFIG {
         return errorList;
     }
 
-    private Collection<? extends String> getListOfMissingTagsFromEachActualSection(ArrayList<String> actualSectionTagList, ArrayList<String> expectedTagList) {
+    private ArrayList <String> getListOfMissingTagsFromEachActualSection(ArrayList<String> actualSectionTagList, ArrayList<String> expectedTagList) {
         ArrayList<String> errorList = new ArrayList<String>();
         for (String expectedTag: expectedTagList) {
             if (!isExpectedTagPresentInActualTagList(actualSectionTagList, expectedTag)) {

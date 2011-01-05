@@ -8,12 +8,12 @@ package com.thoughtworks.webanalyticsautomation.common;
  */
 
 import com.thoughtworks.webanalyticsautomation.Engine;
+import com.thoughtworks.webanalyticsautomation.Result;
 import org.apache.log4j.Logger;
 
 public class TestBase {
     protected Logger logger = Logger.getLogger(getClass());
     protected Engine engine;
-    protected String actionName;
 
     protected String webAnalyticTool = "omniture";
     protected String inputFileType = "xml";
@@ -21,4 +21,12 @@ public class TestBase {
     protected String log4jPropertiesAbsoluteFilePath = System.getProperty("user.dir") + "\\resources\\log4j.properties";
 
     protected String inputDataFileName = System.getProperty("user.dir") + "\\test\\sampledata\\OmnitureTestData.xml";
+
+    protected void logVerificationErrors(Result verificationResult) {
+        if (verificationResult.getListOfErrors().size()>0){
+            for (String error: verificationResult.getListOfErrors()) {
+                logger.info (error);
+            }
+        }
+    }
 }

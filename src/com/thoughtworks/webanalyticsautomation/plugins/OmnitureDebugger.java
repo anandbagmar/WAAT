@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public class OmnitureDebugger implements IWAATPlugin {
     private Logger logger = Logger.getLogger(getClass());
-    private String OMNITURE_DEBUGGER_URL = "javascript:(window.open(\"\",\"stats_debugger\",\"width=600,height=600,location=0,menubar=0,status=1,toolbar=0,resizable=1,scrollbars=1\").document.write(\"<script language='JavaScript' src='https://sitecatalyst.omniture.com/sc_tools/stats_debugger.html'></script>\"));";
+    private String OMNITURE_DEBUGGER_URL = "javascript:(window.open(\"\",\"stats_debugger\",\"width=600,height=600,location=0,menubar=0,status=1,toolbar=0,resizable=1,scrollbars=1\").document.write(\"<script language='JavaScript' src='http://sitecatalyst.omniture.com/sc_tools/stats_debugger.html'></script>\"));";
     private static String OMNITURE_DEBUGGER_WINDOW_TITLE = "Omniture Debugger";
-    private static String OMNITURE_DEBUGGER_URL_DECODE_CHECKBOX = "name=url_decode";
+    private static String OMNITURE_DEBUGGER_URL_DECODE_CHECKBOX = "url_decode";
     private String OMNITURE_DEBUGGER_SPLITTER = ">Image</span>";
 
     public OmnitureDebugger() {
@@ -35,10 +35,18 @@ public class OmnitureDebugger implements IWAATPlugin {
 
     private ArrayList<Section> parseOmnitureDebuggerSections(String sSource) {
         ArrayList<Section> capturedSections = new ArrayList<Section>();
-        ArrayList<String> convertedCapturedSections = Utils.convertStringArrayToArrayList(sSource.split(OMNITURE_DEBUGGER_SPLITTER));
+        ArrayList<String> convertedCapturedSections = Utils.convertStringArrayToArrayList(splitCapturedHTML(sSource));
         for (String convertedCapturedSection: convertedCapturedSections) {
             capturedSections.add(new Section("", convertedCapturedSection));
         }
         return capturedSections;
+    }
+
+    private String[] splitCapturedHTML(String sSource) {
+        sSource = sSource.replace("</SPAN>", "</span>");
+        sSource = sSource.replace("Image</span>", "image</span>");
+        sSource = sSource.replace("IMAGE</span>", "image</span>");
+
+        return sSource.split(OMNITURE_DEBUGGER_SPLITTER);
     }
 }

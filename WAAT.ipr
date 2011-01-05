@@ -105,6 +105,7 @@
         <w>sourcepath</w>
         <w>testoutput</w>
         <w>waat</w>
+        <w>webdriver</w>
       </words>
     </dictionary>
   </component>
@@ -132,13 +133,16 @@
       <CLASSES>
         <root url="file://$PROJECT_DIR$/lib" />
         <root url="file://$PROJECT_DIR$/lib/test" />
-        <root url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks" />
+        <root url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/selenium" />
+        <root url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/webdriver" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
       <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
       <jarDirectory url="file://$PROJECT_DIR$/lib/test" recursive="false" />
-      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks" recursive="false" />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webdriver" recursive="false" />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/selenium" recursive="false" />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/webdriver" recursive="false" />
     </library>
     <library name="resources">
       <CLASSES>

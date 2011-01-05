@@ -13,36 +13,36 @@ import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStor
  * Time: 1:11:18 PM
  */
 
-public class SeleniumScriptRunnerHelper {
-    public static String BASE_URL="http://digg.com";
+public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
 
-    private static String SELENIUM_HOST="localhost";
-    private static int SELENIUM_SERVER_PORT=4444;
-    private static String UIDriver_BROWSER ="*";
-    private static String TIMEOUT="180000";
     private UIDriverThreadRunner uiDriverThreadRunner;
-    private Logger logger;
+    private String UIDriver_BROWSER ="*";
+    private final String DRIVER_HOST ="localhost";
+    private int DRIVER_SERVER_PORT =4444;
+    private String TIMEOUT="180000";
 
     public SeleniumScriptRunnerHelper(Logger logger, BROWSER browser) {
-        this.logger = logger;
+        super(logger, browser);
         UIDriver_BROWSER = "*" + browser.name();
     }
 
-    public void startSeleniumDriver ()
+    @Override
+    public void startDriver()
     {
-        String cmd = "java -jar lib\\test\\webTestingFrameworks\\selenium-server-1.0.3-standalone.jar";
+        String command = "java -jar lib\\test\\webTestingFrameworks\\selenium\\selenium-server-1.0.3-standalone.jar";
         this.uiDriverThreadRunner = new UIDriverThreadRunner(logger);
-        this.uiDriverThreadRunner.runInThread(cmd);
+        this.uiDriverThreadRunner.runInThread(command);
         startSeleniumSession(
-                SELENIUM_HOST,
-                SELENIUM_SERVER_PORT,
+                DRIVER_HOST,
+                DRIVER_SERVER_PORT,
                 UIDriver_BROWSER,
                 BASE_URL);
         session().setTimeout(TIMEOUT);
         session().open(BASE_URL);
     }
 
-    public void stopSeleniumDriver()
+    @Override
+    public void stopDriver()
     {
         try {
             closeSeleniumSession();
@@ -52,5 +52,10 @@ public class SeleniumScriptRunnerHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Object getDriverInstance() {
+        return session();
     }
 }

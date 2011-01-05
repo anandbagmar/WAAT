@@ -121,6 +121,9 @@
         <mkdir dir="${zip.dir}/WAAT/resources"/>
         <mkdir dir="${zip.dir}/WAAT/docs"/>
 
+        <!--Copy the LICENSE file to the root folder -->
+        <copy file="${basedir}/LICENSE.txt" todir="${zip.dir}/WAAT" overwrite="true" verbose="true"/>
+
         <!--Copy the appropriate WAAT.jar in the lib folder -->
         <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT/lib" overwrite="true" verbose="true"/>
 

@@ -1,16 +1,16 @@
- package com.thoughtworks.webanalyticsautomation;
+package com.thoughtworks.webanalyticsautomation;
 
- import com.thoughtworks.webanalyticsautomation.common.TestBase;
- import com.thoughtworks.webanalyticsautomation.scriptrunner.WebDriverScriptRunner;
- import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScriptRunnerHelper;
- import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
- import org.openqa.selenium.WebDriver;
- import org.testng.annotations.AfterMethod;
- import org.testng.annotations.Test;
+import com.thoughtworks.webanalyticsautomation.common.TestBase;
+import com.thoughtworks.webanalyticsautomation.scriptrunner.WebDriverScriptRunner;
+import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScriptRunnerHelper;
+import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
 
- import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
- import static org.testng.Assert.assertEquals;
- import static org.testng.Assert.assertNotNull;
+import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 /**
  * Created by: Anand Bagmar

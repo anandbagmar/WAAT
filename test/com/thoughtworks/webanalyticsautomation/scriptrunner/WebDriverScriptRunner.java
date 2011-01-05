@@ -16,7 +16,7 @@ import java.util.Set;
  */
 
 public class WebDriverScriptRunner implements IScriptRunner {
-    protected WebDriver webDriverInstance;
+    private WebDriver webDriverInstance;
     private Logger logger = Logger.getLogger(getClass());
 
     public WebDriverScriptRunner(WebDriver webDriverInstance) {
@@ -26,23 +26,23 @@ public class WebDriverScriptRunner implements IScriptRunner {
     public String getHTMLSourceByExecutingScript(final String OMNITURE_DEBUGGER_URL, String OMNITURE_DEBUGGER_WINDOW_TITLE, String OMNITURE_DEBUGGER_URL_DECODE_CHECKBOX) {
         String htmlSource = null;
         String parentWindowHandle = webDriverInstance.getWindowHandle();
-        logger.info ("parentWindowHandle = " + parentWindowHandle);
+        logger.debug("parentWindowHandle = " + parentWindowHandle);
         logger.info ("Opening Omniture Debugger: " + OMNITURE_DEBUGGER_URL);
-        ((JavascriptExecutor)webDriverInstance).executeScript(OMNITURE_DEBUGGER_URL);
+        ((JavascriptExecutor) webDriverInstance).executeScript(OMNITURE_DEBUGGER_URL);
         try{
             boolean windowFound = false;
             while(!windowFound){
                 Set<String> windowHandles = webDriverInstance.getWindowHandles();
                 for (String windowHandle: windowHandles){
-                    logger.info ("windowHandle = " + windowHandle);
+                    logger.debug("windowHandle = " + windowHandle);
                     if (!windowHandle.equalsIgnoreCase(parentWindowHandle)) {
                         webDriverInstance = webDriverInstance.switchTo().window(windowHandle);
                         WebElement element = webDriverInstance.findElement(By.name(OMNITURE_DEBUGGER_URL_DECODE_CHECKBOX));
                         if (!element.isSelected()) {
-                            logger.info ("checkbox not selected. clicking on it.");
+                            logger.debug("checkbox not selected. clicking on it.");
                             element.click();
                             while (!element.isSelected()) {
-                                logger.info ("checkbox status: " + element.isSelected());
+                                logger.debug("checkbox status: " + element.isSelected());
                                 Thread.sleep (3000);
                             }
                         }
@@ -59,7 +59,7 @@ public class WebDriverScriptRunner implements IScriptRunner {
         }
         webDriverInstance.switchTo().window(parentWindowHandle);
         webDriverInstance.close();
-        logger.info ("WebDriver omniture debugger page source: \n" + htmlSource);
+        logger.debug("WebDriver omniture debugger page source: \n" + htmlSource);
         return htmlSource;
     }
 }

@@ -27,6 +27,11 @@ public class CustomTestListener implements ITestListener {
             "-----------------------------------\n" +
             "------------------------------------------------------------------------------------\n";
 
+    private static String WAAT_TEST_END_LOG_MESSAGE = "\n\n" +
+            "-----------------------------------" +
+            " TESTNAME " +
+            "-----------------------------------\n";
+
     private Logger logger = Logger.getLogger(getClass());
 
     public void onTestStart(ITestResult iTestResult) {
@@ -36,12 +41,18 @@ public class CustomTestListener implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
+        String testCompleteMessage = WAAT_TEST_END_LOG_MESSAGE.replace("TESTNAME", iTestResult.getName() + ": PASS");
+        logger.info(testCompleteMessage);
     }
 
     public void onTestFailure(ITestResult iTestResult) {
+        String testCompleteMessage = WAAT_TEST_END_LOG_MESSAGE.replace("TESTNAME", iTestResult.getName() + ": FAIL");
+        logger.info(testCompleteMessage);
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
+        String testCompleteMessage = WAAT_TEST_END_LOG_MESSAGE.replace("TESTNAME", iTestResult.getName() + ": SKIP");
+        logger.info(testCompleteMessage);
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {

@@ -133,15 +133,14 @@
       <CLASSES>
         <root url="file://$PROJECT_DIR$/lib" />
         <root url="file://$PROJECT_DIR$/lib/test" />
-        <root url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/selenium" />
         <root url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/webdriver" />
+        <root url="jar://$PROJECT_DIR$/lib/test/webTestingFrameworks/selenium/selenium-grid-tools-standalone-1.0.8-testNG-5.12.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
       <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
       <jarDirectory url="file://$PROJECT_DIR$/lib/test" recursive="false" />
       <jarDirectory url="file://$PROJECT_DIR$/lib/test/webdriver" recursive="false" />
-      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/selenium" recursive="false" />
       <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/webdriver" recursive="false" />
     </library>
     <library name="resources">

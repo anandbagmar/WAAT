@@ -29,7 +29,7 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
     @Override
     public void startDriver()
     {
-        String command = "java -jar lib\\test\\webTestingFrameworks\\selenium\\selenium-server-1.0.3-standalone.jar";
+        String command = "java -jar lib\\test\\webTestingFrameworks\\webdriver\\selenium-server-standalone-2.0b1.jar";
         this.uiDriverThreadRunner = new UIDriverThreadRunner(logger);
         this.uiDriverThreadRunner.runInThread(command);
         startSeleniumSession(

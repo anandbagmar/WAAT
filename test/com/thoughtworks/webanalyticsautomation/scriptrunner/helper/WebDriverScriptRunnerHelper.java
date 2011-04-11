@@ -1,24 +1,25 @@
 package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
-import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
+import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Jan 4, 2011
  * Time: 10:38:05 AM
  */
 
 public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
 
-    WebDriver driver;
+    private WebDriver driver;
 
-    public WebDriverScriptRunnerHelper(Logger logger, BROWSER browser) {
-        super(logger,browser);
+    public WebDriverScriptRunnerHelper(Logger logger, BROWSER browser, String baseURL) {
+        super(logger,browser, baseURL);
     }
 
     @Override
@@ -30,6 +31,10 @@ public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
         }
         else if (browser.equals(BROWSER.iehta)) {
             driver = new InternetExplorerDriver();
+            driver.get(BASE_URL);
+        }
+        else if (browser.equals(BROWSER.chrome)) {
+            driver = new ChromeDriver();
             driver.get(BASE_URL);
         }
         logger.info ("Driver started: " + browser.name());

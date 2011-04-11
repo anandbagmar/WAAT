@@ -2,25 +2,28 @@ package com.thoughtworks.webanalyticsautomation.common;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 9:34:02 AM
  */
 
 import com.thoughtworks.webanalyticsautomation.Engine;
 import com.thoughtworks.webanalyticsautomation.Result;
+import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
+import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import org.apache.log4j.Logger;
 
+import static com.thoughtworks.webanalyticsautomation.common.Utils.currentDirectory;
+import static com.thoughtworks.webanalyticsautomation.common.Utils.fileSeparator;
+
 public class TestBase {
-    protected Logger logger = Logger.getLogger(getClass());
+    protected final Logger logger = Logger.getLogger(getClass());
     protected Engine engine;
-
-    protected String webAnalyticTool = "omniture";
-    protected String inputFileType = "xml";
+    protected WebAnalyticTool webAnalyticTool;
+    protected final InputFileType inputFileType = InputFileType.XML;
     protected boolean keepLoadedFileInMemory = true;
-    protected String log4jPropertiesAbsoluteFilePath = System.getProperty("user.dir") + "\\resources\\log4j.properties";
-
-    protected String inputDataFileName = System.getProperty("user.dir") + "\\test\\sampledata\\OmnitureTestData.xml";
+    protected final String log4jPropertiesAbsoluteFilePath = currentDirectory() + fileSeparator() + "resources"  + fileSeparator() + "log4j.properties";
+    protected String inputDataFileName = currentDirectory() + fileSeparator() + "test"  + fileSeparator() + "sampledata"  + fileSeparator() + "TestData.xml";
 
     protected void logVerificationErrors(Result verificationResult) {
         if (verificationResult.getListOfErrors().size()>0){

@@ -10,6 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="lib" level="project" />
     <orderEntry type="library" name="resources" level="project" />
+    <orderEntry type="library" name="HTTPClient" level="project" />
   </component>
 </module>
 

@@ -1,7 +1,8 @@
 package com.thoughtworks.webanalyticsautomation;
 
-import com.thoughtworks.webanalyticsautomation.common.CONFIG;
+import com.thoughtworks.webanalyticsautomation.common.Config;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
+import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import org.testng.annotations.Test;
 
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
@@ -12,12 +13,13 @@ public class ControllerTest extends TestBase {
 
     @Test
     public void getInstanceTest() throws Exception {
+        webAnalyticTool = WebAnalyticTool.OMNITURE_DEBUGGER;
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         assertNotNull(engine);
-        assertEquals(webAnalyticTool.toUpperCase(), CONFIG.getWEB_ANALYTIC_TOOL().name(), "WebAnalyticTool not set correctly");
-        assertEquals(inputFileType.toUpperCase(), CONFIG.getINPUT_FILE_TYPE().name(), "Input file type not set correctly");
-        assertEquals(keepLoadedFileInMemory, CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
-        assertEquals(log4jPropertiesAbsoluteFilePath, CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH(), "log4j Properties file path not set correctly");
+        assertEquals(webAnalyticTool, Config.getWEB_ANALYTIC_TOOL(), "WebAnalyticTool not set correctly");
+        assertEquals(inputFileType, Config.getINPUT_FILE_TYPE(), "Input file type not set correctly");
+        assertEquals(keepLoadedFileInMemory, Config.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
+        assertEquals(log4jPropertiesAbsoluteFilePath, Config.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH(), "log4j Properties file path not set correctly");
     }
 
     @Test

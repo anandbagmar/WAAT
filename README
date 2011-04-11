@@ -1,6 +1,6 @@
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  */
 
 1.  Download WAAT distributable from: https://github.com/WAAT/WAAT/blob/master/dist/WAAT_v1.1.zip
@@ -40,8 +40,8 @@
         > Once enabled, remember to disable WAAT testing in your tests, unless you want all tests to do the Web Analytic testing. 
 
 7.  Test data should be provided in a specific format as specified in the sample file available in:
-    c:\myTestProject\lib\WAAT\sampledata\OmnitureTestData.xml
+    c:\myTestProject\lib\WAAT\sampledata\TestData.xml
     Note: The delimiter to use is || (2 pipe symbols)
 
 
-For any other questions, comments, help, email Anand Bagmar @ anandb@thoughtworks.com / abagmar@gmail.com
+For any other questions, comments, help, email Anand Bagmar @ abagmar@gmail.com

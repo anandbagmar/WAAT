@@ -10,12 +10,12 @@ import java.util.Set;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Jan 4, 2011
  * Time: 10:38:37 AM
  */
 
-public class WebDriverScriptRunner implements IScriptRunner {
+public class WebDriverScriptRunner implements ScriptRunner {
     private WebDriver webDriverInstance;
     private Logger logger = Logger.getLogger(getClass());
 

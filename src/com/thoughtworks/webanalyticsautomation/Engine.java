@@ -2,24 +2,26 @@ package com.thoughtworks.webanalyticsautomation;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 9:34:02 AM
  */
 
-import com.thoughtworks.webanalyticsautomation.common.CONFIG;
+import com.thoughtworks.webanalyticsautomation.common.Config;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.inputdata.TestData;
-import com.thoughtworks.webanalyticsautomation.plugins.IWAATPlugin;
+import com.thoughtworks.webanalyticsautomation.plugins.HttpSniffer;
 import com.thoughtworks.webanalyticsautomation.plugins.PluginFactory;
-import com.thoughtworks.webanalyticsautomation.scriptrunner.IScriptRunner;
+import com.thoughtworks.webanalyticsautomation.plugins.WaatPlugin;
+import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
+import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 
-public class Engine extends CONFIG {
+public class Engine extends Config {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<String>();
 
     public Engine () {
@@ -30,6 +32,7 @@ public class Engine extends CONFIG {
         String threadLocalID = Utils.getThreadLocalID();
         logger.info("Setting variable on ThreadLocal: " + threadLocalID);
         threadLocal.set(threadLocalID);
+        enableDisableCaptureInHttpSnifferPluginInstance(true);
     }
 
     boolean isWebAnalyticsTestingEnabled() {
@@ -43,14 +46,27 @@ public class Engine extends CONFIG {
     public void disableWebAnalyticsTesting() {
         logger.info("Reset variable on ThreadLocal");
         threadLocal.set(null);
+        enableDisableCaptureInHttpSnifferPluginInstance(false);
     }
     
-    public Result verifyWebAnalyticsData(String testDataFileName, String actionName, IScriptRunner scriptRunner) {
+    public Result verifyWebAnalyticsData(String testDataFileName, String actionName, ScriptRunner scriptRunner) {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
-            PluginFactory pluginFactory = new PluginFactory();
-            IWAATPlugin pluginInstance = pluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
+            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> actualSectionList = pluginInstance.captureSections (scriptRunner);
+            return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);
+        }
+        else {
+            logger.info("Web Analytics testing is disabled.");
+            return new Result(actionName, Status.SKIPPED, new ArrayList<String> ());
+        }
+    }
+
+    public Result verifyWebAnalyticsData(String testDataFileName, String actionName, String[] urlPatterns, int minimumNumberOfPackets) {
+        if (isWebAnalyticsTestingEnabled()) {
+            ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
+            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
+            ArrayList<Section> actualSectionList = pluginInstance.captureSections (urlPatterns, minimumNumberOfPackets);
             return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);
         }
         else {
@@ -144,5 +160,17 @@ public class Engine extends CONFIG {
             allTags.addAll(expectedSection.getLoadedTagList());
         }
         return allTags;
+    }
+
+    private void enableDisableCaptureInHttpSnifferPluginInstance(boolean enable) {
+        if (Config.getWEB_ANALYTIC_TOOL().equals(WebAnalyticTool.HTTP_SNIFFER)) {
+            HttpSniffer pluginInstance = (HttpSniffer) PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
+            if (enable) {
+                pluginInstance.enableCapture();
+            }
+            else {
+                pluginInstance.disableCapture();
+            }
+        }
     }
 }

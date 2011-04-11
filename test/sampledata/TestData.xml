@@ -1,0 +1,84 @@
+<!--
+        Sample Test Specification File
+
+        * Created by: Anand Bagmar
+        * Email: abagmar@gmail.com
+        * Date: Dec 29, 2010
+        * Time: 4:29:12 PM
+-->
+
+<!--
+                                README for TestData specification
+                                
+        Section:
+                        A set of test data which includes the actionName for which
+                        the provided list of tags needs to be verified.
+
+        actionName:
+                        A (String) name representing the action done in the UI,
+                        for which we want to do Web Analytics Testing.
+
+        numberOfEventsTriggered:
+                        The number of events that "should" be triggered for the
+                        actionName specified.
+                        The (numerical) value provided for this attribute indicates
+                        the number of requests sent to the Web Analytic system for
+                        the action.
+
+        tagList:
+                        A delimited set of tags that you want to verify from any of
+                        the requests sent to analytics tool on the action performed.
+                        The tags specified are order independent, and case-SENSITIVE.
+
+                        NOTE: If you are using OmnitureDebugger, the tags are seen
+                        differently based on the UI Testing Framework being used.
+                        This is because of the difference in the way JavaScript is
+                        executed and results being interpreted by the individual
+                        UI framework.
+
+                        See the examples below for:
+                         > actionName: OpenUpcomingPage_OmnitureDebugger_Selenium
+                         > actionName: OpenUpcomingPage_OmnitureDebugger_WebDriver
+
+        delimiter:
+                        A separator used to distinguish between tags.
+                        || is the delimiter used in WAAT.
+-->
+
+<Sections>
+    <Section actionName="OpenUpcomingPage_OmnitureDebugger_Selenium"
+             numberOfEventsTriggered="1"
+             tagList="s.pageName = 'upcoming:index'||
+                                s.eVar23 = 'upcoming:index'||
+                                s.heir1 = 'upcoming'||
+                                s.heir2 = 'index'||
+                                s.channel = 'upcoming'||
+                                s.eVar22 = 'upcoming'||
+                                s.prop5 = 'anonymous'||
+                                s.eVar5 = 'anonymous'||
+                                s.prop4 = 'anonymous'||
+                                s.eVar4 = 'anonymous'||
+                                s.prop9 = 'all'||
+                                s.eVar9 = 'all'||
+                                s.events = 'event2'||"/>
+
+    <Section actionName="OpenUpcomingPage_OmnitureDebugger_WebDriver"
+             numberOfEventsTriggered="1"
+             tagList="pageName=upcoming:index||
+                                cc=USD||
+                                ch=upcoming||
+                                events=event2||"/>
+
+    <Section actionName="OpenUpcomingPage_HttpSniffer"
+             numberOfEventsTriggered="1"
+             tagList="pageName=upcoming:index||
+                                cc=USD||
+                                ch=upcoming||
+                                events=event2||"/>
+
+    <Section actionName="OpenWAATArticleOnBlog_HttpSniffer"
+             numberOfEventsTriggered="1"
+             tagList="caller=http://essenceoftesting.blogspot.com/2011/01/my-article-on-future-of-test-automation.html||
+                                container=friendconnect||
+                                parent=http://essenceoftesting.blogspot.com/||"/>
+</Sections>

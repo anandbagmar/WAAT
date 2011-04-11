@@ -1,7 +1,8 @@
+*.pptx
 *.iws
 *.class
 out
 testNGReports
 waat.log
 velocity.log
-
+dist/backup/**

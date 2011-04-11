@@ -1,16 +1,32 @@
 package com.thoughtworks.webanalyticsautomation.plugins;
 
+import org.apache.log4j.Logger;
+
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 9:34:02 AM
  */
 
 public class PluginFactory {
-    public IWAATPlugin getWebAnalyticsPluginInstance(WebAnalyticTool webAnalyticTool) {
-        if (webAnalyticTool.equals(WebAnalyticTool.OMNITURE)) {
+    private static HttpSniffer httpSniffer;
+    private static final Logger logger = Logger.getLogger(PluginFactory.class.getName());
+
+    public static void reset() {
+        logger.info ("Resetting PluginInstances");
+        httpSniffer = null;
+    }
+
+    public static WaatPlugin getWebAnalyticsPluginInstance(WebAnalyticTool webAnalyticTool) {
+        if (webAnalyticTool.equals(WebAnalyticTool.OMNITURE_DEBUGGER)) {
             return new OmnitureDebugger();
+        }
+        else if (webAnalyticTool.equals(WebAnalyticTool.HTTP_SNIFFER)) {
+            if (null == httpSniffer) {
+                httpSniffer = new HttpSniffer ();
+            }
+            return httpSniffer;
         }
         else {
             throw new IllegalArgumentException("Invalid type of Web Analytic Tool (" + webAnalyticTool + ") specified");

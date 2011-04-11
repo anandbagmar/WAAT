@@ -1,0 +1,2096 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<title>WAAT Readme</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#365F91;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.5in;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#4F81BD;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	text-indent:-.75in;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#4F81BD;}
+h4
+	{mso-style-link:"Heading 4 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-style:italic;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:11.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:5.0pt;
+	margin-left:22.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#17365D;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#17365D;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#17365D;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	border:none;
+	padding:0in;
+	font-size:26.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#17365D;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-link:"Subtitle Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+em
+	{font-family:"Calibri","sans-serif";
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+span.MsoSubtleEmphasis
+	{color:gray;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoBookTitle
+	{font-variant:small-caps;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#365F91;
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Times New Roman","serif";
+	color:#17365D;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Times New Roman","serif";
+	color:#365F91;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-link:Footer;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Times New Roman","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Times New Roman","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.SubtitleChar
+	{mso-style-name:"Subtitle Char";
+	mso-style-link:Subtitle;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	font-style:italic;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-link:"Heading 4";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+.MsoChpDefault
+	{font-family:"Calibri","sans-serif";}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.35pt 841.95pt;
+	margin:49.5pt 1.0in 49.5pt 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>WAAT – Web Analytics Automation Testing Framework</p>
+
+</div>
+
+<p class=MsoSubtitle><em><span style='font-size:14.0pt;line-height:115%;
+font-style:normal'>Anand Bagmar</span></em></p>
+
+<p class=MsoNormal><a href="mailto:abagmar@gmail.com"><span
+class=MsoIntenseEmphasis><span style='text-decoration:none'>abagmar@gmail.com</span></span></a></p>
+
+<p class=MsoNormal><a href="http://www.essenceoftesting.blogspot.com"><span
+class=MsoIntenseEmphasis><span style='text-decoration:none'>http://www.essenceoftesting.blogspot.com</span></span></a><br
+clear=all style='page-break-before:always'>
+</p>
+
+<p class=MsoToc1><span class=MsoBookTitle><span style='font-variant:normal !important;
+text-transform:uppercase'>Contents</span></span></p>
+
+<p class=MsoToc1><span
+class=MsoHyperlink><a href="#_Toc284419642">1.<span style='color:windowtext;
+text-decoration:none'>      </span>What is Web Analytics<span style='color:
+windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419643">2.<span
+style='color:windowtext;text-decoration:none'>      </span>What is WAAT?<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419644">3.<span
+style='color:windowtext;text-decoration:none'>      </span>Need for WAAT<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>3</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419645">4.<span
+style='color:windowtext;text-decoration:none'>      </span>WAAT Architecture<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419646">5.<span
+style='color:windowtext;text-decoration:none'>      </span>WAAT Setup<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419647">6.<span
+style='color:windowtext;text-decoration:none'>      </span>How to use WAAT?<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419648">6.1<span
+style='color:windowtext;text-decoration:none'>         </span>WAAT using
+Omniture Debugger<span style='color:windowtext;display:none;text-decoration:
+none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419649">6.1.1<span
+style='color:windowtext;text-decoration:none'>          </span>Approach<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>4</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419650">6.1.2<span
+style='color:windowtext;text-decoration:none'>          </span>Create an
+implementation of the ScriptRunner interface<span style='color:windowtext;
+display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419651">6.1.3<span
+style='color:windowtext;text-decoration:none'>          </span>Selenium
+ScriptRunner<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419652">6.1.4<span
+style='color:windowtext;text-decoration:none'>          </span>WebDriver
+ScriptRunner<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419653">6.1.5<span
+style='color:windowtext;text-decoration:none'>          </span>Other
+ScriptRunner<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419654">6.1.6<span
+style='color:windowtext;text-decoration:none'>          </span>Define Test data<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419655">6.1.7<span
+style='color:windowtext;text-decoration:none'>          </span>Test code
+changes<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><a href="#_Toc284419656">6.1.7.1<span
+style='color:windowtext;text-decoration:none'>      </span>Selenium-based test
+changes<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>5</span></a></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><a href="#_Toc284419657">6.1.7.2<span
+style='color:windowtext;text-decoration:none'>      </span>WebDriver-based test
+changes<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>8</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419658">6.2<span
+style='color:windowtext;text-decoration:none'>         </span>WAAT using
+HttpSniffer<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419659">6.2.1<span
+style='color:windowtext;text-decoration:none'>          </span>Approach<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419660">6.2.2<span
+style='color:windowtext;text-decoration:none'>          </span>Setup 3<sup>rd</sup>-party
+libraries<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419661">6.2.3<span
+style='color:windowtext;text-decoration:none'>          </span>Define Test data<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419662">6.2.4<span
+style='color:windowtext;text-decoration:none'>          </span>Test code
+changes<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>10</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419663">7.<span
+style='color:windowtext;text-decoration:none'>      </span>Jpcap setup<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419664">7.1.1<span
+style='color:windowtext;text-decoration:none'>          </span>What is Jpcap?<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419665">7.1.2<span
+style='color:windowtext;text-decoration:none'>          </span>Custom
+installation<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><a href="#_Toc284419666">7.1.2.1<span
+style='color:windowtext;text-decoration:none'>      </span>Windows<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><a href="#_Toc284419667">7.1.2.2<span
+style='color:windowtext;text-decoration:none'>      </span>Fedora, RedHat<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></p>
+
+<p class=MsoToc3><span class=MsoHyperlink><a href="#_Toc284419668">7.1.2.3<span
+style='color:windowtext;text-decoration:none'>      </span>Ubuntu, GNU/Debian<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><a href="#_Toc284419669">7.1.3<span
+style='color:windowtext;text-decoration:none'>          </span>Default
+installation<span style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>13</span></a></span></p>
+
+<p class=MsoToc1><span class=MsoHyperlink><a href="#_Toc284419670">8.<span
+style='color:windowtext;text-decoration:none'>      </span>FAQs<span
+style='color:windowtext;display:none;text-decoration:none'>. </span><span
+style='color:windowtext;display:none;text-decoration:none'>14</span></a></span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<span style='font-size:12.0pt;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal style='line-height:normal'><a name="_Toc284331572"></a><b><span
+style='font-size:12.0pt;color:#365F91'>&nbsp;</span></b></p>
+
+<h1><a name="_Toc284419642"><span style='font-weight:normal'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>What
+is Web Analytics</a></h1>
+
+<p class=MsoNormal>Web Analytics is the measurement, collection, analysis and
+reporting of internet data for purposes of understanding and optimizing web
+usage. Web Analytics is not just a tool for measuring website traffic, but can
+also be used as a tool for business research and market research.</p>
+
+<p class=MsoNormal>Web Analytics applications can also help companies measure
+the results of traditional print advertising campaigns. It helps one to
+estimate how the traffic to the web site changed after the launch of a new
+advertising campaign.</p>
+
+<p class=MsoNormal>Web Analytics provides data on the number of visitors, page
+views, etc. to gauge the traffic popularity trends which helps doing the market
+research.</p>
+
+<p class=MsoNormal><a href="http://en.wikipedia.org/wiki/Web_analytics">Official
+definition of Web Analytics from Wikipedia</a></p>
+
+<h1><a name="_Toc284419643"><span style='font-weight:normal'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>What
+is WAAT?</a></h1>
+
+<p class=MsoNormal>WAAT stands for Web Analytics Automation Testing.</p>
+
+<h1><a name="_Toc284419644"><span style='font-weight:normal'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Need
+for WAAT</a></h1>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Manual testing for Web Analytics is tedious and time consuming
+(and also boring).</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>It is possible to miss out on some of the tags for testing that
+will provide a feed to the Web Analytic system.</p>
+
+<p class=MsoNormal>This framework provides a way to automate the verification of
+name-value pair properties / tags being reported to a Web Analytics System.</p>
+
+<h1><a name="_Toc284419645"><span style='font-weight:normal'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>WAAT
+Architecture</a></h1>
+
+<p class=MsoNormal><img border=0 width=602 height=451 id="Picture 2"
+src="WAAT%20Readme_files/image001.jpg"></p>
+
+<h1><a name="_Toc284419646"><span style='font-weight:normal'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>WAAT
+Setup</a></h1>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Download WAAT for the platform of your choice (Windows / Linux /
+Unix / MacOS) .</p>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Unzip the downloaded file in the lib folder of your existing
+project (say, c:\myProject\lib).</p>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Add c:\myProject\lib\WAAT\lib to your library classpath.</p>
+
+<h1><a name="_Toc284419647"><span style='font-weight:normal'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>How
+to use WAAT?</a></h1>
+
+<p class=MsoNormal>WAAT can be used in 2 ways – Omniture Debugger, or,
+HttpSniffer.</p>
+
+<h1 style='margin-left:.5in;text-indent:-.5in'><a name="_Toc284419648">6.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>WAAT using Omniture Debugger</a></h1>
+
+<h2><a name="_Toc284419649"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Approach</a></h2>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>The
+Omniture Debugger works by executing a javascript (provided by Omniture SiteCatalyst)
+in the same browser where your UI test is executing. This action opens a new
+window and shows the list of name/value pair properties reported to
+SiteCatalyst.</span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>This
+approach makes used of the UI framework being used.</span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>To
+use WAAT in this approach, you need to follow the steps mentioned below.</span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<h2><a name="_Toc284419650"></a><a name="_Create_an_implementation"></a><span
+style='font-size:11.0pt;line-height:115%;color:#365F91'>6.1.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Create an implementation of the ScriptRunner interface</h2>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>Your
+test framework could be using any of the available UI drivers (example:
+Selenium, WebDriver, Sahi, etc.). </span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>To
+work with WAAT, you will first need to implement a ScriptRunner class. This
+class provides a hook for the WAAT framework to execute the javascript in the
+currently executing browser instance to open, and capture the data being sent
+to SiteCatalyst.</span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>Selenium
+and WebDriver sample script runners are provided with the WAAT distribution.
+See the SeleniumScriptRunner.java and WebDriverScriptRunner.java files in folder
+- \samplescripts\com\thoughtworks\webanalyticsautomation\scriptrunner in the
+downloaded zip distribution for reference.</span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>Copy
+the relevant ScriptRunner file in your test framework, update its namespace and
+your ScriptRunner class is ready for use.</span></p>
+
+<h2><a name="_Toc284419651"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.1.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Selenium ScriptRunner</a></h2>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;line-height:normal'><span
+style='font-size:12.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:12.0pt'>Copy the SeleniumScriptRunner.java
+from \samplescripts\com\thoughtworks\webanalyticsautomation\scriptrunner in the
+downloaded zip file to your test framework,</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;line-height:normal'><span
+style='font-size:12.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:12.0pt'>Update its namespace</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;line-height:normal'><span
+style='font-size:12.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:12.0pt'>Your ScriptRunner class is ready
+for use.</span></p>
+
+<h2><a name="OmniDbg_Sel_ImplementScriptRunner"></a><a name="_Toc284419652"><span
+style='font-size:11.0pt;line-height:115%;color:#365F91'>6.1.4<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>WebDriver ScriptRunner</a></h2>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;line-height:normal'><span
+style='font-size:12.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:12.0pt'>Copy the WebDriverScriptRunner.java
+from \samplescripts\com\thoughtworks\webanalyticsautomation\scriptrunner in the
+downloaded zip file to your test framework,</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;line-height:normal'><span
+style='font-size:12.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:12.0pt'>Update its namespace</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;line-height:normal'><span
+style='font-size:12.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:12.0pt'>Your ScriptRunner class is ready
+for use.</span></p>
+
+<h2><a name="_Toc284419653"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.1.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Other ScriptRunner</a></h2>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>If
+you are using any other UI testing framework, you can create a class similar to
+the SeleniumScriptRunner.java or WebDriverScriptRunner.jar by implementing the
+com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner interface.</span></p>
+
+<h2><a name="_Toc284419654"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.1.6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Define Test data</a></h2>
+
+<p class=MsoNormal>Provide the test data to be validated for each action in an
+xml file. Sample XML file is provided <a href="../sampledata/TestData.xml">here</a>.</p>
+
+<h2><a name="_Toc284419655"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.1.7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Test code changes</a></h2>
+
+<p class=MsoNormal>You will need to make changes in your existing / new tests.</p>
+
+<p class=MsoNormal>See the sections below for samples of Selenium and
+WebDriver-based changes.</p>
+
+<h3><a name="_Toc284419656"><span style='line-height:115%;color:#365F91'>6.1.7.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span>Selenium-based test changes</a></h3>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbj_Sel_ImportPackages"><span style='font-size:
+12.0pt'>Import relevant packages</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol;color:blue'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbj_Sel_DefineVariables"><span style='font-size:
+12.0pt'>Define &amp; provide parameter values</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol;color:blue'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbj_Sel_InitializeEngine"><span style='font-size:
+12.0pt'>Initialize Engine</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol;color:blue'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbj_Sel_EnableWebAnalyticsTesting"><span
+style='font-size:12.0pt'>Enable Web Analytics Testing</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol;color:blue'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbj_Sel_Verify"><span style='font-size:12.0pt'>Verify
+Web Analytics reporting</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol;color:blue'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbj_Sel_SampleValidations"><span style='font-size:
+12.0pt'>Sample validations</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+class=MsoHyperlink><span style='font-family:Symbol;text-decoration:none'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><a href="#OmniDbj_Sel_DisableWebAnalyticsTesting"><span
+style='font-size:12.0pt'>Disable Web Analytics reporting</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.5in'>&nbsp;</p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 1.0pt 1.0pt 1.0pt'>
+
+<p class=MsoNormal style='border:none;padding:0in'><span style='font-size:10.0pt;
+line-height:115%'>package com.thoughtworks.webanalyticsautomation;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>/**</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'> * Created by: Anand Bagmar</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'> * Email: abagmar@gmail.com</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'> * Date: Dec 29, 2010</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'> * Time: 9:34:02 AM</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'> */</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><a
+name="OmniDbj_Sel_ImportPackages"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Import packages</span></strong></a></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import
+com.thoughtworks.webanalyticsautomation.common.BROWSER;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import
+com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunner;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import static
+com.thoughtworks.webanalyticsautomation.Controller.getInstance;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import static com.thoughtworks.webanalyticsautomation.common.Utils.currentDirectory;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import static
+com.thoughtworks.webanalyticsautomation.common.Utils.fileSeparator;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import org.apache.log4j.Logger;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import
+com.thoughtworks.webanalyticsautomation.utils.SeleniumScriptRunnerHelper;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import org.testng.annotations.AfterMethod;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import org.testng.annotations.Test;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import static org.testng.Assert.assertEquals;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import static org.testng.Assert.assertNotNull;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import static
+com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.session;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import com.thoughtworks.selenium.Selenium;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>public class OmnitureDebuggerWithSeleniumTest {</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    private SeleniumScriptRunnerHelper seleniumScriptRunnerHelper;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    private Logger logger = Logger.getLogger(getClass());</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><a
+name="OmniDbj_Sel_DefineVariables"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Define &amp; provide parameter
+values</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private Engine engine;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private WebAnalyticTool webAnalyticTool =
+WebAnalyticTool.OMNITURE_DEBUGGER;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private InputFileType inputFileType =
+InputFileType.XML;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private boolean keepLoadedFileInMemory = true;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private String log4jPropertiesAbsoluteFilePath =
+currentDirectory() + fileSeparator() + &quot;resources&quot;  + fileSeparator()
++ &quot;log4j.properties&quot;;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private String inputDataFileName =
+currentDirectory() + fileSeparator() + &quot;test&quot;  + fileSeparator() +
+&quot;sampledata&quot;  + fileSeparator() + &quot;TestData.xml&quot;;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private String actionName = &quot;OpenUpcomingPage_OmnitureDebugger_Selenium&quot;;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    @Test</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    public void
+captureAndVerifyDataReportedToWebAnalytics_Selenium_IE() throws Exception {</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbj_Sel_InitializeEngine"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Initialize Engine</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        engine = Controller.getInstance (</span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>webAnalyticTool, </span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>inputFileType, </span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>keepLoadedFileInMemory, </span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>log4jPropertiesAbsoluteFilePath</span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbj_Sel_EnableWebAnalyticsTesting"><strong><span style='font-size:
+10.0pt;font-family:"Calibri","sans-serif";background:aqua'>Enable Web Analytics
+Testing</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        engine.enableWebAnalyticsTesting();</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>/*</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:yellow'>Existing
+test / test framework code</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>*/</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        session().open(SeleniumScriptRunnerHelper.BASE_URL +
+&quot;/upcoming&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbj_Sel_Verify"><strong><span style='font-size:10.0pt;font-family:
+"Calibri","sans-serif";background:aqua'>Verify Web Analytics Reporting</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        <span style='background:aqua'>Result verificationResult =
+engine.verifyWebAnalyticsData (inputDataFileName, actionName, new
+SeleniumScriptRunner(session()));</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>/*</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbj_Sel_SampleValidations"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Sample validations</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*/</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertNotNull(verificationResult.getVerificationStatus(), &quot;Verification
+status should NOT be NULL&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertNotNull(verificationResult.getListOfErrors(), &quot;Failure details
+should NOT be NULL&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        logVerificationErrors(verificationResult);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertEquals(verificationResult.getVerificationStatus(), Status.PASS,
+&quot;Verification status should be PASS&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertEquals(verificationResult.getListOfErrors().size(), 0, &quot;Failure
+details should be empty&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    }</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>}</span></p>
+
+<p class=MsoNormal style='line-height:normal;border:none;padding:0in'><span
+style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><a
+name="OmniDbj_Sel_DisableWebAnalyticsTesting"><strong><span style='font-size:
+10.0pt;font-family:"Calibri","sans-serif";background:aqua'>Disable Web
+Analytics Testing</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>/* </span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        If using TestNG, override the
+@AfterMethod annotation</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        If using JUnit, override the
+@After annotation</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        and add the following line in
+it:</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*                               
+engine.disableWebAnalyticsTesting();</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        See the example shown below</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*/</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><b><span
+style='font-size:10.0pt'>    <span style='background:yellow'>@AfterMethod()</span></span></b></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    public void tearDown() throws Exception {</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        <span style='background:aqua'>engine.disableWebAnalyticsTesting();</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        seleniumScriptRunnerHelper.stopSeleniumDriver();</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    }</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>}</span></p>
+
+</div>
+
+<p class=MsoNormal style='line-height:normal'><b><span style='font-size:12.0pt;
+color:#365F91'>&nbsp;</span></b></p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><b><span style='font-size:12.0pt;line-height:115%;
+color:#4F81BD'>&nbsp;</span></b></p>
+
+<h3><a name="_Toc284419657"><span style='color:#365F91'>6.1.7.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span>WebDriver-based test
+changes</a></h3>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbg_WebDriver_ImportPackages"><span
+style='font-size:12.0pt'>Import relevant packages</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbg_WebDriver_DefineVariables"><span
+style='font-size:12.0pt'>Define &amp; provide parameter values</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbg_WebDriver_InitializeEngine"><span
+style='font-size:12.0pt'>Initialize Engine</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbg_WebDriver_EnableWebAnalyticsTest"><span
+style='font-size:12.0pt'>Enable Web Analytics Testing</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbg_WebDriver_Verify"><span style='font-size:12.0pt'>Verify
+Web Analytics reporting using WAAT</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><a href="#OmniDbj_WebDriver_SampleValidations"><span
+style='font-size:12.0pt'>Sample Validations</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.25in'><span
+class=MsoHyperlink><span style='font-family:Symbol;color:windowtext;text-decoration:
+none'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><a href="#OmniDbg_WebDriver_DisableWebAnalyticTest"><span
+style='font-size:12.0pt'>Disable Web Analytics reporting</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:1.0in;text-indent:-.5in'>&nbsp;</p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 1.0pt 1.0pt 1.0pt'>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>package com.thoughtworks.webanalyticsautomation;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif"'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><a
+name="OmniDbg_WebDriver_ImportPackages"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Import packages</span></strong></a></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import
+com.thoughtworks.webanalyticsautomation.scriptrunner.WebDriverScriptRunner;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import com.thoughtworks.webanalyticsautomation.common.BROWSER;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import
+com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import
+com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import static
+com.thoughtworks.webanalyticsautomation.Controller.getInstance;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import static
+com.thoughtworks.webanalyticsautomation.common.Utils.currentDirectory;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>import static
+com.thoughtworks.webanalyticsautomation.common.Utils.fileSeparator;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScriptRunnerHelper;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import org.openqa.selenium.WebDriver;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import org.testng.annotations.AfterMethod;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import org.testng.annotations.BeforeMethod;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import org.testng.annotations.Test;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import static org.testng.Assert.assertEquals;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>import static org.testng.Assert.assertNotNull;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:yellow'>/**</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:yellow'> * Created by: Anand Bagmar</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:yellow'> * Email: abagmar@gmail.com</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:yellow'> * Date: Jan 4, 2011</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:yellow'> * Time: 10:36:28 AM</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:yellow'> */</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>public class OmnitureDebuggerWithWebDriverTest {</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    private WebDriverScriptRunnerHelper webDriverScriptRunnerHelper;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    private WebDriver driverInstance;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><a
+name="OmniDbg_WebDriver_DefineVariables"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Define &amp; provide
+parameter values</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    <span style='background:aqua'>private Engine engine;</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    <span style='background:aqua'>private WebAnalyticTool
+webAnalyticTool = WebAnalyticTool.OMNITURE_DEBUGGER;</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private InputFileType inputFileType =
+InputFileType.XML;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private boolean keepLoadedFileInMemory = true;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    <span style='background:aqua'>private String
+log4jPropertiesAbsoluteFilePath = currentDirectory() + fileSeparator() +
+&quot;resources&quot;  + fileSeparator() + &quot;log4j.properties&quot;;</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>    private String inputDataFileName =
+currentDirectory() + fileSeparator() + &quot;test&quot;  + fileSeparator() +
+&quot;sampledata&quot;  + fileSeparator() + &quot;TestData.xml&quot;;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    <span style='background:aqua'>private String actionName = &quot;OpenUpcomingPage_OmnitureDebugger_WebDriver&quot;;</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    @Test</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    public void
+captureAndVerifyDataReportedToWebAnalytics_WebDriver_IE() throws Exception {</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbg_WebDriver_InitializeEngine"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Initialize Engine</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        engine = Controller.getInstance (</span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>webAnalyticTool, </span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>inputFileType, </span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>keepLoadedFileInMemory, </span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>log4jPropertiesAbsoluteFilePath</span></p>
+
+<p class=MsoNoSpacing style='text-indent:1.0in;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbg_WebDriver_EnableWebAnalyticsTest"><strong><span style='font-size:
+10.0pt;font-family:"Calibri","sans-serif";background:aqua'>Enable Web Analytics
+Testing</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        engine.enableWebAnalyticsTesting();</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>/*</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>*    Existing test / test framework
+code</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>*/</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        driverInstance.get(WebDriverScriptRunnerHelper.BASE_URL +
+&quot;/upcoming&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbg_WebDriver_Verify"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Verify Web Analytics
+Reporting using WAAT</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        <span style='background:aqua'>Result verificationResult =
+engine.verifyWebAnalyticsData (inputDataFileName, actionName, new
+WebDriverScriptRunner(driverInstance));</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>/*</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="OmniDbj_WebDriver_SampleValidations"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Sample validations</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*/</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertNotNull(verificationResult.getVerificationStatus(), &quot;Verification
+status should NOT be NULL&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertNotNull(verificationResult.getListOfErrors(), &quot;Failure details
+should NOT be NULL&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        logVerificationErrors(verificationResult);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertEquals(verificationResult.getVerificationStatus(), Status.PASS,
+&quot;Verification status should be PASS&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>       
+assertEquals(verificationResult.getListOfErrors().size(), 0, &quot;Failure
+details should be empty&quot;);</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    }</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif"'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><a
+name="OmniDbg_WebDriver_DisableWebAnalyticTest"><strong><span style='font-size:
+10.0pt;font-family:"Calibri","sans-serif";background:aqua'>Disable Web
+Analytics Testing</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>/* </span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*          If using TestNG, override
+the @AfterMethod annotation</span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*          If using JUnit, override
+the @After annotation</span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*          and add the following line
+in it:</span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*                                 
+engine.disableWebAnalyticsTesting();</span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*          See the example shown below</span></p>
+
+<p class=MsoNoSpacing style='text-indent:9.0pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*/</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    <span style='background:yellow'>@AfterMethod()</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    public void tearDown() throws Exception {</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        <span style='background:aqua'>engine.disableWebAnalyticsTesting();</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        webDriverScriptRunnerHelper.stopDriver();</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>    }</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>}</span></p>
+
+</div>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:115%;
+font-family:"Cambria","serif";color:#365F91'>&nbsp;</span></b></p>
+
+<h1 style='margin-left:.5in;text-indent:-.5in'><a name="_Toc284419658">6.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>WAAT using HttpSniffer</a></h1>
+
+<h2><a name="_Toc284419659"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Approach</a></h2>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>This
+is a generic approach to Web Analytics Test Automation. Regardless of the
+end-product doing Web Analytics reporting and analysis (example: Omniture,
+Google Analytics, etc.), you can use this approach to test, in an automated way,
+if correct name/value properties are being reported by the product / system
+under test.</span></p>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt'>This
+approach captures TCP packets on the network layer, from all the network
+devices available. Based on the criteria specified in your tests, only those
+relevant packets are filtered out, and used for analysis and verifications.</span></p>
+
+<h2><a name="_Toc284419660"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Setup 3<sup>rd</sup>-party libraries</a></h2>
+
+<p class=MsoNormal style='margin-left:.5in'>In order to enable packet
+capturing, the WAAT framework needs helps of some 3-rd party open-source
+libraries. These libraries are available for various different operating
+systems in the download section of the WAAT project.</p>
+
+<p class=MsoNormal style='margin-left:.5in'>Refer to the <a href="#_Jpcap_setup">Jpcap
+Setup</a> section for platform specific install instructions.</p>
+
+<h2><a name="_Toc284419661"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Define Test data</a></h2>
+
+<p class=MsoNormal>Provide the test data to be validated for each action in an
+xml file. Sample XML file is provided <a href="../sampledata/TestData.xml">here</a>.</p>
+
+<h2><a name="_Toc284419662"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>6.2.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Test code changes</a></h2>
+
+<p class=MsoNormal style='text-indent:.5in'>You will need to make the following
+changes in your existing / new tests.</p>
+
+<p class=MsoNoSpacing style='margin-left:.75in;text-indent:-.75in'><b><span
+style='font-size:12.0pt;color:#365F91'>6.2.4.1<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></b><a href="#HttpSniffer_ImportPackages"><span style='font-size:
+12.0pt'>Import relevant packages</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:.75in;text-indent:-.75in'><b><span
+style='font-size:12.0pt;color:#365F91'>6.2.4.2<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></b><a href="#HttpSniffer_DefineVariables"><span
+style='font-size:12.0pt'>Define &amp; provide parameter values</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:.75in;text-indent:-.75in'><b><span
+style='font-size:12.0pt;color:#365F91'>6.2.4.3<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></b><a href="#HttpSniffer_InitializeEngine"><span
+style='font-size:12.0pt'>Initialize Engine</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:.75in;text-indent:-.75in'><b><span
+style='font-size:12.0pt;color:#365F91'>6.2.4.4<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></b><a href="#HttpSniffer_EnableWebAnalyticsTest"><span
+style='font-size:12.0pt'>Enable Web Analytics Testing</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:.75in;text-indent:-.75in'><b><span
+style='font-size:12.0pt;color:#365F91'>6.2.4.5<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></b><a href="#HttpSniffer_Verify"><span style='font-size:12.0pt'>Verify
+Web Analytics reporting using WAAT</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:.75in;text-indent:-.75in'><span
+class=MsoHyperlink><b><span style='font-size:12.0pt;color:#365F91;text-decoration:
+none'>6.2.4.6<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></b></span><span
+style='font-size:12.0pt'><a href="#HttpSniffer_SampleValidations">Sample
+validations</a></span></p>
+
+<p class=MsoNoSpacing style='margin-left:.75in;text-indent:-.75in'><span
+class=MsoHyperlink><b><span style='font-size:12.0pt;color:#365F91;text-decoration:
+none'>6.2.4.7<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></b></span><a
+href="#HttpSniffer_DisableWebAnalyticTest"><span style='font-size:12.0pt'>Disable
+Web Analytics reporting</span></a></p>
+
+<p class=MsoNoSpacing style='margin-left:.75in'>&nbsp;</p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 1.0pt 1.0pt 1.0pt'>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>package com.thoughtworks.webanalyticsautomation;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><a
+name="HttpSniffer_ImportPackages"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Import packages</span></strong></a></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>import
+com.thoughtworks.webanalyticsautomation.common.BROWSER;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>import
+com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>import
+static com.thoughtworks.webanalyticsautomation.Controller.getInstance;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>import
+static com.thoughtworks.webanalyticsautomation.common.Utils.currentDirectory;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>import
+static com.thoughtworks.webanalyticsautomation.common.Utils.fileSeparator;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>import
+com.thoughtworks.selenium.Selenium;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>import
+org.testng.annotations.AfterMethod;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>import
+org.testng.annotations.BeforeMethod;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>import
+org.testng.annotations.Test;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>import static org.testng.Assert.assertEquals;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>import static
+org.testng.Assert.assertNotNull;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>/**</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'> * Created by:
+Anand Bagmar</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'> * Email:
+abagmar@gmail.com</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'> * Date: Jan 31,
+2011</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'> * Time:
+12:14:04 PM</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'> */</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>public class HttpSnifferTest
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    private
+Selenium selenium;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><a
+name="HttpSniffer_DefineVariables"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Define &amp; provide
+parameter values</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    <span
+style='background:aqua'>private Engine engine;</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+private String baseURL = &quot;http://essenceoftesting.blogspot.com&quot;;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+private String navigateToURL = baseURL +
+&quot;/2010/12/waat-web-analytics-automation-testing.html&quot;;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+private String[] urlPatterns = new String[] {&quot;GET
+/ps/ifr?container=friendconnect&amp;mid=0&quot;};</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+private int minimumNumberOfPackets = 1;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+private String actionName = &quot;</span><span style='background:aqua'> </span><span
+style='font-size:10.0pt;background:aqua'>OpenWAATArticleOnBlog_HttpSniffer&quot;;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+private WebAnalyticTool webAnalyticTool = WebAnalyticTool.HTTP_SNIFFER;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        private IputFileType inputFileType =
+InputFileType.XML;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        private boolean keepLoadedFileInMemory = true;</span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt'>        <span style='background:aqua'>private String
+log4jPropertiesAbsoluteFilePath = currentDirectory() + fileSeparator() +
+&quot;resources&quot;  + fileSeparator() + &quot;log4j.properties&quot;;</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><span style='font-size:
+10.0pt;background:aqua'>        private String inputDataFileName =
+currentDirectory() + fileSeparator() + &quot;test&quot;  + fileSeparator() +
+&quot;sampledata&quot;  + fileSeparator() + &quot;TestData.xml&quot;;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    @Test</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    public void
+captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_GoogleAnalytics_Selenium_IE()
+throws Exception {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="HttpSniffer_InitializeEngine"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Initialize Engine</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>        <span
+style='background:aqua'>engine = getInstance(webAnalyticTool, inputFileType,
+keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);</span></span></p>
+
+<p class=MsoNoSpacing style='border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif"'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="HttpSniffer_EnableWebAnalyticsTest"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Enable Web Analytics
+Testing</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>        <span
+style='background:aqua'>engine.enableWebAnalyticsTesting();</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>/*</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>*    Existing test / test framework
+code</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:yellow'>*/</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>       
+selenium.open(navigateToURL);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="HttpSniffer_Verify"><strong><span style='font-size:10.0pt;font-family:
+"Calibri","sans-serif";background:aqua'>Verify Web Analytics Reporting using
+WAAT</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>        <span
+style='background:aqua'>Result verificationResult = engine.verifyWebAnalyticsData
+(inputDataFileName, actionName, urlPatterns, minimumNumberOfPackets);</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>/*</span></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><a
+name="HttpSniffer_SampleValidations"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Sample validations</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:22.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*/</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+assertNotNull(verificationResult.getVerificationStatus(), &quot;Verification
+status should NOT be NULL&quot;);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+assertNotNull(verificationResult.getListOfErrors(), &quot;Failure details
+should NOT be NULL&quot;);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+logVerificationErrors(verificationResult);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+assertEquals(verificationResult.getVerificationStatus(), Status.PASS,
+&quot;Verification status should be PASS&quot;);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt;background:aqua'>       
+assertEquals(verificationResult.getListOfErrors().size(), 0, &quot;Failure
+details should be empty&quot;);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>/*</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><a
+name="HttpSniffer_DisableWebAnalyticTest"><strong><span style='font-size:10.0pt;
+font-family:"Calibri","sans-serif";background:aqua'>Disable Web Analytics
+Testing</span></strong></a></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><strong><span
+style='font-size:10.0pt;font-family:"Calibri","sans-serif";background:aqua'>*/</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>/* </span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        If using TestNG, override the
+@AfterMethod annotation</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        If using JUnit, override the
+@After annotation</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        and add the following line in
+it:</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*                               
+engine.disableWebAnalyticsTesting();</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*        See the example shown below</span></p>
+
+<p class=MsoNoSpacing style='text-indent:13.5pt;border:none;padding:0in'><span
+style='font-size:10.0pt;background:aqua'>*/</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    <span
+style='background:yellow'>@AfterMethod</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    public void
+tearDown() throws Exception {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>        <span
+style='background:aqua'>engine.disableWebAnalyticsTesting();</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>       
+seleniumScriptRunnerHelper.stopDriver();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>    }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;border:none;padding:0in'><span style='font-size:10.0pt'>}</span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:115%;
+color:#365F91'>&nbsp;</span></b></p>
+
+<h1><a name="_Toc284419663"></a><a name="_Jpcap_setup"></a><span
+style='font-weight:normal'>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Jpcap setup</h1>
+
+<h2><a name="_Toc284419664"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>7.1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>What is Jpcap?</a></h2>
+
+<p class=MsoNoSpacing><a
+href="http://netresearch.ics.uci.edu/kfujii/Jpcap/doc/index.html">Jpcap</a> ©
+is a Java library for capturing and sending network packets. </p>
+
+<p class=MsoNoSpacing>For information specific to this library, please contact
+Keita Fujii, <a href="mailto:kfujii@uci.edu">kfujii@uci.edu</a>. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h2><a name="_Toc284419665"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>7.1.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Custom installation</a></h2>
+
+<p class=MsoNormal>You can use the binaries packaged (and tested) with WAAT
+using the instructions provided below.</p>
+
+<h3><a name="_Toc284419666"><span style='color:#365F91'>7.1.2.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span>Windows</a></h3>
+
+<p class=MsoNormal>You can use one of the following approaches to setup Jpcap
+and its dependencies on Windows OS:</p>
+
+<h4 style='margin-left:.75in;text-indent:-.75in'>7.1.2.1.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Copy dependent files</h4>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:.25in;text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Copy all dlls from \WAAT\lib\httpSniffer\Windows\System32 to
+C:\Windows\System32 directory.</p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:.25in;text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Copy npf.sys from \WAAT\lib\httpSniffer\Windows\System32\drivers
+to C:\Windows\System32\drivers directory.</p>
+
+<h4 style='margin-left:.75in;text-indent:-.75in'>7.1.2.1.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Install dependent files</h4>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:.25in;text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Install WinPcap_4_1_2.exe from \WAAT\lib\httpSniffer\Windows directory.</p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:.25in;text-indent:-.25in'><span
+style='font-family:Wingdings'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span>Install JpcapSetup-0.7.exe from \WAAT\lib\httpSniffer\Windows
+directory.</p>
+
+<h3><a name="_Toc284419667"><span style='color:#365F91'>7.1.2.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span>Fedora, RedHat</a></h3>
+
+<p class=MsoNormal>Install the Jpcap RPM package available in
+\WAAT\lib\httpSniffer\Linux\jpcap-0.7-1.i386.rpm</p>
+
+<h3><a name="_Toc284419668"><span style='color:#365F91'>7.1.2.3<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span>Ubuntu, GNU/Debian</a></h3>
+
+<p class=MsoNormal>Install the Jpcap RPM package available in
+\WAAT\lib\httpSniffer\Linux\jpcap-0.7.deb</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h2><a name="_Toc284419669"><span style='font-size:11.0pt;line-height:115%;
+color:#365F91'>7.1.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Default installation</a></h2>
+
+<p class=MsoNoSpacing>Install Jpcap and its dependencies directly based on the
+instructions provided on the <a
+href="http://netresearch.ics.uci.edu/kfujii/Jpcap/doc/install.html">Jpcap
+website</a> or a local copy of that installation document available <a
+href="Jpcap_Install.html">here</a>.</p>
+
+<span style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:115%;
+color:#365F91'>&nbsp;</span></b></p>
+
+<h1><a name="_Toc284419670"><span style='font-weight:normal'>8.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span>FAQs</a></h1>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><strong><span
+style='font-family:Wingdings;font-weight:normal'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></strong><strong><span style='font-family:"Calibri","sans-serif"'>What
+languages are supported by WAAT?</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'>WAAT is available as a Java
+framework. There are plans to make this available as a Ruby gem file and a .NET
+dll.</p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><strong><span
+style='font-family:Wingdings;font-weight:normal'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></strong><strong><span style='font-family:"Calibri","sans-serif"'>What
+UI Testing frameworks are supported by WAAT?</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:.5in'><strong><span style='font-family:
+"Calibri","sans-serif"'>WAAT using Omniture Debugger approach:</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>WAAT is not dependent on any
+particular UI testing framework. </span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>This has been tested with Selenium
+and WebDriver. However, if you are using any other framework, all you need to
+do is </span></strong><a href="#_Create_an_implementation">implement the ScriptRunner
+interface</a><strong><span style='font-family:"Calibri","sans-serif";
+font-weight:normal'> in your existing framework, and you will be good to go.</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='text-indent:.5in'><strong><span style='font-family:
+"Calibri","sans-serif"'>WAAT using HttpSniffer approach:</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>This is UI framework independent.</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><strong><span
+style='font-family:Wingdings;font-weight:normal'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></strong><strong><span style='font-family:"Calibri","sans-serif"'>What
+Web Analytic systems are supported by WAAT?</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>WAAT has been tested with sites
+reporting to Omniture SiteCatalyst and Google Analytics. This framework can be
+used by any site sending name-value pair of properties / tags as parameters in
+the request URL for any Web Analytic tool.</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'> </span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><strong><span
+style='font-family:Wingdings;font-weight:normal'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></strong><strong><span style='font-family:"Calibri","sans-serif"'>What
+Browsers are supported by WAAT?</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>WAAT is Browser independent.</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'><strong><span style='font-family:
+"Calibri","sans-serif";font-weight:normal'>&nbsp;</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in;text-indent:-.25in'><strong><span
+style='font-family:Wingdings;font-weight:normal'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></strong><strong><span style='font-family:"Calibri","sans-serif"'>What
+Operating Systems are supported by WAAT?</span></strong></p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'>It has been tested on Windows 7,
+Windows XP, Ubuntu Linux and Mac OS.</p>
+
+<p class=MsoNoSpacing style='margin-left:.5in'>&nbsp;</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

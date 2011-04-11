@@ -2,7 +2,7 @@ package com.thoughtworks.webanalyticsautomation.scriptrunner;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 9:34:02 AM
  */
@@ -10,7 +10,7 @@ package com.thoughtworks.webanalyticsautomation.scriptrunner;
 import com.thoughtworks.selenium.Selenium;
 import org.apache.log4j.Logger;
 
-public class SeleniumScriptRunner implements IScriptRunner {
+public class SeleniumScriptRunner implements ScriptRunner {
     private Logger logger = Logger.getLogger(getClass());
     private Selenium selenium;
     private String CLOSE_DEBUGGER = "//input[@name='close2']";

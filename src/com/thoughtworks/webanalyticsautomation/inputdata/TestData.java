@@ -2,12 +2,12 @@ package com.thoughtworks.webanalyticsautomation.inputdata;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 9:34:02 AM
  */
 
-import com.thoughtworks.webanalyticsautomation.common.CONFIG;
+import com.thoughtworks.webanalyticsautomation.common.Config;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.apache.log4j.Logger;
@@ -18,20 +18,20 @@ import java.util.HashMap;
 
 import static com.thoughtworks.webanalyticsautomation.common.FileUtils.deserializeSectionsFromFile;
 
-public class TestData extends CONFIG implements Serializable {
+public class TestData extends Config implements Serializable {
 
     static {
         logger = Logger.getLogger(TestData.class.getName());
     }
 
-    private static HashMap<String, ArrayList<Section>> loadedSections = new HashMap <String, ArrayList<Section>>();
-    private ArrayList <Section> sectionsLoadedFromFile = new ArrayList<Section>();
+    private static final HashMap<String, ArrayList<Section>> loadedSections = new HashMap <String, ArrayList<Section>>();
+    private final ArrayList <Section> sectionsLoadedFromFile = new ArrayList<Section>();
 
     public static ArrayList<Section> getSectionsFor(String absoluteFilePath, String actionName) {
         logger.info ("Loading input data file: " + absoluteFilePath);
         loadFile(absoluteFilePath);
         ArrayList<Section> subsetList = getExpectedSectionsForActionNameFromLoadedSections(absoluteFilePath, actionName);
-        if (!CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY()) {
+        if (!Config.isKEEP_LOADED_INPUT_FILE_IN_MEMORY()) {
             logger.info("Removing input data file " + absoluteFilePath + " from memory");
             loadedSections.remove(absoluteFilePath);
         }

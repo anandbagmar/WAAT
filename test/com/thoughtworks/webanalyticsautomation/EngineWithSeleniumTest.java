@@ -2,17 +2,19 @@ package com.thoughtworks.webanalyticsautomation;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 9:34:02 AM
  */
 
 import com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
+import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunner;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.SeleniumScriptRunnerHelper;
-import com.thoughtworks.webanalyticsautomation.utils.BROWSER;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
@@ -23,45 +25,101 @@ import static org.testng.Assert.assertNotNull;
 public class EngineWithSeleniumTest extends TestBase {
     private SeleniumScriptRunnerHelper seleniumScriptRunnerHelper;
     private Selenium selenium;
-    private Engine engine;
-    private String actionName = "OpenUpcomingPage_Selenium";
-    private String webAnalyticTool = "omniture";
-    private String inputFileType = "xml";
-    private boolean keepLoadedFileInMemory = true;
-    private String log4jPropertiesAbsoluteFilePath = System.getProperty("user.dir") + "\\resources\\log4j.properties";
+    private String actionName;
 
-    private String inputDataFileName = System.getProperty("user.dir") + "\\test\\sampledata\\OmnitureTestData.xml";
+    @BeforeMethod
+    public void setup () {
+        Controller.reset();
+    }
 
-    @AfterMethod()
+    @AfterMethod
     public void tearDown() throws Exception {
         engine.disableWebAnalyticsTesting();
         seleniumScriptRunnerHelper.stopDriver();
     }
 
     @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_Selenium_IE() throws Exception {
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
-        engine.enableWebAnalyticsTesting();
-
-        startSeleniumDriver(BROWSER.iehta);
-        selenium.open(SeleniumScriptRunnerHelper.BASE_URL + "/upcoming");
-
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(selenium));
-
-        assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
-        assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
-        logVerificationErrors(verificationResult);
-        assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
-        assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
+    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_IE() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.iehta);
     }
 
     @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_Selenium_Firefox() throws Exception {
+    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_Firefox() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.firefox);
+    }
+
+    @Test
+    public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_Omniture_Selenium_IE() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_HttpSniffer_Omniture(BROWSER.iehta);
+    }
+
+    @Test
+    public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_Omniture_Selenium_Firefox() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_HttpSniffer_Omniture(BROWSER.firefox);
+    }
+
+    @Test
+    public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_GoogleAnalytics_Selenium_IE() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_HttpSniffer_GoogleAnalytics(BROWSER.iehta);
+    }
+
+    @Test
+    public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_GoogleAnalytics_Selenium_Firefox() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_HttpSniffer_GoogleAnalytics(BROWSER.firefox);
+    }
+
+    private void captureAndVerifyDataReportedToWebAnalytics_HttpSniffer_GoogleAnalytics(BROWSER browser) {
+        String baseURL = "http://essenceoftesting.blogspot.com";
+        String navigateToURL = baseURL + "/2010/12/waat-web-analytics-automation-testing.html";
+        String[] urlPatterns = new String[] {"GET /ps/ifr?container=friendconnect&mid=0"};
+
+        int minimumNumberOfPackets = 1;
+        actionName = "OpenWAATArticleOnBlog_HttpSniffer";
+
+        captureAndVerifyDataReportedToWebAnalytics_HttpSniffer(browser, baseURL, navigateToURL, actionName, urlPatterns, minimumNumberOfPackets);
+    }
+
+    private void captureAndVerifyDataReportedToWebAnalytics_HttpSniffer_Omniture(BROWSER browser) {
+        String baseURL = "http://digg.com";
+        String navigateToURL = baseURL + "/upcoming";
+        String[] urlPatterns = new String[] {"GET /b/ss/diggcomv4"};
+
+        int minimumNumberOfPackets = 1;
+        actionName = "OpenUpcomingPage_HttpSniffer";
+
+        captureAndVerifyDataReportedToWebAnalytics_HttpSniffer(browser, baseURL, navigateToURL, actionName, urlPatterns, minimumNumberOfPackets);
+    }
+
+    private void captureAndVerifyDataReportedToWebAnalytics_HttpSniffer(BROWSER browser, String baseURL, String navigateToURL, String actionName, String[] urlPatterns, int minimumNumberOfPackets) {
+        webAnalyticTool = WebAnalyticTool.HTTP_SNIFFER;
+
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         engine.enableWebAnalyticsTesting();
 
-        startSeleniumDriver(BROWSER.firefox);
-        selenium.open(SeleniumScriptRunnerHelper.BASE_URL + "/upcoming");
+        startSeleniumDriver(browser, baseURL);
+        selenium.open(navigateToURL);
+
+        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, urlPatterns, minimumNumberOfPackets);
+
+        assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
+        assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
+        logVerificationErrors(verificationResult);
+        assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
+        assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
+    }
+
+    private void captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER browser) {
+        actionName = "OpenUpcomingPage_OmnitureDebugger_Selenium";
+        webAnalyticTool = WebAnalyticTool.OMNITURE_DEBUGGER;
+
+        String baseURL = "http://digg.com";
+        String navigateToURL = baseURL + "/upcoming";
+
+        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
+        engine.enableWebAnalyticsTesting();
+
+        startSeleniumDriver(browser, baseURL);
+        selenium.open(navigateToURL);
 
         Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(selenium));
 
@@ -72,8 +130,8 @@ public class EngineWithSeleniumTest extends TestBase {
         assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
     }
 
-    private void startSeleniumDriver(BROWSER browser) {
-        seleniumScriptRunnerHelper = new SeleniumScriptRunnerHelper(logger, browser);
+    private void startSeleniumDriver(BROWSER browser, String baseURL) {
+        seleniumScriptRunnerHelper = new SeleniumScriptRunnerHelper(logger, browser, baseURL);
         seleniumScriptRunnerHelper.startDriver();
         selenium = (Selenium) seleniumScriptRunnerHelper.getDriverInstance();
     }

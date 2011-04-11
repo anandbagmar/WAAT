@@ -78,7 +78,7 @@
         
         <testNG classpathref="library.lib.test.classpath" groups="${testGroup}"
                 parallel="methods" outputdir="${testNGOutput.dir}" threadcount="${threadCount}"
-                listeners="org.uncommons.reportng.HTMLReporter" listener="com.thoughtworks.webanalyticsautomation.utils.CustomTestListener">
+                listeners="org.uncommons.reportng.HTMLReporter" listener="com.thoughtworks.webanalyticsautomation.runUtils.CustomTestListener">
             <sysproperty key="org.uncommons.reportng.title" value="WAAT Test Report"/>
             <classpath>
                 <pathelement path="${out.dir}/${TEST_TYPE}"/>
@@ -124,14 +124,6 @@
         <!--Copy the LICENSE file to the root folder -->
         <copy file="${basedir}/LICENSE.txt" todir="${zip.dir}/WAAT" overwrite="true" verbose="true"/>
 
-        <!--Copy the appropriate WAAT.jar in the lib folder -->
-        <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT/lib" overwrite="true" verbose="true"/>
-
-        <!--Copy the lib files-->
-        <copy todir="${zip.dir}/WAAT/lib">
-            <fileset dir="${lib.dir}" includes="${JAR_LIB_FILTER}"/>
-        </copy>
-
         <!--Copy the sample test data files-->
         <copy todir="${zip.dir}/WAAT">
             <fileset dir="${basedir}/${TEST_TYPE}" includes="sampledata/*.xml"/>
@@ -155,11 +147,42 @@
             <fileset dir="${basedir}" includes="README*"/>
         </copy>
 
-        <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}.zip" basedir="${zip.dir}"/>
+        <!-- create Linux package -->
+        <antcall  target="zip_os">
+            <param name="osType" value="Linux"/>
+        </antcall>
+
+        <!-- create Windows package -->
+        <antcall  target="zip_os">
+            <param name="osType" value="Windows"/>
+        </antcall>
 
         <delete dir="${zip.dir}/WAAT" verbose="true"/>
 
         <antcall target="deploy"/>
+    </target>
+
+    <target name="zip_os">
+        <!--Copy the appropriate WAAT.jar in the lib folder -->
+        <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT/lib" overwrite="true" verbose="true"/>
+
+        <!--Copy the lib files-->
+        <copy todir="${zip.dir}/WAAT/lib">
+            <fileset dir="${lib.dir}" includes="httpSniffer/${osType}/**/*"/>
+            <fileset dir="${lib.dir}" includes="${JAR_LIB_FILTER}" excludes="**/jpcap.jar"/>
+        </copy>
+
+        <copy todir="${zip.dir}/WAAT/lib">
+            <fileset dir="${lib.dir}/httpSniffer" includes="*.jar"/>
+        </copy>
+
+        <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}_${osType}.zip" basedir="${zip.dir}"/>
+
+        <!--
+            Delete the osType specific library files after the package is built.
+            If not done, then the libraries will get mixed up in different packages.
+        -->
+        <delete dir="${zip.dir}/WAAT/lib/httpSniffer/${osType}" verbose="false"/>
     </target>
 
     <target name="deploy" if="DEPLOY">

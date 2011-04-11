@@ -2,40 +2,45 @@ package com.thoughtworks.webanalyticsautomation;
 
 /**
  * Created by: Anand Bagmar
- * Email: anandb@thoughtworks.com, abagmar@gmail.com
+ * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 9:34:02 AM
  */
 
-import com.thoughtworks.webanalyticsautomation.common.CONFIG;
+import com.thoughtworks.webanalyticsautomation.common.Config;
 import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
+import com.thoughtworks.webanalyticsautomation.plugins.PluginFactory;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import org.apache.log4j.Logger;
 
-public class Controller extends CONFIG {
+public class Controller extends Config {
     private static Engine engine;
 
     static {
         logger = Logger.getLogger(Controller.class.getName());
     }
 
-    public static Engine getInstance(String webAnalyticTool,
-                                     String inputFileType,
+    public static Engine getInstance(WebAnalyticTool webAnalyticTool,
+                                     InputFileType inputFileType,
                                      boolean keepLoadedInputFileInMemory,
                                      String log4jPropertiesAbsoluteFilePath) throws IllegalArgumentException {
         return getEngineInstance(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, log4jPropertiesAbsoluteFilePath);
     }
 
     static Engine getInstance () throws IllegalArgumentException {
-        return getEngineInstance(WebAnalyticTool.OMNITURE.name(), InputFileType.XML.name(), true, CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
+        return getEngineInstance(WebAnalyticTool.OMNITURE_DEBUGGER, InputFileType.XML, true, Config.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
     }
 
-    public static void releaseInstance() {
+    /**
+       Reset all state and objects initialized / used by WAAT
+     */
+    public static void reset() {
         logger.info ("Resetting Engine to null");
         engine = null;
+        PluginFactory.reset();
     }
 
-    private static Engine getEngineInstance(String webAnalyticTool, String inputFileType, boolean keepLoadedInputFileInMemory, String log4jPropertiesAbsoluteFilePath) {
+    private static Engine getEngineInstance(WebAnalyticTool webAnalyticTool, InputFileType inputFileType, boolean keepLoadedInputFileInMemory, String log4jPropertiesAbsoluteFilePath) {
         if (null != engine) {
             logger.info("Returning existing Engine reference");
             return engine;
@@ -46,8 +51,8 @@ public class Controller extends CONFIG {
         }
     }
 
-    private static Engine createNewEngine(String webAnalyticTool,
-                                          String inputFileType,
+    private static Engine createNewEngine(WebAnalyticTool webAnalyticTool,
+                                          InputFileType inputFileType,
                                           boolean keepLoadedInputFileInMemory,
                                           String log4jPropertiesAbsoluteFilePath) {
         setUpConfig(webAnalyticTool, inputFileType, keepLoadedInputFileInMemory, log4jPropertiesAbsoluteFilePath);

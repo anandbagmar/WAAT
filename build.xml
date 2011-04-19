@@ -52,7 +52,7 @@
 
     <target name="compile.test" description="compile module WAAT; test classes" unless="skip.tests">
         <antcall target="compileOnly"/>
-        <!--<antcall target="runTests"/>-->
+        <antcall target="runTests"/>
     </target>
 
     <target name="clean">

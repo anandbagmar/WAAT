@@ -20,6 +20,8 @@ import static org.testng.Assert.assertNotNull;
  * Email: abagmar@gmail.com
  * Date: Jan 4, 2011
  * Time: 10:36:28 AM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 @Test (singleThreaded = true)

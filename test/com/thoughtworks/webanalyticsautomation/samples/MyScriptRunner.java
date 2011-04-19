@@ -7,6 +7,8 @@ import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
  * Email: abagmar@gmail.com
  * Date: Feb 2, 2011
  * Time: 1:24:46 PM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public class MyScriptRunner implements ScriptRunner {

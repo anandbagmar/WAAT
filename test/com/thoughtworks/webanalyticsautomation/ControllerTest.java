@@ -1,5 +1,14 @@
 package com.thoughtworks.webanalyticsautomation;
 
+/**
+ * Created by: Anand Bagmar
+ * Email: abagmar@gmail.com
+ * Date: Jan 4, 2011
+ * Time: 10:36:28 AM
+ * 
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
+ */
+
 import com.thoughtworks.webanalyticsautomation.common.Config;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;

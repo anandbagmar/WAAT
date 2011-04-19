@@ -25,6 +25,8 @@ import static org.testng.Assert.assertNotNull;
  * Email: abagmar@gmail.com
  * Date: Feb 2, 2011
  * Time: 5:17:08 PM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public class HttpSnifferSampleTest extends TestBase {

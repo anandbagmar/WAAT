@@ -20,28 +20,9 @@ import java.util.List;
  * Email: abagmar@gmail.com
  * Date: Jan 18, 2011
  * Time: 12:57:21 PM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
-
-/*
-class HttpSnifferSectionCapturer implements WaatPlugin {
-
-    HttpSnifferSectionCapturer(HttpSniffer httpSniffer, String[] urlPatterns, int minimumNumberOfPacketsToCapture) {
-    }
-
-    public ArrayList<Section> captureSections(ScriptRunner scriptRunner) {
-        return null;
-    }
-
-    public ArrayList<Section> captureSections(String[] urlPatterns, int minimumNumberOfPackets) {
-        return null;
-    }
-
-    public ArrayList<Section> captureSections() {
-        return null;
-    }
-
-}
-*/
 
 public class HttpSniffer implements WaatPlugin, PacketReceiver {
     private static final Logger logger = Logger.getLogger(HttpSniffer.class.getName());
@@ -154,6 +135,7 @@ public class HttpSniffer implements WaatPlugin, PacketReceiver {
         NetworkInterface[] devices;
         try {
             devices = JpcapCaptor.getDeviceList();
+            logger.info ("Number of network devices found: " + devices.length);
             networkDevicePacketCaptures = new NetworkDevicePacketCapture[devices.length];
             for (int count=0; count<devices.length; count++) {
                 networkDevicePacketCaptures[count] = new NetworkDevicePacketCapture(logger, devices[count]);

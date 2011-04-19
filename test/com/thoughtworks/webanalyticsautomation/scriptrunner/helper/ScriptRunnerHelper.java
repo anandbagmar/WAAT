@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
  * Email: abagmar@gmail.com
  * Date: Jan 4, 2011
  * Time: 10:39:48 AM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public abstract class ScriptRunnerHelper {

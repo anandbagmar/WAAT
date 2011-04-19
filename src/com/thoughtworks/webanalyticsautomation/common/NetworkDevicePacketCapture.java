@@ -14,6 +14,8 @@ import java.util.ArrayList;
  * Email: abagmar@gmail.com
  * Date: Jan 12, 2011
  * Time: 12:55:27 PM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public class NetworkDevicePacketCapture implements Runnable {

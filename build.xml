@@ -16,6 +16,7 @@
     
 
     <path id="library.lib.classpath">
+        <fileset dir="${lib.dir}/httpSniffer" includes="*.jar"/>
         <fileset dir="${lib.dir}" includes="*.jar"/>
         <path location="${lib.dir}"/>
     </path>
@@ -51,7 +52,7 @@
 
     <target name="compile.test" description="compile module WAAT; test classes" unless="skip.tests">
         <antcall target="compileOnly"/>
-        <antcall target="runTests"/>
+        <!--<antcall target="runTests"/>-->
     </target>
 
     <target name="clean">

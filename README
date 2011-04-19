@@ -1,47 +1,28 @@
 /**
  * Created by: Anand Bagmar
  * Email: abagmar@gmail.com
- */
+ *
+ * Copyright 2010 Anand Bagmar.  Distributed under the Apache 2.0 License
+ *
+**/
 
-1.  Download WAAT distributable from: https://github.com/WAAT/WAAT/blob/master/dist/WAAT_v1.1.zip
+What is Web Analytics
+Web Analytics is the measurement, collection, analysis and reporting of internet data for purposes of understanding and optimizing web usage. Web Analytics is not just a tool for measuring website traffic, but can also be used as a tool for business research and market research.
 
-2.  Extract contents from this zip file in your project's lib folder (say: c:\myTestProject\lib)
+Web Analytics applications can also help companies measure the results of traditional print advertising campaigns. It helps one to estimate how the traffic to the web site changed after the launch of a new advertising campaign.
 
+Web Analytics provides data on the number of visitors, page views, etc. to gauge the traffic popularity trends which helps doing the market research.
+Official definition of Web Analytics from Wikipedia
 
-3.  In your project settings / build file, add the following directory in the classpath references:
-        c:\myTestProject\lib\WAAT\libraries
+What is WAAT?
+WAAT stands for Web Analytics Automation Testing.
 
-4.  WAAT uses log4j for logging. You can use your own log4j.jar, or the one bundled with WAAT
-    (in c:\myTestProject\lib\WAAT\libraries folder)
+Need for WAAT
+> Manual testing for Web Analytics is tedious and time consuming (and also boring).
+> It is possible to miss out on some of the tags for testing that will provide a feed to the Web Analytic system.
 
-5.  If you want to use the default log4j properties file in WAAT, then in your project settings / build file, add the
-    following directory in the classpath references:
-        c:\myTestProject\lib\WAAT\resources
-    You will need to provide the absolute path to the log4j.properties when you use WAAT in your tests.
+This framework provides a way to automate the verification of name-value pair properties / tags being reported to a Web Analytics System.
 
-6.  Copy your framework specific Script Runner file
-    Selenium:
-        copy from: c:\myTestProject\lib\WAAT\samplescripts\com\thoughtworks\webanalyticsautomation\scriptrunner\SeleniumScriptRunner.java
-        to your framework folder, say: c:\myTestProject\testsrc\com\abc\project\scriptrunner\SeleniumScriptRunner.java
-
-        Update the package name in this copied SeleniumScriptRunner.java
-
-    WebDriver:
-        copy from: c:\myTestProject\lib\WAAT\samplescripts\com\thoughtworks\webanalyticsautomation\scriptrunner\WebDriverScriptRunner.java
-        to your framework folder, say: c:\myTestProject\testsrc\com\abc\project\scriptrunner\WebDriverScriptRunner.java
-
-        Update the package name in this copied WebDriverScriptRunner.java
-
-    NOTES:
-        > In your existing tests, where you want to do Web Analytics testing, make the changes described in
-          c:\myTestProject\lib\WAAT\docs\Changes in existing Tests.html
-          (Content available in other file formats too in c:\myTestProject\lib\WAAT\docs)
-
-        > Once enabled, remember to disable WAAT testing in your tests, unless you want all tests to do the Web Analytic testing. 
-
-7.  Test data should be provided in a specific format as specified in the sample file available in:
-    c:\myTestProject\lib\WAAT\sampledata\TestData.xml
-    Note: The delimiter to use is || (2 pipe symbols)
-
+The idea for the WAAT was initially incubated as part of a project for Sears.  The author greatly appreciates Sears' support of releasing the WAAT to the public.
 
 For any other questions, comments, help, email Anand Bagmar @ abagmar@gmail.com

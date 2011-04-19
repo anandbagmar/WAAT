@@ -12,6 +12,8 @@ import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStor
  * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 1:11:18 PM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
@@ -31,6 +33,7 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
     {
         logger.info ("Starting Selenium");
         String command = "java -jar " + Utils.currentDirectory() + "\\lib\\test\\webTestingFrameworks\\webdriver\\selenium-server-standalone-2.0b1.jar";
+        logger.info (command);
         this.uiDriverThreadRunner = new UIDriverThreadRunner(logger);
         this.uiDriverThreadRunner.runInThread(command);
         int DRIVER_SERVER_PORT = 4444;

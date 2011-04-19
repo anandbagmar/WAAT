@@ -12,6 +12,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  * Email: abagmar@gmail.com
  * Date: Jan 4, 2011
  * Time: 10:38:05 AM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {

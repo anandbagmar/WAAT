@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
  * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 1:07:03 PM
+ *
+ * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public class UIDriverThreadRunner implements Runnable {

@@ -1,0 +1,32 @@
+/**
+ * Created by: Anand Bagmar
+ * Email: abagmar@gmail.com
+ *
+ * Copyright 2010 Anand Bagmar.  Distributed under the Apache 2.0 License
+ *
+**/
+
+What is Web Analytics
+
+Web Analytics is the measurement, collection, analysis and reporting of internet data for purposes of understanding and optimizing web usage. Web Analytics is not just a tool for measuring website traffic, but can also be used as a tool for business research and market research.
+Web Analytics applications can also help companies measure the results of traditional print advertising campaigns. It helps one to estimate how the traffic to the web site changed after the launch of a new advertising campaign.
+
+Web Analytics provides data on the number of visitors, page views, etc. to gauge the traffic popularity trends which helps doing the market research.
+Official definition of Web Analytics from Wikipedia (http://en.wikipedia.org/wiki/Web_analytics)
+
+What is WAAT?
+
+WAAT stands for Web Analytics Automation Testing.
+
+Latest version
+Latest version of WAAT v1.3 is available from the dist folder.
+
+Need for WAAT
+> Manual testing for Web Analytics is tedious and time consuming (and also boring).
+> It is possible to miss out on some of the tags for testing that will provide a feed to the Web Analytic system.
+
+This framework provides a way to automate the verification of name-value pair properties / tags being reported to a Web Analytics System.
+
+The idea for the WAAT was initially incubated as part of a project for Sears.  The author greatly appreciates Sears' support of releasing the WAAT to the public.
+
+For any other questions, comments, help, email Anand Bagmar @ abagmar@gmail.com

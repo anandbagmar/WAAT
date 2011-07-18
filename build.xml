@@ -151,11 +151,19 @@
         <!-- create Linux package -->
         <antcall  target="zip_os">
             <param name="osType" value="Linux"/>
+            <param name="osName" value="Linux"/>
         </antcall>
 
         <!-- create Windows package -->
         <antcall  target="zip_os">
             <param name="osType" value="Windows"/>
+            <param name="osName" value="Windows"/>
+        </antcall>
+
+        <!-- create Windows & Linux package -->
+        <antcall  target="zip_os">
+            <param name="osType" value="**"/>
+            <param name="osName" value="All"/>
         </antcall>
 
         <delete dir="${zip.dir}/WAAT" verbose="true"/>
@@ -177,13 +185,13 @@
             <fileset dir="${lib.dir}/httpSniffer" includes="*.jar"/>
         </copy>
 
-        <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}_${osType}.zip" basedir="${zip.dir}"/>
+        <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}_${osName}.zip" basedir="${zip.dir}"/>
 
         <!--
-            Delete the osType specific library files after the package is built.
+            Delete the osName specific library files after the package is built.
             If not done, then the libraries will get mixed up in different packages.
         -->
-        <delete dir="${zip.dir}/WAAT/lib/httpSniffer/${osType}" verbose="false"/>
+        <delete dir="${zip.dir}/WAAT/lib/httpSniffer/${osName}" verbose="false"/>
     </target>
 
     <target name="deploy" if="DEPLOY">

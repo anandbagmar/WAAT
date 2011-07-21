@@ -35,10 +35,10 @@ For any other questions, comments, help, email Anand Bagmar @ abagmar@gmail.com
 == Latest version
 
 * <b>WAAT-Ruby will be available soon.</b>
-* <b>WAAT-Java v1.3 is available from the {WAAT-Java dist}[https://github.com/anandbagmar/WAAT/tree/master/dist] folder.</b>
+* <b>WAAT-Java v1.3 is available from the {WAAT-Java dist}[http://github.com/anandbagmar/WAAT/tree/master/dist] folder.</b>
 
-== What is WAAT-Ruby?
+== Platforms supported
 
-* WAAT-Ruby is a Ruby wrapper around WAAT-Java. I have created a Ruby wrapper that uses RJB (Ruby-Java-Bridge) to invoke APIs defined by WAAT to enable Web Analytics Testing.
-* See the {WAAT (Java) project}[http://github.com/anandbagmar/WAAT] for more specifics.
-* See {my blog}[http://essenceoftesting.blogspot.com/search/label/waat] for all activity around WAAT
+* <b>{WAAT was originally written in Java}[http://github.com/anandbagmar/WAAT]</b>.
+* <b>{WAAT-Ruby}[http://github.com/anandbagmar/WAAT-Ruby] is a Ruby gem implemented using WAAT-Java</b>. The Ruby wrapper uses RJB (Ruby-Java-Bridge) to invoke APIs defined by WAAT-Java to enable Web Analytics Testing.
+* See <b><em>{my blog}[http://essenceoftesting.blogspot.com/search/label/waat] for all activity around WAAT</em></b>.

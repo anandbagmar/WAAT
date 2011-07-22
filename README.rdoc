@@ -21,16 +21,9 @@ Official definition of Web Analytics from Wikipedia (http://en.wikipedia.org/wik
 
 <b>{WAAT = Web Analytics Automation Testing.}[http://essenceoftesting.blogspot.com/search/label/waat]</b>
 
-== Need for WAAT
+<b>See the {wiki}[http://github.com/anandbagmar/WAAT/wiki] for answers to questions like what, why, how, and more.</b>
 
-* Manual testing for Web Analytics is tedious and time consuming (and also boring).
-* It is possible to miss out on some of the tags for testing that will provide a feed to the Web Analytic system.
-
-This framework provides a way to automate the verification of name-value pair properties / tags being reported to a Web Analytics System.
-
-The idea for the WAAT was initially incubated as part of a project for Sears.  I greatly appreciate Sears' support of releasing the WAAT to the public.
-
-For any other questions, comments, help, email Anand Bagmar @ abagmar@gmail.com
+For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.com</b>
 
 == Latest version
 
@@ -39,6 +32,6 @@ For any other questions, comments, help, email Anand Bagmar @ abagmar@gmail.com
 
 == Platforms supported
 
-* <b>{WAAT was originally written in Java}[http://github.com/anandbagmar/WAAT]</b>.
-* <b>{WAAT-Ruby}[http://github.com/anandbagmar/WAAT-Ruby] is a Ruby gem implemented using WAAT-Java</b>. The Ruby wrapper uses RJB (Ruby-Java-Bridge) to invoke APIs defined by WAAT-Java to enable Web Analytics Testing.
+* <b>{WAAT}[http://github.com/anandbagmar/WAAT] for Java</b>.
+* <b>{WAAT}[http://github.com/anandbagmar/WAAT-Ruby] for Ruby</b>. The Ruby gem uses RJB (Ruby-Java-Bridge) to invoke APIs defined by WAAT-Java to enable Web Analytics Testing.
 * See <b><em>{my blog}[http://essenceoftesting.blogspot.com/search/label/waat] for all activity around WAAT</em></b>.

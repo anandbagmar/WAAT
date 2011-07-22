@@ -9,6 +9,7 @@
  * See LICENSE.txt for further details.
 **/
 
+
 == What is Web Analytics
 
 Web Analytics is the measurement, collection, analysis and reporting of internet data for purposes of understanding and optimizing web usage. Web Analytics is not just a tool for measuring website traffic, but can also be used as a tool for business research and market research.
@@ -21,14 +22,14 @@ Official definition of Web Analytics from Wikipedia (http://en.wikipedia.org/wik
 
 <b>{WAAT = Web Analytics Automation Testing.}[http://essenceoftesting.blogspot.com/search/label/waat]</b>
 
-<b>See the {wiki}[http://github.com/anandbagmar/WAAT/wiki] for answers to questions like what, why, how, and more.</b>
+<b>See the {WAAT-Java wiki}[http://github.com/anandbagmar/WAAT/wiki] for answers to questions like what, why, how, and more.</b>
 
 For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.com</b>
 
 == Latest version
 
-* <b>WAAT-Ruby will be available soon.</b>
 * <b>WAAT-Java v1.3 is available from the {WAAT-Java dist}[http://github.com/anandbagmar/WAAT/tree/master/dist] folder.</b>
+* <b>WAAT-Ruby v1.3 gem is available from the {WAAT-Ruby pkg}[http://github.com/anandbagmar/WAAT-ruby/tree/master/pkg] folder.</b>
 
 == Platforms supported
 

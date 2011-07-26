@@ -28,8 +28,7 @@ public class HttpSniffer implements WaatPlugin, PacketReceiver {
     private static final Logger logger = Logger.getLogger(HttpSniffer.class.getName());
     private NetworkDevicePacketCapture[] networkDevicePacketCaptures;
     private static final String LIBRARY_NOTES = "ERROR. Missing libraries." +
-            "\n\tCopy all the dlls from <lib>\\WAAT\\lib\\httpSniffer\\Windows\\System32 to <your WINDOWS directory>\\System32 directory" +
-            "\b\tCopy the npf.sys file from <lib>\\WAAT\\lib\\httpSniffer\\Windows\\System32\\drivers to <your WINDOWS directory>\\System32\\drivers directory";
+            "\n\tCheck the Jpcap setup for your platform (http://github.com/anandbagmar/WAAT/wiki/Jpcap-Setup)";
 
     public HttpSniffer() {
         logger.info ("Creating an instance of HttpSniffer");

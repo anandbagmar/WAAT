@@ -29,7 +29,7 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 == Latest version
 
 * <b>WAAT-Java v1.4 is available from the {WAAT-Java dist}[http://github.com/anandbagmar/WAAT/tree/master/dist] folder.</b>
-* <b>WAAT-Ruby v1.4 gem is available from the {WAAT-Ruby dist}[http://github.com/anandbagmar/WAAT-ruby/tree/master/dist] folder.</b>
+* <b>WAAT-Ruby v1.4 gem is available from http://rubygems.org</b>
 
 == Platforms supported
 

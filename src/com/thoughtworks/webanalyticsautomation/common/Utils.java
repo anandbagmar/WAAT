@@ -18,6 +18,15 @@ public class Utils {
     private static String fileSeparator = System.getProperty("file.separator");
     private static String currentDirectory = System.getProperty("user.dir");
 
+    public static String getAbsolutePath(String[] paths) {
+        String combinedPaths = "";
+        for (String path : paths) {
+            combinedPaths += fileSeparator + path;
+        }
+
+        return currentDirectory + combinedPaths;
+    }
+
     public static ArrayList<String> convertStringArrayToArrayList(String[] arrayElements) {
         ArrayList<String> convertedArrayList = new ArrayList<String>();
         for (String arrayElement : arrayElements) {
@@ -32,13 +41,5 @@ public class Utils {
 
     public static String getLineSeparator() {
         return lineSeparator;
-    }
-
-    public static String fileSeparator() {
-        return fileSeparator;
-    }
-
-    public static String currentDirectory() {
-        return currentDirectory;
     }
 }

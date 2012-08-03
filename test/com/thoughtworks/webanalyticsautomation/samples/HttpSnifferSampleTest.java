@@ -6,19 +6,21 @@ import com.thoughtworks.webanalyticsautomation.Result;
 import com.thoughtworks.webanalyticsautomation.Status;
 import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
+import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.SeleniumScriptRunnerHelper;
+import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScriptRunnerHelper;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
-import static com.thoughtworks.webanalyticsautomation.common.Utils.currentDirectory;
-import static com.thoughtworks.webanalyticsautomation.common.Utils.fileSeparator;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+
 
 /**
  * Created by: Anand Bagmar
@@ -35,11 +37,11 @@ public class HttpSnifferSampleTest extends TestBase {
     private WebAnalyticTool webAnalyticTool = WebAnalyticTool.HTTP_SNIFFER;
     private InputFileType inputFileType = InputFileType.XML;
     private boolean keepLoadedFileInMemory = true;
-    private String log4jPropertiesAbsoluteFilePath = currentDirectory() + fileSeparator() + "resources"  + fileSeparator() + "log4j.properties";
-    private String inputDataFileName = currentDirectory() + fileSeparator() + "test"  + fileSeparator() + "sampledata"  + fileSeparator() + "TestData.xml";
+    private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources","log4j.properties"});
+    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
     private String actionName = "OpenWAATArticleOnBlog_HttpSniffer";
-    private Selenium selenium;
-    private SeleniumScriptRunnerHelper seleniumScriptRunnerHelper;
+    private WebDriverScriptRunnerHelper webDriverScriptRunnerHelper;
+    private WebDriver driverInstance;
 
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_GoogleAnalytics_Selenium_Firefox() throws Exception {
@@ -51,8 +53,8 @@ public class HttpSnifferSampleTest extends TestBase {
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         engine.enableWebAnalyticsTesting();
 
-        startSeleniumDriver(BROWSER.firefox, baseURL);
-        selenium.open(navigateToURL);
+        startWebDriver(BROWSER.firefox, baseURL);
+        driverInstance.get(navigateToURL);
 
         Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, urlPatterns, minimumNumberOfPackets);
 
@@ -63,15 +65,15 @@ public class HttpSnifferSampleTest extends TestBase {
         assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
     }
 
-    private void startSeleniumDriver(BROWSER browser, String baseURL) {
-        seleniumScriptRunnerHelper = new SeleniumScriptRunnerHelper(logger, browser, baseURL);
-        seleniumScriptRunnerHelper.startDriver();
-        selenium = (Selenium) seleniumScriptRunnerHelper.getDriverInstance();
+    private void startWebDriver(BROWSER browser, String baseURL) {
+        webDriverScriptRunnerHelper = new WebDriverScriptRunnerHelper(logger, browser, baseURL);
+        webDriverScriptRunnerHelper.startDriver();
+        driverInstance = (WebDriver) webDriverScriptRunnerHelper.getDriverInstance();
     }
 
     @AfterMethod
     public void tearDown() throws Exception {
         engine.disableWebAnalyticsTesting();
-        seleniumScriptRunnerHelper.stopDriver();
+        webDriverScriptRunnerHelper.stopDriver();
     }    
 }

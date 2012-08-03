@@ -19,7 +19,7 @@ public class Config {
     private static WebAnalyticTool WEB_ANALYTIC_TOOL = null;
     private static InputFileType INPUT_FILE_TYPE = null;
     private static boolean KEEP_LOADED_INPUT_FILE_IN_MEMORY = true;
-    private static String LOG4J_PROPERTIES_ABSOLUTE_FILE_PATH = System.getProperty("user.dir") + "\\resources\\log4j.properties";
+    private static String LOG4J_PROPERTIES_ABSOLUTE_FILE_PATH = Utils.getAbsolutePath(new String[]{"resources", "log4j.properties"});
 
     public static WebAnalyticTool getWEB_ANALYTIC_TOOL() {
         return WEB_ANALYTIC_TOOL;

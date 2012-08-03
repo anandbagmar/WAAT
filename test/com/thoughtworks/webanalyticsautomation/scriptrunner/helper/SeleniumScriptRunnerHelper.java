@@ -32,7 +32,7 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
     public void startDriver()
     {
         logger.info ("Starting Selenium");
-        String command = "java -jar " + Utils.currentDirectory() + "\\lib\\test\\webTestingFrameworks\\webdriver\\selenium-server-standalone-2.25.0.jar";
+        String command = "java -jar " + Utils.getAbsolutePath(new String[] {"lib", "test", "webTestingFrameworks", "webdriver", "selenium-server-standalone-2.25.0.jar"});
         logger.info (command);
         this.uiDriverThreadRunner = new UIDriverThreadRunner(logger);
         this.uiDriverThreadRunner.runInThread(command);

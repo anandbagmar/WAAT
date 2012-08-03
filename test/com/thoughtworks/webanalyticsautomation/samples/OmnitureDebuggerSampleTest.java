@@ -4,12 +4,11 @@ import com.thoughtworks.webanalyticsautomation.Engine;
 import com.thoughtworks.webanalyticsautomation.Result;
 import com.thoughtworks.webanalyticsautomation.Status;
 import com.thoughtworks.webanalyticsautomation.common.BROWSER;
+import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.SeleniumScriptRunner;
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
-import static com.thoughtworks.webanalyticsautomation.common.Utils.currentDirectory;
-import static com.thoughtworks.webanalyticsautomation.common.Utils.fileSeparator;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -36,8 +35,8 @@ public class OmnitureDebuggerSampleTest extends TestBase {
     private WebAnalyticTool webAnalyticTool = WebAnalyticTool.OMNITURE_DEBUGGER;
     private InputFileType inputFileType = InputFileType.XML;
     private boolean keepLoadedFileInMemory = true;
-    private String log4jPropertiesAbsoluteFilePath = currentDirectory() + fileSeparator() + "resources"  + fileSeparator() + "log4j.properties";
-    private String inputDataFileName = currentDirectory() + fileSeparator() + "test"  + fileSeparator() + "sampledata"  + fileSeparator() + "TestData.xml";
+    private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources", "log4j.properties"});
+    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
     private String actionName = "OpenUpcomingPage_OmnitureDebugger_Selenium";
     private Selenium selenium;
     private SeleniumScriptRunnerHelper seleniumScriptRunnerHelper;

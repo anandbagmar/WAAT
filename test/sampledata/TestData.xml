@@ -80,7 +80,12 @@
 
     <Section actionName="OpenWAATArticleOnBlog_HttpSniffer"
              numberOfEventsTriggered="1"
-             tagList="caller=http://essenceoftesting.blogspot.com/2011/01/my-article-on-future-of-test-automation.html||
-                                container=friendconnect||
-                                parent=http://essenceoftesting.blogspot.com/||"/>
+             tagList="action=backlinks||
+                                    widgetType=Blog||
+                                    responseType=js||"/>
+
+    <Section actionName="OpenAMirenaSecureSite_JsSniffer"
+             numberOfEventsTriggered="1"
+             tagList="dcssip=www.mirena.com||
+                        dcsuri=/en/privacy_statement_user.php||"/>
 </Sections>

@@ -43,6 +43,11 @@ public class HttpSniffer implements WaatPlugin, PacketReceiver {
         return null;
     }
 
+    public ArrayList<Section> captureSections(String url) {
+        logger.info ("ERROR - INVALID API CALLED ON HttpSniffer Plugin");
+        return null;
+    }
+
     public ArrayList<Section> captureSections(String[] urlPatterns, int minimumNumberOfPacketsToCapture) {
         return processCapturedPackets(urlPatterns, minimumNumberOfPacketsToCapture);
     }

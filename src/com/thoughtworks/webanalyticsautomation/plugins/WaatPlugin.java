@@ -16,5 +16,8 @@ import java.util.ArrayList;
 
 public interface WaatPlugin {
     public ArrayList<Section> captureSections(ScriptRunner scriptRunner);
+
+    public ArrayList<Section> captureSections(String url);
+
     public ArrayList<Section> captureSections(String[] urlPatterns, int minimumNumberOfPackets);
 }

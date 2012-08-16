@@ -30,6 +30,9 @@ public class PluginFactory {
             }
             return httpSniffer;
         }
+        else if (webAnalyticTool.equals(WebAnalyticTool.JS_SNIFFER)){
+            return  new JsSniffer();
+        }
         else {
             throw new IllegalArgumentException("Invalid type of Web Analytic Tool (" + webAnalyticTool + ") specified");
         }

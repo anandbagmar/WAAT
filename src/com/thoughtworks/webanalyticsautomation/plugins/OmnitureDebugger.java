@@ -34,6 +34,11 @@ public class OmnitureDebugger implements WaatPlugin {
         return parseOmnitureDebuggerSections (sSource);
     }
 
+    public ArrayList<Section> captureSections(String url) {
+        logger.info ("ERROR - INVALID API CALLED ON OMNITURE DEBUGGER Plugin");
+        return null;
+    }
+
     public ArrayList<Section> captureSections(String[] urlPatterns, int minimumNumberOfPackets) {
         logger.info ("ERROR - INVALID API CALLED ON OmnitureDebugger Plugin");
         return null;

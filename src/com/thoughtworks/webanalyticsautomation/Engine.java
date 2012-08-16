@@ -50,7 +50,7 @@ public class Engine extends Config {
         threadLocal.set(null);
         enableDisableCaptureInHttpSnifferPluginInstance(false);
     }
-    
+
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, ScriptRunner scriptRunner) {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
@@ -175,4 +175,12 @@ public class Engine extends Config {
             }
         }
     }
+
+    public Result verifyWebAnalyticsData(String inputDataFileName, String actionName, String url) {
+        ArrayList<Section> expectedSectionList = TestData.getSectionsFor(inputDataFileName, actionName);
+        WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
+        ArrayList<Section> actualSectionList = pluginInstance.captureSections(url);
+        return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
+    }
+
 }

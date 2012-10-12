@@ -7,7 +7,12 @@ import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
 import java.util.ArrayList;
 
 public class JsSniffer implements WaatPlugin {
-    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(HttpSniffer.class.getName());
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(JsSniffer.class.getName());
+
+    public JsSniffer() {
+        logger.info ("Creating an instance of JsSniffer");
+    }
+
     public ArrayList<Section> captureSections(ScriptRunner scriptRunner) {
         logger.info("ERROR - INVALID API CALLED ON JsSniffer Plugin");
         return null;
@@ -17,7 +22,6 @@ public class JsSniffer implements WaatPlugin {
         ArrayList<Section> processedPackets = new ArrayList<Section>();
         processedPackets.add(convertToSection(url));
         return processedPackets;
-
     }
 
     private Section convertToSection(String url) {

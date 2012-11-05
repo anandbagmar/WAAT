@@ -43,7 +43,7 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 See the {HttpSniffer}[https://github.com/anandbagmar/WAAT/wiki/WAAT-using-HttpSniffer] or {JSSniffer}[https://github.com/anandbagmar/WAAT/wiki/WAAT-using-JSSniffer] wiki page for step-by-step instructions on how to use WAAT-Ruby in your project.
 
 
-== Moving from WAAT v1.4.0 to v1.5.0
+== Changes in v1.5.0
 
 Some APIs have changed between v1.4.0 and v1.5.0.
 
@@ -55,8 +55,15 @@ Some APIs have changed between v1.4.0 and v1.5.0.
     - Initialize the WAAT engine using this:
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
 
-* If you are using the JsSniffer plugin, you do not need to call the following methods :
+* If you are using the JsSniffer plugin:
 
+    You do not need to call the following methods :
+    -
     engine.enableWebAnalyticsTesting();
     -
     engine.disableWebAnalyticsTesting();
+    -
+    -
+    The method engine.verifyWebAnalyticsData takes in different parameters for {JSSniffer}[https://github.com/anandbagmar/WAAT/wiki/WAAT-using-JSSniffer] Vs {HttpSniffer}[https://github.com/anandbagmar/WAAT/wiki/WAAT-using-HttpSniffer].
+    Look at the respective wiki pages for detail info on how to use the same.
+

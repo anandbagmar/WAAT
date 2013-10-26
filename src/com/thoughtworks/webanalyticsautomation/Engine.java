@@ -9,7 +9,7 @@ package com.thoughtworks.webanalyticsautomation;
  * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
-import com.thoughtworks.webanalyticsautomation.common.Config;
+import com.thoughtworks.webanalyticsautomation.common.CONFIG;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.inputdata.TestData;
@@ -23,7 +23,7 @@ import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 
-public class Engine extends Config {
+public class Engine extends CONFIG {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<String>();
 
     public Engine () {
@@ -54,7 +54,7 @@ public class Engine extends Config {
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, ScriptRunner scriptRunner) {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
-            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
+            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> actualSectionList = pluginInstance.captureSections (scriptRunner);
             return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);
         }
@@ -67,7 +67,7 @@ public class Engine extends Config {
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, String[] urlPatterns, int minimumNumberOfPackets) {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
-            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
+            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> actualSectionList = pluginInstance.captureSections (urlPatterns, minimumNumberOfPackets);
             return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);
         }
@@ -165,8 +165,8 @@ public class Engine extends Config {
     }
 
     private void enableDisableCaptureInHttpSnifferPluginInstance(boolean enable) {
-        if (Config.getWEB_ANALYTIC_TOOL().equals(WebAnalyticTool.HTTP_SNIFFER)) {
-            HttpSniffer pluginInstance = (HttpSniffer) PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
+        if (CONFIG.getWEB_ANALYTIC_TOOL().equals(WebAnalyticTool.HTTP_SNIFFER)) {
+            HttpSniffer pluginInstance = (HttpSniffer) PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             if (enable) {
                 pluginInstance.enableCapture();
             }
@@ -178,7 +178,7 @@ public class Engine extends Config {
 
     public Result verifyWebAnalyticsData(String inputDataFileName, String actionName, String url) {
         ArrayList<Section> expectedSectionList = TestData.getSectionsFor(inputDataFileName, actionName);
-        WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(Config.getWEB_ANALYTIC_TOOL());
+        WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
         ArrayList<Section> actualSectionList = pluginInstance.captureSections(url);
         return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
     }

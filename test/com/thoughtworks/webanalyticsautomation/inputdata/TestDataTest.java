@@ -1,6 +1,6 @@
 package com.thoughtworks.webanalyticsautomation.inputdata;
 
-import com.thoughtworks.webanalyticsautomation.common.Config;
+import com.thoughtworks.webanalyticsautomation.common.CONFIG;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import org.testng.annotations.Test;
@@ -39,7 +39,7 @@ public class TestDataTest extends TestBase {
         reset();
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         TestData.getSectionsFor(inputDataFileName, actionName);
-        assertEquals(keepLoadedFileInMemory, Config.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
+        assertEquals(keepLoadedFileInMemory, CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
         boolean isFileLoaded = TestData.isFileLoaded(inputDataFileName);
         assertEquals(keepLoadedFileInMemory, isFileLoaded, "File should be loaded in memory");
     }
@@ -52,7 +52,7 @@ public class TestDataTest extends TestBase {
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         assertNotNull(engine, "Engine should not be null");
         TestData.getSectionsFor(inputDataFileName, actionName);
-        assertEquals(keepLoadedFileInMemory, Config.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
+        assertEquals(keepLoadedFileInMemory, CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY(), "keepLoadedFileInMemory not set correctly");
         boolean isFileLoaded = TestData.isFileLoaded(inputDataFileName);
         assertEquals(keepLoadedFileInMemory, isFileLoaded, "File should NOT be loaded in memory");
     }

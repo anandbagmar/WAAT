@@ -9,7 +9,7 @@ package com.thoughtworks.webanalyticsautomation.inputdata;
  * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
-import com.thoughtworks.webanalyticsautomation.common.Config;
+import com.thoughtworks.webanalyticsautomation.common.CONFIG;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.apache.log4j.Logger;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 
 import static com.thoughtworks.webanalyticsautomation.common.FileUtils.deserializeSectionsFromFile;
 
-public class TestData extends Config implements Serializable {
+public class TestData extends CONFIG implements Serializable {
 
     static {
         logger = Logger.getLogger(TestData.class.getName());
@@ -33,7 +33,7 @@ public class TestData extends Config implements Serializable {
         logger.info ("Loading input data file: " + absoluteFilePath);
         loadFile(absoluteFilePath);
         ArrayList<Section> subsetList = getExpectedSectionsForActionNameFromLoadedSections(absoluteFilePath, actionName);
-        if (!Config.isKEEP_LOADED_INPUT_FILE_IN_MEMORY()) {
+        if (!CONFIG.isKEEP_LOADED_INPUT_FILE_IN_MEMORY()) {
             logger.info("Removing input data file " + absoluteFilePath + " from memory");
             loadedSections.remove(absoluteFilePath);
         }

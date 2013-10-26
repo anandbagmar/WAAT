@@ -14,8 +14,8 @@ import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-public class Config {
-    protected static Logger logger = Logger.getLogger(Config.class.getName());
+public class CONFIG {
+    protected static Logger logger = Logger.getLogger(CONFIG.class.getName());
     private static WebAnalyticTool WEB_ANALYTIC_TOOL = null;
     private static InputFileType INPUT_FILE_TYPE = null;
     private static boolean KEEP_LOADED_INPUT_FILE_IN_MEMORY = true;

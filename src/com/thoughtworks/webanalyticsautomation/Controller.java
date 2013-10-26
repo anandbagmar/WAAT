@@ -9,13 +9,13 @@ package com.thoughtworks.webanalyticsautomation;
  * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
-import com.thoughtworks.webanalyticsautomation.common.Config;
+import com.thoughtworks.webanalyticsautomation.common.CONFIG;
 import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
 import com.thoughtworks.webanalyticsautomation.plugins.PluginFactory;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import org.apache.log4j.Logger;
 
-public class Controller extends Config {
+public class Controller extends CONFIG {
     private static Engine engine;
 
     static {
@@ -30,7 +30,7 @@ public class Controller extends Config {
     }
 
     static Engine getInstance () throws IllegalArgumentException {
-        return getEngineInstance(WebAnalyticTool.OMNITURE_DEBUGGER, InputFileType.XML, true, Config.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
+        return getEngineInstance(WebAnalyticTool.OMNITURE_DEBUGGER, InputFileType.XML, true, CONFIG.getLOG4J_PROPERTIES_ABSOLUTE_FILE_PATH());
     }
 
     /**

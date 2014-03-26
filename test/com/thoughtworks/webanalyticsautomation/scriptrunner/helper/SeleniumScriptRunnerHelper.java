@@ -4,6 +4,7 @@ import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.runUtils.UIDriverThreadRunner;
 import org.apache.log4j.Logger;
+import org.testng.SkipException;
 
 import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.*;
 
@@ -12,16 +13,16 @@ import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStor
  * Email: abagmar@gmail.com
  * Date: Dec 29, 2010
  * Time: 1:11:18 PM
- *
+ * <p/>
  * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
 public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
 
     private UIDriverThreadRunner uiDriverThreadRunner;
-    private String UIDriver_BROWSER ="*";
-    private final String DRIVER_HOST ="localhost";
-    private String TIMEOUT="180000";
+    private String UIDriver_BROWSER = "*";
+    private final String DRIVER_HOST = "localhost";
+    private String TIMEOUT = "180000";
 
     public SeleniumScriptRunnerHelper(Logger logger, BROWSER browser, String baseUrl) {
         super(logger, browser, baseUrl);
@@ -29,11 +30,15 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
     }
 
     @Override
-    public void startDriver()
-    {
-        logger.info ("Starting Selenium");
-        String command = "java -jar " + Utils.getAbsolutePath(new String[] {"lib", "test", "webTestingFrameworks", "webdriver", "selenium-server-standalone-2.25.0.jar"});
-        logger.info (command);
+    public void startDriver() {
+        String os = System.getProperty("os.name").toLowerCase();
+        logger.info("Starting Selenium on OS: " + os + " for browser: " + browser.name());
+        if (browser.equals(BROWSER.iehta) && (!os.contains("win"))) {
+            throw new SkipException("Skipping this test as Internet Explorer browser is NOT available on " + os);
+        }
+
+        String command = "java -jar " + Utils.getAbsolutePath(new String[]{"lib", "test", "webTestingFrameworks", "webdriver", "selenium-server-standalone-2.25.0.jar"});
+        logger.info(command);
         this.uiDriverThreadRunner = new UIDriverThreadRunner(logger);
         this.uiDriverThreadRunner.runInThread(command);
         int DRIVER_SERVER_PORT = 4444;
@@ -47,9 +52,8 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
     }
 
     @Override
-    public void stopDriver()
-    {
-        logger.info ("Stopping driver.");
+    public void stopDriver() {
+        logger.info("Stopping driver.");
         try {
             closeSeleniumSession();
             if (null != uiDriverThreadRunner) {

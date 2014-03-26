@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.SkipException;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by: Anand Bagmar
@@ -26,16 +29,19 @@ public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
 
     @Override
     public void startDriver() {
-        logger.info ("Starting WebDriver for browser: " + browser.name());
+        String os = System.getProperty("os.name").toLowerCase();
+        logger.info ("Starting WebDriver on OS: " + os + " for browser: " + browser.name());
         if (browser.equals(BROWSER.firefox)) {
             driver = new FirefoxDriver();
             driver.get(BASE_URL);
         }
         else if (browser.equals(BROWSER.iehta)) {
+            if (!os.contains("win")) {
+                throw new SkipException("Skipping this test as Internet Explorer browser is NOT available on " + os);
+            }
             driver = new InternetExplorerDriver();
             driver.get(BASE_URL);
-        }
-        else if (browser.equals(BROWSER.chrome)) {
+        } else if (browser.equals(BROWSER.chrome)) {
             driver = new ChromeDriver();
             driver.get(BASE_URL);
         }

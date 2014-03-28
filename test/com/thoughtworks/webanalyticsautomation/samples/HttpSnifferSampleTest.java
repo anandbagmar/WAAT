@@ -74,7 +74,11 @@ public class HttpSnifferSampleTest extends TestBase {
 
     @AfterMethod
     public void tearDown() throws Exception {
-        engine.disableWebAnalyticsTesting();
-        webDriverScriptRunnerHelper.stopDriver();
+        if (engine!=null) {
+            engine.disableWebAnalyticsTesting();
+        }
+        if (webDriverScriptRunnerHelper!=null) {
+            webDriverScriptRunnerHelper.stopDriver();
+        }
     }
 }

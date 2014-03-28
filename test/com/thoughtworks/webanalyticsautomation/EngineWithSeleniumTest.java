@@ -36,18 +36,12 @@ public class EngineWithSeleniumTest extends TestBase {
 
     @AfterMethod
     public void tearDown() throws Exception {
-        engine.disableWebAnalyticsTesting();
-        seleniumScriptRunnerHelper.stopDriver();
-    }
-
-    @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_IE() throws Exception {
-        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.iehta);
-    }
-
-    @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_Firefox() throws Exception {
-        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.firefox);
+        if (engine!=null) {
+            engine.disableWebAnalyticsTesting();
+        }
+        if (seleniumScriptRunnerHelper!=null) {
+            seleniumScriptRunnerHelper.stopDriver();
+        }
     }
 
     @Test
@@ -102,28 +96,6 @@ public class EngineWithSeleniumTest extends TestBase {
         selenium.open(navigateToURL);
 
         Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, urlPatterns, minimumNumberOfPackets);
-
-        assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
-        assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
-        logVerificationErrors(verificationResult);
-        assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
-        assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
-    }
-
-    private void captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER browser) {
-        actionName = "OpenUpcomingPage_OmnitureDebugger_Selenium";
-        webAnalyticTool = WebAnalyticTool.OMNITURE_DEBUGGER;
-
-        String baseURL = "http://digg.com";
-        String navigateToURL = baseURL + "/upcoming";
-
-        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
-        engine.enableWebAnalyticsTesting();
-
-        startSeleniumDriver(browser, baseURL);
-        selenium.open(navigateToURL);
-
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(selenium));
 
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
         assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");

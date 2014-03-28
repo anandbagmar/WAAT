@@ -42,14 +42,23 @@ public class OmnitureDebuggerSampleTest extends TestBase {
     private SeleniumScriptRunnerHelper seleniumScriptRunnerHelper;
 
     @Test
+    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_IE() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.iehta);
+    }
+
+    @Test
     public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_Firefox() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.firefox);
+    }
+
+    private void captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER browser) throws Exception {
         String baseURL = "http://digg.com";
         String navigateToURL = baseURL + "/upcoming";
 
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         engine.enableWebAnalyticsTesting();
 
-        startSeleniumDriver(BROWSER.firefox, baseURL);
+        startSeleniumDriver(browser, baseURL);
         selenium.open(navigateToURL);
 
         Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new SeleniumScriptRunner(selenium));

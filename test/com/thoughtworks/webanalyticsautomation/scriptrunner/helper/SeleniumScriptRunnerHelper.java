@@ -1,5 +1,7 @@
 package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
+import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.runUtils.UIDriverThreadRunner;
@@ -23,6 +25,7 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
     private String UIDriver_BROWSER = "*";
     private final String DRIVER_HOST = "localhost";
     private String TIMEOUT = "180000";
+    private Selenium defaultSelenium;
 
     public SeleniumScriptRunnerHelper(Logger logger, BROWSER browser, String baseUrl) {
         super(logger, browser, baseUrl);
@@ -38,8 +41,6 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
         }
 
         String command = "java " +
-//                "-Djava.library.path=" + Utils.getAbsolutePath(new String[]{"lib",
-//                "httpSniffer"}) +
             " -jar " + Utils
                 .getAbsolutePath(new String[]{"lib", "test",
                 "webTestingFrameworks",
@@ -48,20 +49,21 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
         this.uiDriverThreadRunner = new UIDriverThreadRunner(logger);
         this.uiDriverThreadRunner.runInThread(command);
         int DRIVER_SERVER_PORT = 4444;
-        startSeleniumSession(
+        defaultSelenium = new DefaultSelenium(
                 DRIVER_HOST,
                 DRIVER_SERVER_PORT,
                 UIDriver_BROWSER,
                 BASE_URL);
-        session().setTimeout(TIMEOUT);
-        session().open(BASE_URL);
+        defaultSelenium.open(BASE_URL);
     }
 
     @Override
     public void stopDriver() {
         logger.info("Stopping driver.");
         try {
-            closeSeleniumSession();
+            if (null!=defaultSelenium) {
+                defaultSelenium.close();
+            }
             if (null != uiDriverThreadRunner) {
                 uiDriverThreadRunner.stop();
             }
@@ -72,6 +74,6 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
 
     @Override
     public Object getDriverInstance() {
-        return session();
+        return defaultSelenium;
     }
 }

@@ -25,9 +25,13 @@ public class Section {
     public Section() {}
 
     public Section(String actionName, String tagList) {
+        this(actionName, tagList,0);
+    }
+
+    public Section(String actionName, String tagList, int numberOfEventsTriggered) {
         this.actionName = actionName;
         this.tagList = tagList;
-        this.numberOfEventsTriggered = 0;
+        this.numberOfEventsTriggered = numberOfEventsTriggered;
         setup();
     }
 

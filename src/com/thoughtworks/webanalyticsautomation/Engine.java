@@ -21,13 +21,14 @@ import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Engine extends CONFIG {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<String>();
 
-    public Engine () {
+    public Engine() {
         logger = Logger.getLogger(getClass());
     }
 
@@ -56,12 +57,32 @@ public class Engine extends CONFIG {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
             WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
-            ArrayList<Section> actualSectionList = pluginInstance.captureSections (scriptRunner);
-            return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);
-        }
-        else {
+            ArrayList<Section> actualSectionList = pluginInstance.captureSections(scriptRunner);
+            return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
+        } else {
             logger.info("Web Analytics testing is disabled.");
-            return new Result(actionName, Status.SKIPPED, new ArrayList<String> ());
+            return new Result(actionName, Status.SKIPPED, new ArrayList<String>());
+        }
+    }
+
+    /**
+     * This method excepts the expected List of Tags to be verified.
+     *
+     * @param expectedList
+     * @param actionName
+     * @param urlPatterns
+     * @param minimumNumberOfPackets
+     * @return
+     */
+    public Result verifyWebAnalyticsData(ArrayList<Section> expectedList, String actionName, String[] urlPatterns, int minimumNumberOfPackets) {
+        if (isWebAnalyticsTestingEnabled()) {
+            ArrayList<Section> expectedSectionList = expectedList;
+            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
+            ArrayList<Section> actualSectionList = pluginInstance.captureSections(urlPatterns, minimumNumberOfPackets);
+            return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
+        } else {
+            logger.info("Web Analytics testing is disabled.");
+            return new Result(actionName, Status.SKIPPED, new ArrayList<String>());
         }
     }
 
@@ -69,44 +90,42 @@ public class Engine extends CONFIG {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
             WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
-            ArrayList<Section> actualSectionList = pluginInstance.captureSections (urlPatterns, minimumNumberOfPackets);
-            return verifyWebAnalyticsData (actionName, actualSectionList, expectedSectionList);
-        }
-        else {
+            ArrayList<Section> actualSectionList = pluginInstance.captureSections(urlPatterns, minimumNumberOfPackets);
+            return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
+        } else {
             logger.info("Web Analytics testing is disabled.");
-            return new Result(actionName, Status.SKIPPED, new ArrayList<String> ());
+            return new Result(actionName, Status.SKIPPED, new ArrayList<String>());
         }
     }
 
     private Result verifyWebAnalyticsData(String actionName, ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
         if ((actualSectionList.size() == 0) && (expectedSectionList.size() != 0)) {
-            return new Result (actionName, Status.FAIL, getAllTagsFromExpectedSectionList (expectedSectionList));
-        }
-        else {
+            return new Result(actionName, Status.FAIL, getAllTagsFromExpectedSectionList(expectedSectionList));
+        } else {
             ArrayList<String> errorList = new ArrayList<String>();
-            for (Section expectedSection: expectedSectionList) {
+            for (Section expectedSection : expectedSectionList) {
                 errorList.addAll(getListOfMissingTagsInActualSections(actualSectionList, expectedSection));
             }
-            if (errorList.size()!= 0) {
+            if (errorList.size() != 0) {
                 errorList.addAll(addActualSectionsInErrorList(actualSectionList));
             }
             return new Result(actionName, errorList);
         }
     }
 
-    private ArrayList <String> addActualSectionsInErrorList(ArrayList<Section> actualSectionList) {
-        ArrayList <String> errorList = new ArrayList<String>();
+    private ArrayList<String> addActualSectionsInErrorList(ArrayList<Section> actualSectionList) {
+        ArrayList<String> errorList = new ArrayList<String>();
         int count = 1;
-        for (Section actualSection: actualSectionList) {
+        for (Section actualSection : actualSectionList) {
             errorList.add("Adding Actual Section List: " + count++);
-            for(String actualTag: actualSection.getLoadedTagList()) {
+            for (String actualTag : actualSection.getLoadedTagList()) {
                 errorList.add(actualTag);
             }
         }
         return errorList;
     }
 
-    private ArrayList <String> getListOfMissingTagsInActualSections(ArrayList<Section> actualSectionList, Section expectedSection) {
+    private ArrayList<String> getListOfMissingTagsInActualSections(ArrayList<Section> actualSectionList, Section expectedSection) {
         ArrayList<String> errorList = new ArrayList<String>();
         int actualNumberOfEventsTriggered = actualSectionList.size();
         int expectedNumberOfEventsToBeTriggered = expectedSection.getNumberOfEventsTriggered();
@@ -117,8 +136,8 @@ public class Engine extends CONFIG {
 
     private ArrayList<String> verifyTagsForEachExpectedSection(ArrayList<Section> actualSectionList, Section expectedSection) {
         ArrayList<String> errorList = new ArrayList<String>();
-        for (Section actualSection: actualSectionList) {
-            errorList.addAll(getListOfMissingTagsFromEachActualSection (actualSection.getLoadedTagList(), expectedSection.getLoadedTagList()));
+        for (Section actualSection : actualSectionList) {
+            errorList.addAll(getListOfMissingTagsFromEachActualSection(actualSection.getLoadedTagList(), expectedSection.getLoadedTagList()));
         }
         return errorList;
     }
@@ -131,9 +150,9 @@ public class Engine extends CONFIG {
         return errorList;
     }
 
-    private ArrayList <String> getListOfMissingTagsFromEachActualSection(ArrayList<String> actualSectionTagList, ArrayList<String> expectedTagList) {
+    private ArrayList<String> getListOfMissingTagsFromEachActualSection(ArrayList<String> actualSectionTagList, ArrayList<String> expectedTagList) {
         ArrayList<String> errorList = new ArrayList<String>();
-        for (String expectedTag: expectedTagList) {
+        for (String expectedTag : expectedTagList) {
             if (!isExpectedTagPresentInActualTagList(actualSectionTagList, expectedTag)) {
                 errorList.add(expectedTag);
             }
@@ -146,8 +165,14 @@ public class Engine extends CONFIG {
 
     private boolean isExpectedTagPresentInActualTagList(ArrayList<String> actualSectionTagList, String expectedTag) {
         boolean isExpectedTagPresent = false;
-        for (String actualTag: actualSectionTagList) {
-            if (actualTag.contains(expectedTag)) {
+        //Done pattern matching to support variable values
+        Pattern pattern = Pattern.compile(expectedTag);
+
+        for (String actualTag : actualSectionTagList) {
+//            if (actualTag.contains(expectedTag)) {
+            Matcher matcher = pattern.matcher(actualTag);
+            boolean result = matcher.matches();
+            if (result) {
                 isExpectedTagPresent = true;
                 logger.debug("TAG FOUND: " + expectedTag);
                 break;
@@ -157,9 +182,9 @@ public class Engine extends CONFIG {
     }
 
     private ArrayList<String> getAllTagsFromExpectedSectionList(ArrayList<Section> expectedSectionList) {
-        ArrayList<String> allTags = new ArrayList<String> ();
+        ArrayList<String> allTags = new ArrayList<String>();
         allTags.add("Following tags found missing: ");
-        for (Section expectedSection: expectedSectionList) {
+        for (Section expectedSection : expectedSectionList) {
             allTags.addAll(expectedSection.getLoadedTagList());
         }
         return allTags;
@@ -173,8 +198,7 @@ public class Engine extends CONFIG {
             HttpSniffer pluginInstance = (HttpSniffer) PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             if (enable) {
                 pluginInstance.enableCapture();
-            }
-            else {
+            } else {
                 pluginInstance.disableCapture();
             }
         }

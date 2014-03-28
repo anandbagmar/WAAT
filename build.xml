@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="WAAT" default="all" basedir=".">
 
+    <property environment="env"/>
     <property file="resources//waat.properties"/>
     <property name="lib.dir" value="${basedir}/lib"/>
     <property name="out.dir" value="${basedir}/out"/>
@@ -13,7 +14,6 @@
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
         <path location="${basedir}/resources"/>
     </path>
-    
 
     <path id="library.lib.classpath">
         <fileset dir="${lib.dir}/httpSniffer" includes="*.jar"/>
@@ -76,11 +76,12 @@
         <property name="testGroup" value=""/>
         <echo message="testGroup: ${testGroup}"/>
         <echo message="*** Running tests in ${threadCount} threads ***"/>
-        
+
         <testNG classpathref="library.lib.test.classpath" groups="${testGroup}"
                 parallel="methods" outputdir="${testNGOutput.dir}" threadcount="${threadCount}"
                 listeners="org.uncommons.reportng.HTMLReporter" listener="com.thoughtworks.webanalyticsautomation.runUtils.CustomTestListener">
             <sysproperty key="org.uncommons.reportng.title" value="WAAT Test Report"/>
+            <sysproperty key="java.library.path" value="${lib.dir}/httpSniffer"/>
             <classpath>
                 <pathelement path="${out.dir}/${TEST_TYPE}"/>
             </classpath>

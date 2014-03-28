@@ -42,7 +42,8 @@ public class HttpSnifferSampleTest extends TestBase {
     private WebDriver driverInstance;
 
     @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_GoogleAnalytics_Selenium_Firefox() throws Exception {
+    public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_GoogleAnalytics_WebDriver_Firefox() throws
+            Exception {
         String baseURL = "http://essenceoftesting.blogspot.com";
         String navigateToURL = baseURL + "/2011/01/my-article-on-future-of-test-automation.html";
         String[] urlPatterns = new String[] {"action=backlinks&widgetId"};

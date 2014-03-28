@@ -44,18 +44,6 @@ public class UIDriverThreadRunner implements Runnable {
             while ((line = br.readLine()) != null) {
                 logger.debug(line);
             }
-
-            InputStream ies = process.getErrorStream();
-            InputStreamReader iesr = new InputStreamReader(ies);
-            BufferedReader ebr = new BufferedReader(iesr);
-            String errorLine;
-
-            while ((errorLine = ebr.readLine()) != null) {
-                logger.debug (errorLine);
-            }
-            ebr.close();
-            iesr.close();
-            ies.close();
         }
         catch (IOException e) {
             e.printStackTrace();

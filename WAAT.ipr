@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AntConfiguration">
-    <defaultAnt bundledAnt="true" />
-    <buildFile url="file://$PROJECT_DIR$/build.xml">
-      <additionalClassPath />
-      <antReference projectDefault="true" />
-      <customJdkName value="" />
-      <maximumHeapSize value="128" />
-      <maximumStackSize value="2" />
-      <properties />
-    </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/build.xml" />
   </component>
   <component name="CodeStyleSettingsManager">
     <option name="PER_PROJECT_SETTINGS">
@@ -232,6 +224,15 @@
         <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
       </item>
     </group>
+  </component>
+  <component name="ProjectCodeStyleSettingsManager">
+    <option name="PER_PROJECT_SETTINGS">
+      <value>
+        <XML>
+          <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
+        </XML>
+      </value>
+    </option>
   </component>
   <component name="ProjectDictionaryState">
     <dictionary name="anandb">

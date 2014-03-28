@@ -37,7 +37,13 @@ public class SeleniumScriptRunnerHelper extends ScriptRunnerHelper {
             throw new SkipException("Skipping this test as Internet Explorer browser is NOT available on " + os);
         }
 
-        String command = "java -jar " + Utils.getAbsolutePath(new String[]{"lib", "test", "webTestingFrameworks", "webdriver", "selenium-server-standalone-2.25.0.jar"});
+        String command = "java " +
+//                "-Djava.library.path=" + Utils.getAbsolutePath(new String[]{"lib",
+//                "httpSniffer"}) +
+            " -jar " + Utils
+                .getAbsolutePath(new String[]{"lib", "test",
+                "webTestingFrameworks",
+                "webdriver", "selenium-server-standalone-2.40.0.jar"});
         logger.info(command);
         this.uiDriverThreadRunner = new UIDriverThreadRunner(logger);
         this.uiDriverThreadRunner.runInThread(command);

@@ -21,6 +21,7 @@ import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Engine extends CONFIG {
@@ -166,6 +167,9 @@ public class Engine extends CONFIG {
 
     private void enableDisableCaptureInHttpSnifferPluginInstance(boolean enable) {
         if (CONFIG.getWEB_ANALYTIC_TOOL().equals(WebAnalyticTool.HTTP_SNIFFER)) {
+            String javaPath = System.getProperty("java.library.path");
+            logger.info("Java Library Path: " + javaPath);
+
             HttpSniffer pluginInstance = (HttpSniffer) PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             if (enable) {
                 pluginInstance.enableCapture();

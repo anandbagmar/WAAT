@@ -22,6 +22,8 @@ public class Section {
     private String tagList;
     private int numberOfEventsTriggered;
 
+    public Section() {}
+
     public Section(String actionName, String tagList) {
         this.actionName = actionName;
         this.tagList = tagList;

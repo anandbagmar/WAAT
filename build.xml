@@ -91,17 +91,11 @@
         </testNG>
     </target>
 
-    <target name="buildJAR_test"></target>
-
-    <target name="buildJAR_prod">
-        <antcall target="buildJAR">
-            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${VERSION}"/>
-            <param name="JAR_BASE_DIR" value="${out.dir}/${PRODUCTION_TYPE}"/>
-            <param name="JAR_LIB_FILTER" value="*.jar"/>
-        </antcall>
-    </target>
-
     <target name="buildJAR">
+        <property name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${VERSION}"/>
+        <property name="JAR_BASE_DIR" value="${out.dir}/${PRODUCTION_TYPE}"/>
+        <property name="JAR_LIB_FILTER" value="*.jar"/>
+
         <jar destfile="${out.dir}/dist/${JAR_FILE_NAME}.jar"
                 basedir="${JAR_BASE_DIR}">
         </jar>
@@ -165,7 +159,6 @@
     <target name="package" depends="init">
         <property name="type" value="${TEST_TYPE}"/>
         <antcall target="compile.${type}"/>
-        <antcall target="buildJAR_${type}"/>
     </target>
 
     <target name="all" depends="clean" description="build all">
@@ -175,5 +168,6 @@
         <antcall target="package">
             <param name="type" value="${PRODUCTION_TYPE}"/>
         </antcall>
+        <antcall target="buildJAR"/>
     </target>
 </project>

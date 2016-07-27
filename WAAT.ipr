@@ -285,20 +285,13 @@
   <component name="libraryTable">
     <library name="lib">
       <CLASSES>
-        <root url="file://$PROJECT_DIR$/lib/httpSniffer" />
         <root url="file://$PROJECT_DIR$/lib" />
-        <root url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/webdriver" />
-        <root url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/selenium" />
+        <root url="file://$PROJECT_DIR$/lib/test" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES>
-        <root url="file://$PROJECT_DIR$/lib" />
-      </SOURCES>
+      <SOURCES />
       <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
-      <jarDirectory url="file://$PROJECT_DIR$/lib/httpSniffer" recursive="false" />
-      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webdriver" recursive="false" />
-      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/selenium" recursive="false" />
-      <jarDirectory url="file://$PROJECT_DIR$/lib/test/webTestingFrameworks/webdriver" recursive="false" />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/test" recursive="false" />
     </library>
     <library name="resources">
       <CLASSES>
@@ -307,6 +300,21 @@
       <JAVADOC />
       <SOURCES />
       <jarDirectory url="file://$PROJECT_DIR$/resources" recursive="false" />
+    </library>
+    <library name="selenium-server-standalone-2.53.1">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/test/webTestingFrameworks/webdriver/selenium-server-standalone-2.53.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="test-lib">
+      <CLASSES>
+        <root url="file://$PROJECT_DIR$/lib/test" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/test" recursive="false" />
     </library>
   </component>
 </project>

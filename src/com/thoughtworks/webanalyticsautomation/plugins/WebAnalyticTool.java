@@ -10,5 +10,5 @@ package com.thoughtworks.webanalyticsautomation.plugins;
  */
 
 public enum WebAnalyticTool {
-    HTTP_SNIFFER, JS_SNIFFER, OMNITURE_DEBUGGER,
+    OMNITURE_DEBUGGER,
 }

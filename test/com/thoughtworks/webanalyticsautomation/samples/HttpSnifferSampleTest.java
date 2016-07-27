@@ -32,7 +32,7 @@ import static org.testng.Assert.assertNotNull;
 public class HttpSnifferSampleTest extends TestBase {
     private Logger logger = Logger.getLogger(getClass());
     private Engine engine;
-    private WebAnalyticTool webAnalyticTool = WebAnalyticTool.HTTP_SNIFFER;
+//    private WebAnalyticTool webAnalyticTool = WebAnalyticTool.HTTP_SNIFFER;
     private InputFileType inputFileType = InputFileType.XML;
     private boolean keepLoadedFileInMemory = true;
     private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources","log4j.properties"});

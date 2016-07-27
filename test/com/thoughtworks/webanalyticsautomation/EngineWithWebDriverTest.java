@@ -55,7 +55,7 @@ public class EngineWithWebDriverTest extends TestBase {
         WebAnalyticTool webAnalyticTool = WebAnalyticTool.OMNITURE_DEBUGGER;
 
         String baseURL = "http://digg.com";
-        String navigateToURL = baseURL + "/upcoming";
+        String navigateToURL = baseURL + "/channel/sports";
 
         boolean keepLoadedFileInMemory = true;
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);

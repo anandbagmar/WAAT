@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="WAAT" default="all" basedir=".">
+    <presetdef name="javac">
+        <javac includeantruntime="false" />
+    </presetdef>
 
     <property environment="env"/>
     <property file="resources//waat.properties"/>
@@ -16,7 +19,6 @@
     </path>
 
     <path id="library.lib.classpath">
-        <fileset dir="${lib.dir}/httpSniffer" includes="*.jar"/>
         <fileset dir="${lib.dir}" includes="*.jar"/>
         <path location="${lib.dir}"/>
     </path>
@@ -81,7 +83,7 @@
                 parallel="methods" outputdir="${testNGOutput.dir}" threadcount="${threadCount}"
                 listeners="org.uncommons.reportng.HTMLReporter" listener="com.thoughtworks.webanalyticsautomation.runUtils.CustomTestListener">
             <sysproperty key="org.uncommons.reportng.title" value="WAAT Test Report"/>
-            <sysproperty key="java.library.path" value="${lib.dir}/httpSniffer"/>
+            <sysproperty key="java.library.path" value="${lib.dir}"/>
             <classpath>
                 <pathelement path="${out.dir}/${TEST_TYPE}"/>
             </classpath>
@@ -175,24 +177,7 @@
     <target name="zip_os">
         <!--Copy the appropriate WAAT.jar in the lib folder -->
         <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT/lib" overwrite="true" verbose="true"/>
-
-        <!--Copy the lib files-->
-        <copy todir="${zip.dir}/WAAT/lib">
-            <fileset dir="${lib.dir}" includes="httpSniffer/${osType}/**/*"/>
-            <fileset dir="${lib.dir}" includes="${JAR_LIB_FILTER}" excludes="**/jpcap.jar"/>
-        </copy>
-
-        <copy todir="${zip.dir}/WAAT/lib">
-            <fileset dir="${lib.dir}/httpSniffer" includes="*.jar"/>
-        </copy>
-
         <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}_${osName}.zip" basedir="${zip.dir}"/>
-
-        <!--
-            Delete the osName specific library files after the package is built.
-            If not done, then the libraries will get mixed up in different packages.
-        -->
-        <delete dir="${zip.dir}/WAAT/lib/httpSniffer/${osName}" verbose="false"/>
     </target>
 
     <target name="deploy" if="DEPLOY">

@@ -13,7 +13,6 @@ import com.thoughtworks.webanalyticsautomation.common.CONFIG;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.inputdata.TestData;
-import com.thoughtworks.webanalyticsautomation.plugins.HttpSniffer;
 import com.thoughtworks.webanalyticsautomation.plugins.PluginFactory;
 import com.thoughtworks.webanalyticsautomation.plugins.WaatPlugin;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
@@ -36,7 +35,6 @@ public class Engine extends CONFIG {
         String threadLocalID = Utils.getThreadLocalID();
         logger.info("Setting variable on ThreadLocal: " + threadLocalID);
         threadLocal.set(threadLocalID);
-        enableDisableCaptureInHttpSnifferPluginInstance(true);
     }
 
     boolean isWebAnalyticsTestingEnabled() {
@@ -50,7 +48,6 @@ public class Engine extends CONFIG {
     public void disableWebAnalyticsTesting() {
         logger.info("Reset variable on ThreadLocal");
         threadLocal.set(null);
-        enableDisableCaptureInHttpSnifferPluginInstance(false);
     }
 
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, ScriptRunner scriptRunner) {
@@ -188,20 +185,6 @@ public class Engine extends CONFIG {
             allTags.addAll(expectedSection.getLoadedTagList());
         }
         return allTags;
-    }
-
-    private void enableDisableCaptureInHttpSnifferPluginInstance(boolean enable) {
-        if (CONFIG.getWEB_ANALYTIC_TOOL().equals(WebAnalyticTool.HTTP_SNIFFER)) {
-            String javaPath = System.getProperty("java.library.path");
-            logger.info("Java Library Path: " + javaPath);
-
-            HttpSniffer pluginInstance = (HttpSniffer) PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
-            if (enable) {
-                pluginInstance.enableCapture();
-            } else {
-                pluginInstance.disableCapture();
-            }
-        }
     }
 
     public Result verifyWebAnalyticsData(String inputDataFileName, String actionName, String url) {

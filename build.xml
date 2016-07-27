@@ -91,13 +91,7 @@
         </testNG>
     </target>
 
-    <target name="buildJAR_test">
-        <antcall target="buildJAR">
-            <param name="JAR_FILE_NAME" value="${JAR_FILE_PREFIX}_${TEST_TYPE}_${VERSION}"/>
-            <param name="JAR_BASE_DIR" value="${out.dir}/${TEST_TYPE}"/>
-            <param name="JAR_LIB_FILTER" value="**/*.jar"/>
-        </antcall>
-    </target>
+    <target name="buildJAR_test"></target>
 
     <target name="buildJAR_prod">
         <antcall target="buildJAR">
@@ -151,33 +145,17 @@
             <fileset dir="${basedir}" includes="README*"/>
         </copy>
 
-        <!-- create Linux package -->
-        <antcall  target="zip_os">
-            <param name="osType" value="Linux"/>
-            <param name="osName" value="Linux"/>
-        </antcall>
-
-        <!-- create Windows package -->
-        <antcall  target="zip_os">
-            <param name="osType" value="Windows"/>
-            <param name="osName" value="Windows"/>
-        </antcall>
-
-        <!-- create Windows & Linux package -->
-        <antcall  target="zip_os">
-            <param name="osType" value="**"/>
-            <param name="osName" value="All"/>
-        </antcall>
+        <antcall  target="createZip"></antcall>
 
         <delete dir="${zip.dir}/WAAT" verbose="true"/>
 
         <antcall target="deploy"/>
     </target>
 
-    <target name="zip_os">
+    <target name="createZip">
         <!--Copy the appropriate WAAT.jar in the lib folder -->
         <copy file="${JAR_FILE_IN_ZIP}" todir="${zip.dir}/WAAT/lib" overwrite="true" verbose="true"/>
-        <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}_${osName}.zip" basedir="${zip.dir}"/>
+        <zip destfile="${out.dir}/dist/${ZIP_FILE_NAME}.zip" basedir="${zip.dir}"/>
     </target>
 
     <target name="deploy" if="DEPLOY">

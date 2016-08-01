@@ -6,11 +6,8 @@ testNGReports
 waat.log
 velocity.log
 dist/backup/**
-WAAT.i*
 /temp/
 /velocity.log
-/WAAT.ipr
 /waat.log
-/WAAT.iws
 /set.sh
 /.gradle/

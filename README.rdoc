@@ -38,6 +38,19 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 * <b>{WAAT}[http://github.com/anandbagmar/WAAT-Ruby] for Ruby</b>. The Ruby gem uses RJB (Ruby-Java-Bridge) to invoke APIs defined by WAAT-Java to enable Web Analytics Testing.
 * See <b><em>{my blog}[http://essenceoftesting.blogspot.com/search/label/waat] for all activity around WAAT</em></b>.
 
+== New changes coming in WAAT
+
+* <b>HTTPSniffer & JSSniffer will NOT be supported in the new WAAT</b>
+* A new plugin, based on <b>proxy server approach</b> will be available
+* See the <b>{Issues}[https://github.com/anandbagmar/WAAT/issues]</b> in {WAAT github}[https://github.com/anandbagmar/WAAT] repo or <b><em>{my blog}[http://essenceoftesting.blogspot.com/search/label/waat] for upcoming changes to WAAT</em></b>.
+
+=== Contributing
+* Fork it!
+* Create your feature branch: git checkout -b my-new-feature
+* Commit your changes: git commit -am 'Add some feature'
+* Push to the branch: git push origin my-new-feature
+* Submit a pull request :D
+
 == How to use WAAT-Ruby?
 
 See the {HttpSniffer}[https://github.com/anandbagmar/WAAT/wiki/WAAT-using-HttpSniffer] or {JSSniffer}[https://github.com/anandbagmar/WAAT/wiki/WAAT-using-JSSniffer] wiki page for step-by-step instructions on how to use WAAT-Ruby in your project.

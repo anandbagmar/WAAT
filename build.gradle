@@ -1,1 +1,26 @@
 ant.importBuild 'build.xml'
+ant.importBuild 'build.xml'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    
+compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
+compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+compile group: 'log4j', name: 'log4j', version: '1.2.17'
+compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.3.1'
+//test
+compile group: 'org.uncommons', name: 'reportng', version: '1.1.4'
+compile group: 'org.testng', name: 'testng', version: '6.9.10'
+compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.53.1'
+compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+compile group: 'velocity-tools', name: 'velocity-tools', version: '2.0-beta1'
+
+}
+
+task copyDependenciesForAnt(type: Copy) {
+from {configurations.compile} into "lib"
+}

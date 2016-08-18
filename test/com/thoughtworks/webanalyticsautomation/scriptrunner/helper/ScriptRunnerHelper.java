@@ -2,6 +2,7 @@ package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
 import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Proxy;
 
 /**
  * Created by: Anand Bagmar
@@ -24,6 +25,8 @@ public abstract class ScriptRunnerHelper {
     }
 
     public abstract void startDriver();
+
+    public abstract void startDriverUsingProxy(Proxy proxy);
 
     public abstract void stopDriver();
 

@@ -71,18 +71,18 @@
                                 ch=upcoming||
                                 events=event2||"/>
 
-    <Section actionName="OpenUpcomingPage_HttpSniffer"
+    <Section actionName="OpenUpcomingPage_Proxy"
              numberOfEventsTriggered="1"
              tagList="pageName=upcoming:index||
                                 cc=USD||
                                 ch=upcoming||
                                 events=event2||"/>
 
-    <Section actionName="OpenWAATArticleOnBlog_HttpSniffer"
+    <Section actionName="OpenWAATArticleOnBlog_Proxy"
              numberOfEventsTriggered="1"
-             tagList="action=backlinks||
-                                    widgetType=Blog||
-                                    responseType=js||"/>
+             tagList="utmul=en-us||
+                                    utmr=https://essenceoftesting.blogspot.in/search/label/waat||
+                                    utmcs=UTF-8||"/>
 
     <Section actionName="OpenAMirenaSecureSite_JsSniffer"
              numberOfEventsTriggered="1"

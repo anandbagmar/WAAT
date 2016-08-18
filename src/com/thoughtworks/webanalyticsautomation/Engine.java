@@ -15,12 +15,12 @@ import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.inputdata.TestData;
 import com.thoughtworks.webanalyticsautomation.plugins.PluginFactory;
 import com.thoughtworks.webanalyticsautomation.plugins.WaatPlugin;
-import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,10 +31,16 @@ public class Engine extends CONFIG {
         logger = Logger.getLogger(getClass());
     }
 
-    public void enableWebAnalyticsTesting() {
+    public void enableWebAnalyticsTesting(String name) {
         String threadLocalID = Utils.getThreadLocalID();
         logger.info("Setting variable on ThreadLocal: " + threadLocalID);
         threadLocal.set(threadLocalID);
+        enablePacketCapture(name);
+    }
+
+    private void enablePacketCapture(String name) {
+        WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
+        pluginInstance.enableCapture(name);
     }
 
     boolean isWebAnalyticsTestingEnabled() {
@@ -62,28 +68,7 @@ public class Engine extends CONFIG {
         }
     }
 
-    /**
-     * This method excepts the expected List of Tags to be verified.
-     *
-     * @param expectedList
-     * @param actionName
-     * @param urlPatterns
-     * @param minimumNumberOfPackets
-     * @return
-     */
-    public Result verifyWebAnalyticsData(ArrayList<Section> expectedList, String actionName, String[] urlPatterns, int minimumNumberOfPackets) {
-        if (isWebAnalyticsTestingEnabled()) {
-            ArrayList<Section> expectedSectionList = expectedList;
-            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
-            ArrayList<Section> actualSectionList = pluginInstance.captureSections(urlPatterns, minimumNumberOfPackets);
-            return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
-        } else {
-            logger.info("Web Analytics testing is disabled.");
-            return new Result(actionName, Status.SKIPPED, new ArrayList<String>());
-        }
-    }
-
-    public Result verifyWebAnalyticsData(String testDataFileName, String actionName, String[] urlPatterns, int minimumNumberOfPackets) {
+    public Result verifyWebAnalyticsData(String testDataFileName, String actionName, List<String> urlPatterns, int minimumNumberOfPackets) {
         if (isWebAnalyticsTestingEnabled()) {
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
             WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
@@ -187,11 +172,12 @@ public class Engine extends CONFIG {
         return allTags;
     }
 
-    public Result verifyWebAnalyticsData(String inputDataFileName, String actionName, String url) {
-        ArrayList<Section> expectedSectionList = TestData.getSectionsFor(inputDataFileName, actionName);
+    public Object getSeleniumBasedProxyPlugin() {
         WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
-        ArrayList<Section> actualSectionList = pluginInstance.captureSections(url);
-        return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
+        return pluginInstance.getSeleniumProxy(0);
+//        BrowserMobProxy proxy = pluginInstance.getProxy(0);
+//        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+//        return seleniumProxy;
     }
 
 }

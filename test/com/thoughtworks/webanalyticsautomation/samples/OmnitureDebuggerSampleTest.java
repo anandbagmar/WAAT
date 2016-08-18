@@ -57,7 +57,7 @@ public class OmnitureDebuggerSampleTest extends TestBase {
         String navigateToURL = baseURL + "/channel/sports";
 
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
-        engine.enableWebAnalyticsTesting();
+        engine.enableWebAnalyticsTesting(actionName);
 
         startSeleniumDriver(browser, baseURL);
         webDriver.get(navigateToURL);

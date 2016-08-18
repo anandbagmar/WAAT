@@ -2,13 +2,14 @@ package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
 import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.SkipException;
-
-import static org.testng.Assert.assertTrue;
 
 /**
  * Created by: Anand Bagmar
@@ -32,8 +33,8 @@ public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
         String os = System.getProperty("os.name").toLowerCase();
         logger.info ("Starting WebDriver on OS: " + os + " for browser: " + browser.name());
         if (browser.equals(BROWSER.firefox)) {
-            driver = new FirefoxDriver();
-            driver.get(BASE_URL);
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            instantiateFireFoxDriver(capabilities);
         }
         else if (browser.equals(BROWSER.iehta)) {
             if (!os.contains("win")) {
@@ -47,6 +48,18 @@ public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
         }
         logger.info ("Driver started: " + browser.name());
         logger.info ("Page title: " + driver.getTitle());
+    }
+
+    private void instantiateFireFoxDriver(DesiredCapabilities capabilities) {
+        driver = new FirefoxDriver(capabilities);
+        driver.get(BASE_URL);
+    }
+
+    @Override
+    public void startDriverUsingProxy(Proxy proxy) {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.PROXY, proxy);
+        instantiateFireFoxDriver(capabilities);
     }
 
     @Override

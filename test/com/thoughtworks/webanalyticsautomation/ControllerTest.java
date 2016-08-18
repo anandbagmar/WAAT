@@ -40,7 +40,7 @@ public class ControllerTest extends TestBase {
     @Test
     public void enableAndDisableWebAnalyticsTesting() throws Exception {
         engine = getInstance();
-        engine.enableWebAnalyticsTesting();
+        engine.enableWebAnalyticsTesting("foo");
         assertEquals(true, engine.isWebAnalyticsTestingEnabled(), "WebAnalytics Testing should be enabled.");
         engine.disableWebAnalyticsTesting();
         assertEquals(false, engine.isWebAnalyticsTestingEnabled(), "WebAnalytics Testing should be disabled.");

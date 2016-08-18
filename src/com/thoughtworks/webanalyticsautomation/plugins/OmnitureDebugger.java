@@ -12,9 +12,11 @@ package com.thoughtworks.webanalyticsautomation.plugins;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
+import net.lightbody.bmp.BrowserMobProxy;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OmnitureDebugger implements WaatPlugin {
     private final Logger logger = Logger.getLogger(getClass());
@@ -34,12 +36,24 @@ public class OmnitureDebugger implements WaatPlugin {
         return parseOmnitureDebuggerSections (sSource);
     }
 
-    public ArrayList<Section> captureSections(String url) {
-        logger.info ("ERROR - INVALID API CALLED ON OMNITURE DEBUGGER Plugin");
+    public ArrayList<Section> captureSections(List<String> urlPatterns, int minimumNumberOfPackets) {
+        logger.info ("ERROR - INVALID API CALLED ON OmnitureDebugger Plugin");
         return null;
     }
 
-    public ArrayList<Section> captureSections(String[] urlPatterns, int minimumNumberOfPackets) {
+    @Override
+    public BrowserMobProxy getProxy(int port) {
+        logger.info ("ERROR - INVALID API CALLED ON OmnitureDebugger Plugin");
+        return null;
+    }
+
+    @Override
+    public void enableCapture(String name) {
+        logger.info ("ERROR - INVALID API CALLED ON OmnitureDebugger Plugin");
+    }
+
+    @Override
+    public Object getSeleniumProxy(int port) {
         logger.info ("ERROR - INVALID API CALLED ON OmnitureDebugger Plugin");
         return null;
     }

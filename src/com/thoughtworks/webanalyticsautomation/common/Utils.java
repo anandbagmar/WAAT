@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Utils {
     public final static String TEST_DATA_DELIMITER = "\\|\\|";
     private static String lineSeparator = System.getProperty("line.separator"); 
-    private static String REQUIRES_WEBANALYTICS_TESTING = "requiresOmnitureTesting";
+    private static String REQUIRES_WEBANALYTICS_TESTING = "usingWAAT";
     private static String fileSeparator = System.getProperty("file.separator");
     private static String currentDirectory = System.getProperty("user.dir");
 

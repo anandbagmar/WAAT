@@ -145,7 +145,7 @@ public class Engine extends CONFIG {
         return errorList;
     }
 
-    public boolean isExpectedTagPresentInActualTagList(ArrayList<String> actualSectionTagList, String expectedTag) {
+    private boolean isExpectedTagPresentInActualTagList(ArrayList<String> actualSectionTagList, String expectedTag) {
         boolean isExpectedTagPresent = false;
         //Done pattern matching to support variable values
         Pattern pattern = Pattern.compile(expectedTag);

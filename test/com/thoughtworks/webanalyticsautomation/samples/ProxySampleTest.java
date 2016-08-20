@@ -10,10 +10,13 @@ import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScriptRunnerHelper;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
 
 import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
 import static org.testng.Assert.assertEquals;
@@ -29,34 +32,40 @@ import static org.testng.Assert.assertNotNull;
  * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
  */
 
-public class HttpSnifferSampleTest extends TestBase {
+public class ProxySampleTest extends TestBase {
     private Logger logger = Logger.getLogger(getClass());
     private Engine engine;
-//    private WebAnalyticTool webAnalyticTool = WebAnalyticTool.HTTP_SNIFFER;
+    private WebAnalyticTool webAnalyticTool = WebAnalyticTool.PROXY;
     private InputFileType inputFileType = InputFileType.XML;
     private boolean keepLoadedFileInMemory = true;
     private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources","log4j.properties"});
     private String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
-    private String actionName = "OpenWAATArticleOnBlog_HttpSniffer";
+    private String actionName = "OpenWAATArticleOnBlog_Proxy";
     private WebDriverScriptRunnerHelper webDriverScriptRunnerHelper;
     private WebDriver driverInstance;
 
     @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_HTTPSniffer_GoogleAnalytics_WebDriver_Firefox() throws
+    public void captureAndVerifyDataReportedToWebAnalytics_Proxy_GoogleAnalytics_WebDriver_Firefox() throws
             Exception {
         String baseURL = "http://essenceoftesting.blogspot.com";
-        String navigateToURL = baseURL + "/2011/01/my-article-on-future-of-test-automation.html";
-        String[] urlPatterns = new String[] {"action=backlinks&widgetId"};
+        String navigateToURL = baseURL + "/search/label/waat";
+        ArrayList<String> urlPatterns = new ArrayList<String>();
+        urlPatterns.add("https://ssl.google-analytics.com/__");
         int minimumNumberOfPackets = 1;
 
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
-        engine.enableWebAnalyticsTesting();
+        Proxy seProxy = (Proxy) engine.getSeleniumBasedProxyPlugin();
 
-        startWebDriver(BROWSER.firefox, baseURL);
+        startWebDriver(BROWSER.firefox, baseURL, seProxy);
+        logger.info("Start capture");
+        engine.enableWebAnalyticsTesting(actionName);
+        logger.info("Do action");
         driverInstance.get(navigateToURL);
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) { }
+
+        logger.info("Verify result");
         Result verificationResult = engine.verifyWebAnalyticsData(inputDataFileName, actionName, urlPatterns, minimumNumberOfPackets);
 
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
@@ -66,9 +75,9 @@ public class HttpSnifferSampleTest extends TestBase {
         assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
     }
 
-    private void startWebDriver(BROWSER browser, String baseURL) {
+    private void startWebDriver(BROWSER browser, String baseURL, Proxy seProxy) {
         webDriverScriptRunnerHelper = new WebDriverScriptRunnerHelper(logger, browser, baseURL);
-        webDriverScriptRunnerHelper.startDriver();
+        webDriverScriptRunnerHelper.startDriverUsingProxy(seProxy);
         driverInstance = (WebDriver) webDriverScriptRunnerHelper.getDriverInstance();
     }
 

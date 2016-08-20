@@ -39,8 +39,8 @@ public class OmnitureDebuggerSampleTest extends TestBase {
     private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources", "log4j.properties"});
     private String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
     private String actionName = "OpenUpcomingPage_OmnitureDebugger_Selenium";
-    private WebDriver webDriver;
     private WebDriverScriptRunnerHelper webDriverScriptRunnerHelper;
+    private WebDriver driverInstance;
 
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_IE() throws Exception {
@@ -57,12 +57,12 @@ public class OmnitureDebuggerSampleTest extends TestBase {
         String navigateToURL = baseURL + "/channel/sports";
 
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
-        engine.enableWebAnalyticsTesting();
+        engine.enableWebAnalyticsTesting(actionName);
 
         startSeleniumDriver(browser, baseURL);
-        webDriver.get(navigateToURL);
+        driverInstance.get(navigateToURL);
 
-        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new WebDriverScriptRunner(webDriver));
+        Result verificationResult = engine.verifyWebAnalyticsData (inputDataFileName, actionName, new WebDriverScriptRunner(driverInstance));
 
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
         assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
@@ -74,7 +74,7 @@ public class OmnitureDebuggerSampleTest extends TestBase {
     private void startSeleniumDriver(BROWSER browser, String baseURL) {
         webDriverScriptRunnerHelper = new WebDriverScriptRunnerHelper(logger, browser, baseURL);
         webDriverScriptRunnerHelper.startDriver();
-        webDriver = (WebDriver) webDriverScriptRunnerHelper.getDriverInstance();
+        driverInstance = (WebDriver) webDriverScriptRunnerHelper.getDriverInstance();
     }
 
     @AfterMethod

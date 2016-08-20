@@ -22,6 +22,9 @@ public class PluginFactory {
         if (webAnalyticTool.equals(WebAnalyticTool.OMNITURE_DEBUGGER)) {
             return new OmnitureDebugger();
         }
+        else if (webAnalyticTool.equals(WebAnalyticTool.PROXY)) {
+            return new ProxyDebugger();
+        }
         else {
             throw new IllegalArgumentException("Invalid type of Web Analytic Tool (" + webAnalyticTool + ") specified");
         }

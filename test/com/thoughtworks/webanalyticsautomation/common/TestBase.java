@@ -25,10 +25,7 @@ public class TestBase {
     protected String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
 
     protected void logVerificationErrors(Result verificationResult) {
-        if (verificationResult.getListOfErrors().size()>0){
-            for (String error: verificationResult.getListOfErrors()) {
-                logger.info (error);
-            }
-        }
+        logger.info("Verification ERRORS:");
+        logger.info (verificationResult.getListOfErrors());
     }
 }

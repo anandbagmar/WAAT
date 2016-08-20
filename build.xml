@@ -57,13 +57,13 @@
         <antcall target="runTests"/>
     </target>
 
-    <target name="clean">
+    <target name="cleanUp">
         <delete dir="${out.dir}"/>
         <delete dir="${testNGOutput.dir}"/>
         <delete file="waat.log"/>
         <delete file="velocity.log"/>
     </target>
-    
+
     <target name="init" description="Build initialization">
         <mkdir dir="${prod.output.dir}"/>
         <mkdir dir="${test.output.dir}"/>
@@ -161,10 +161,10 @@
         <antcall target="compile.${type}"/>
     </target>
 
-    <target name="all" depends="clean" description="build all">
-        <antcall target="package">
-            <param name="type" value="${TEST_TYPE}"/>
-        </antcall>
+    <target name="all" depends="cleanUp" description="build all">
+        <!--<antcall target="package">-->
+            <!--<param name="type" value="${TEST_TYPE}"/>-->
+        <!--</antcall>-->
         <antcall target="package">
             <param name="type" value="${PRODUCTION_TYPE}"/>
         </antcall>

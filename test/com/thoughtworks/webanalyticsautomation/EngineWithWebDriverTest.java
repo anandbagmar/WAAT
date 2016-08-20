@@ -59,7 +59,7 @@ public class EngineWithWebDriverTest extends TestBase {
 
         boolean keepLoadedFileInMemory = true;
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
-        engine.enableWebAnalyticsTesting();
+        engine.enableWebAnalyticsTesting(actionName);
 
         startWebDriver(browser, baseURL);
         driverInstance.get(navigateToURL);

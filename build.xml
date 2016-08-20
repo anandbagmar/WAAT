@@ -162,9 +162,9 @@
     </target>
 
     <target name="all" depends="cleanUp" description="build all">
-        <!--<antcall target="package">-->
-            <!--<param name="type" value="${TEST_TYPE}"/>-->
-        <!--</antcall>-->
+        <antcall target="package">
+            <param name="type" value="${TEST_TYPE}"/>
+        </antcall>
         <antcall target="package">
             <param name="type" value="${PRODUCTION_TYPE}"/>
         </antcall>

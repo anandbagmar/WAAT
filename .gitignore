@@ -11,3 +11,5 @@ dist/backup/**
 /waat.log
 /set.sh
 /.gradle/
+/build/
+build/

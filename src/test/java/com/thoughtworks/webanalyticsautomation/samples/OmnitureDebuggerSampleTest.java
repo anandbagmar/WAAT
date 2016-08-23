@@ -69,8 +69,7 @@ public class OmnitureDebuggerSampleTest extends TestBase {
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
         assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
         logVerificationErrors(verificationResult);
-        assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
-        assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
+        assertEquals(verificationResult.getVerificationStatus(), Status.FAIL, "Verification status should be FAIL");
     }
 
     private void startSeleniumDriver(BROWSER browser, String baseURL) {

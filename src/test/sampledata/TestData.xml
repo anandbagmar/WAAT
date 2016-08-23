@@ -81,7 +81,7 @@
     <Section actionName="OpenWAATArticleOnBlog_Proxy"
              numberOfEventsTriggered="1"
              tagList="utmul=en-us||
-                                    utmr=https://essenceoftesting.blogspot.in/search/label/waat||
+                                    utmhn=www.slideshare.net||
                                     utmcs=UTF-8||"/>
 
     <Section actionName="OpenAMirenaSecureSite_JsSniffer"

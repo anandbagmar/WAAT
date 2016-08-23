@@ -44,10 +44,10 @@ public class OmnitureDebuggerSampleTest extends TestBase {
     private WebDriverScriptRunnerHelper webDriverScriptRunnerHelper;
     private WebDriver driverInstance;
 
-    @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_IE() throws Exception {
-        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.iehta);
-    }
+//    @Test
+//    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_IE() throws Exception {
+//        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.iehta);
+//    }
 
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_Firefox() throws Exception {

@@ -40,10 +40,10 @@ public class EngineWithWebDriverTest extends TestBase {
         webDriverScriptRunnerHelper.stopDriver();
     }
 
-    @Test
-    public void captureAndVerifyDataReportedToWebAnalytics_WebDriver_IE() throws Exception {
-        captureAndVerifyDataReportedToWebAnalytics_WebDriver(BROWSER.iehta);
-    }
+//    @Test
+//    public void captureAndVerifyDataReportedToWebAnalytics_WebDriver_IE() throws Exception {
+//        captureAndVerifyDataReportedToWebAnalytics_WebDriver(BROWSER.iehta);
+//    }
 
     @Test
     public void captureAndVerifyDataReportedToWebAnalytics_WebDriver_Firefox() throws Exception {

@@ -15,6 +15,7 @@ import com.thoughtworks.webanalyticsautomation.inputdata.Section;
 import com.thoughtworks.webanalyticsautomation.inputdata.TestData;
 import com.thoughtworks.webanalyticsautomation.plugins.PluginFactory;
 import com.thoughtworks.webanalyticsautomation.plugins.WaatPlugin;
+import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -39,8 +40,11 @@ public class Engine extends CONFIG {
     }
 
     private void enablePacketCapture(String name) {
-        WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
-        pluginInstance.enableCapture(name);
+        if (CONFIG.getWEB_ANALYTIC_TOOL().equals(WebAnalyticTool.PROXY)) {
+            logger.info("Enable Packet Capture");
+            WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
+            pluginInstance.enableCapture(name);
+        }
     }
 
     boolean isWebAnalyticsTestingEnabled() {
@@ -151,7 +155,6 @@ public class Engine extends CONFIG {
         Pattern pattern = Pattern.compile(expectedTag);
 
         for (String actualTag : actualSectionTagList) {
-//            if (actualTag.contains(expectedTag)) {
             Matcher matcher = pattern.matcher(actualTag);
             boolean result = matcher.matches();
             if (result) {
@@ -175,9 +178,6 @@ public class Engine extends CONFIG {
     public Object getSeleniumBasedProxyPlugin() {
         WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
         return pluginInstance.getSeleniumProxy(0);
-//        BrowserMobProxy proxy = pluginInstance.getProxy(0);
-//        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
-//        return seleniumProxy;
     }
 
 }

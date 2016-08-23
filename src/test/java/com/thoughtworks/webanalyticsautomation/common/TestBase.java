@@ -22,10 +22,17 @@ public class TestBase {
     protected final InputFileType inputFileType = InputFileType.XML;
     protected boolean keepLoadedFileInMemory = true;
     protected final String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources", "log4j.properties"});
-    protected String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
+    protected String inputDataFileName = Utils.getAbsolutePath(new String[] {"src", "test", "sampledata", "TestData.xml"});
+
 
     protected void logVerificationErrors(Result verificationResult) {
         logger.info("Verification ERRORS:");
         logger.info (verificationResult.getListOfErrors());
+//        String errors = "";
+//        if (verificationResult.getListOfErrors().size()>0){
+//            for (String error: verificationResult.getListOfErrors()) {
+//                logger.info (error);
+//            }
+//        }
     }
 }

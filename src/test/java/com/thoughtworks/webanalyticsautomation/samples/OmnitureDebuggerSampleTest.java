@@ -1,5 +1,6 @@
 package com.thoughtworks.webanalyticsautomation.samples;
 
+import com.thoughtworks.webanalyticsautomation.Controller;
 import com.thoughtworks.webanalyticsautomation.Engine;
 import com.thoughtworks.webanalyticsautomation.Result;
 import com.thoughtworks.webanalyticsautomation.Status;
@@ -12,13 +13,14 @@ import static com.thoughtworks.webanalyticsautomation.Controller.getInstance;
 
 import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScriptRunnerHelper;
 import org.apache.log4j.Logger;
-import org.testng.Assert;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import org.openqa.selenium.WebDriver;
 import com.thoughtworks.webanalyticsautomation.common.TestBase;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.WebDriverScriptRunner;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -37,7 +39,7 @@ public class OmnitureDebuggerSampleTest extends TestBase {
     private InputFileType inputFileType = InputFileType.XML;
     private boolean keepLoadedFileInMemory = true;
     private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources", "log4j.properties"});
-    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
+    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"src", "test", "sampledata", "TestData.xml"});
     private String actionName = "OpenUpcomingPage_OmnitureDebugger_Selenium";
     private WebDriverScriptRunnerHelper webDriverScriptRunnerHelper;
     private WebDriver driverInstance;
@@ -67,7 +69,7 @@ public class OmnitureDebuggerSampleTest extends TestBase {
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
         assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
         logVerificationErrors(verificationResult);
-        Assert.assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
+        assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
         assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
     }
 
@@ -75,6 +77,11 @@ public class OmnitureDebuggerSampleTest extends TestBase {
         webDriverScriptRunnerHelper = new WebDriverScriptRunnerHelper(logger, browser, baseURL);
         webDriverScriptRunnerHelper.startDriver();
         driverInstance = (WebDriver) webDriverScriptRunnerHelper.getDriverInstance();
+    }
+
+    @BeforeMethod
+    public void setup () {
+        Controller.reset();
     }
 
     @AfterMethod

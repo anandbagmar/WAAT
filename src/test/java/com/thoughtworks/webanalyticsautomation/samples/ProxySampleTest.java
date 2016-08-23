@@ -1,5 +1,6 @@
 package com.thoughtworks.webanalyticsautomation.samples;
 
+import com.thoughtworks.webanalyticsautomation.Controller;
 import com.thoughtworks.webanalyticsautomation.Engine;
 import com.thoughtworks.webanalyticsautomation.Result;
 import com.thoughtworks.webanalyticsautomation.Status;
@@ -12,8 +13,8 @@ import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.WebDriverScri
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class ProxySampleTest extends TestBase {
     private InputFileType inputFileType = InputFileType.XML;
     private boolean keepLoadedFileInMemory = true;
     private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources","log4j.properties"});
-    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"test", "sampledata", "TestData.xml"});
+    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"src", "test", "sampledata", "TestData.xml"});
     private String actionName = "OpenWAATArticleOnBlog_Proxy";
     private WebDriverScriptRunnerHelper webDriverScriptRunnerHelper;
     private WebDriver driverInstance;
@@ -71,7 +72,7 @@ public class ProxySampleTest extends TestBase {
         assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
         assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
         logVerificationErrors(verificationResult);
-        Assert.assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
+        assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
         assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
     }
 
@@ -79,6 +80,11 @@ public class ProxySampleTest extends TestBase {
         webDriverScriptRunnerHelper = new WebDriverScriptRunnerHelper(logger, browser, baseURL);
         webDriverScriptRunnerHelper.startDriverUsingProxy(seProxy);
         driverInstance = (WebDriver) webDriverScriptRunnerHelper.getDriverInstance();
+    }
+
+    @BeforeMethod
+    public void setup () {
+        Controller.reset();
     }
 
     @AfterMethod

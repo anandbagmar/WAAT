@@ -62,4 +62,8 @@ uploadArchives {
     }
 }
 
-//fatJar.finalizedBy uploadArchives
+task copyJars(type: Copy) {
+    from('build/libs')
+    into('dist')
+    include('*.jar')
+}

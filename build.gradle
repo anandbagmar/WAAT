@@ -43,7 +43,13 @@ task fatJar(type: Jar) {
                 'Implementation-Version': version
     }
     baseName = project.name + '-all'
-    from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
+    from {
+        configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
     with jar
 }
 

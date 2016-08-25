@@ -87,14 +87,18 @@ public class Engine extends CONFIG {
     }
 
     private Result verifyWebAnalyticsData(String actionName, ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
+        System.out.println("+++++++++++++++++++++++++++++Inside web analytics enabled ++++++++++++++++++++++++++++++++++++++++++");
         if ((actualSectionList.size() == 0) && (expectedSectionList.size() != 0)) {
+            System.out.println("Done1");
             return new Result(actionName, Status.FAIL, getAllTagsFromExpectedSectionList(expectedSectionList));
         } else {
+            System.out.println("Done2");
             ArrayList<String> errorList = new ArrayList<String>();
             for (Section expectedSection : expectedSectionList) {
                 errorList.addAll(getListOfMissingTagsInActualSections(actualSectionList, expectedSection));
             }
             if (errorList.size() != 0) {
+                System.out.println("Done3");
                 errorList.addAll(addActualSectionsInErrorList(actualSectionList));
             }
             return new Result(actionName, errorList);
@@ -181,6 +185,12 @@ public class Engine extends CONFIG {
         logger.debug("Get Selenium Based Proxy Plugin");
         WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
         return pluginInstance.getSeleniumProxy(0);
+    }
+
+    public Object getAppiumBasedProxyPlugin(){
+        logger.info("Get Appium Based Proxy Plugin");
+        WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
+        return pluginInstance.getSeleniumProxy(5555);
     }
 
 }

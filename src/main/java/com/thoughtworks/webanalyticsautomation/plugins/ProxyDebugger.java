@@ -34,13 +34,13 @@ public class ProxyDebugger implements WaatPlugin {
         Har har = proxy.getHar();
         List<HarEntry> entries = har.getLog().getEntries();
         ArrayList<Section> capturedSections = new ArrayList<>();
-        logger.info("found log enteries - " + entries.size());
+        logger.debug("Number of requests captured - " + entries.size());
+        logger.debug("Number of matching URLs to be found - " + minimumNumberOfPackets);
         int numberOfPacketsCaptured = entries.size();
         for (int packetNumber=numberOfPacketsCaptured-1; packetNumber>=0 && minimumNumberOfPackets>0; packetNumber--)
         {
             HarEntry entry = entries.get(packetNumber);
-            logger.info("Matching URLs to be found - " + minimumNumberOfPackets);
-            logger.info("found log enteries ...........");
+            logger.info("Found log entries matching criteria - " + urlPatterns.toString());
             if (entry.getRequest() != null) {
                 String requestUrl = entry.getRequest().getUrl();
                 if (isURLMatching(urlPatterns, requestUrl)) {
@@ -61,7 +61,7 @@ public class ProxyDebugger implements WaatPlugin {
 
         try {
             decodedURL = URLDecoder.decode(httpCommand, getCharset(capturedPacket));
-            logger.debug("Decoded URL: " + decodedURL);
+            logger.info("Decoded URL: " + decodedURL);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

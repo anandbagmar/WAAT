@@ -34,7 +34,7 @@ public class Engine extends CONFIG {
 
     public void enableWebAnalyticsTesting(String name) {
         String threadLocalID = Utils.getThreadLocalID();
-        logger.info("Setting variable on ThreadLocal: " + threadLocalID);
+        logger.info("Enabling Web Analytics Testing - Setting variable on ThreadLocal: " + threadLocalID);
         threadLocal.set(threadLocalID);
         enablePacketCapture(name);
     }
@@ -49,37 +49,39 @@ public class Engine extends CONFIG {
 
     boolean isWebAnalyticsTestingEnabled() {
         String threadLocalID = Utils.getThreadLocalID();
-        logger.info("Getting variable value from ThreadLocal: " + threadLocalID);
+        logger.info("Is Web Analytics Testing Enabled? - Getting variable value from ThreadLocal: " + threadLocalID);
         boolean status = StringUtils.equals(threadLocal.get(), threadLocalID);
-        logger.info("WebAnalytics enabled status: " + status);
+        logger.info("Is Web Analytics Testing Enabled? - WebAnalytics enabled status: " + status);
         return status;
     }
 
     public void disableWebAnalyticsTesting() {
-        logger.info("Reset variable on ThreadLocal");
+        logger.info("Web Analytics Testing Disabled - Reset variable on ThreadLocal");
         threadLocal.set(null);
     }
 
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, ScriptRunner scriptRunner) {
         if (isWebAnalyticsTestingEnabled()) {
+            logger.info("Verify Web Analytics Data for " + CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
             WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> actualSectionList = pluginInstance.captureSections(scriptRunner);
             return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
         } else {
-            logger.info("Web Analytics testing is disabled.");
+            logger.info("Web Analytics testing is disabled. Return Result - " + Status.SKIPPED);
             return new Result(actionName, Status.SKIPPED, new ArrayList<String>());
         }
     }
 
     public Result verifyWebAnalyticsData(String testDataFileName, String actionName, List<String> urlPatterns, int minimumNumberOfPackets) {
         if (isWebAnalyticsTestingEnabled()) {
+            logger.info("Verify Web Analytics Data for " + CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> expectedSectionList = TestData.getSectionsFor(testDataFileName, actionName);
             WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
             ArrayList<Section> actualSectionList = pluginInstance.captureSections(urlPatterns, minimumNumberOfPackets);
             return verifyWebAnalyticsData(actionName, actualSectionList, expectedSectionList);
         } else {
-            logger.info("Web Analytics testing is disabled.");
+            logger.info("Web Analytics testing is disabled. Return Result - " + Status.SKIPPED);
             return new Result(actionName, Status.SKIPPED, new ArrayList<String>());
         }
     }
@@ -176,6 +178,7 @@ public class Engine extends CONFIG {
     }
 
     public Object getSeleniumBasedProxyPlugin() {
+        logger.debug("Get Selenium Based Proxy Plugin");
         WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
         return pluginInstance.getSeleniumProxy(0);
     }

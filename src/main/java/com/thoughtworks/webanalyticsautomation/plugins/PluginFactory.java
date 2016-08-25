@@ -13,17 +13,29 @@ import org.apache.log4j.Logger;
 
 public class PluginFactory {
     private static final Logger logger = Logger.getLogger(PluginFactory.class.getName());
+    private static OmnitureDebugger omnitureDebugger;
+    private static ProxyDebugger proxyDebugger;
 
     public static void reset() {
         logger.info ("Resetting PluginInstances");
+        omnitureDebugger = null;
+        proxyDebugger = null;
     }
 
     public static WaatPlugin getWebAnalyticsPluginInstance(WebAnalyticTool webAnalyticTool) {
         if (webAnalyticTool.equals(WebAnalyticTool.OMNITURE_DEBUGGER)) {
-            return new OmnitureDebugger();
+            if (null == omnitureDebugger) {
+                omnitureDebugger = new OmnitureDebugger();
+            }
+            logger.info ("Returning Omniture Debugger plugin instance");
+            return omnitureDebugger;
         }
         else if (webAnalyticTool.equals(WebAnalyticTool.PROXY)) {
-            return new ProxyDebugger();
+            if (null == proxyDebugger) {
+                proxyDebugger = new ProxyDebugger();
+            }
+            logger.info ("Returning Proxy Debugger plugin instance");
+            return proxyDebugger;
         }
         else {
             throw new IllegalArgumentException("Invalid type of Web Analytic Tool (" + webAnalyticTool + ") specified");

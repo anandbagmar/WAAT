@@ -30,10 +30,10 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 
 <b>Appium setup for Android- in OS X</b>
 
-* Brew: 
+1.Brew: 
   * ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-2. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
-3. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
+* JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
+* Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
 4. Set ANDROID_HOME and JAVA_HOME
   * Open Terminal and Navigate to Home Directory.
   * Execute command touch .bash_profile

@@ -30,7 +30,6 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 
 <b>Appium setup for Android- in OS X</b>
 
-## Prerequisites:
 * Brew: 
  * ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 2. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html

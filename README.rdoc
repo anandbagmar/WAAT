@@ -26,6 +26,26 @@ Official definition of Web Analytics from Wikipedia (http://en.wikipedia.org/wik
 
 For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.com</b>
 
+== Setup instructions for running tests using Appium
+
+<b>Appium setup for Android- in OS X</b>
+
+* Download Java JDK http://www.oracle.com/technetwork/java/javase/downloads/index.html
+* Download Android SDK https://developer.android.com/sdk/index.html
+* Add ANDROID_HOME and JAVA_HOME to sh profile (in order not to set them every time) echo "export JAVA_HOME=$(/usr/libexec/java_home)" >> ~/.bash_profile echo "export ANDROID_HOME=/usr/local/adt/sdk" >> ~/.bash_profile
+* Install Android build and platform tools $ANDROID_HOME/tools/android update sdk --no-ui --obsolete --force
+* Install Appium
+* Using npm modules $ npm install -g appium
+* Directly from git repository git clone https://github.com/appium/appium.git link : https://nishantverma.gitbooks.io/appium-for-android/content/system_installation/installing_appium.html
+* Proxy setup for Android device:
+# Click Settings.
+# In Settings, click Wi-Fi.
+# Click and hold WiredSSID until a box pops up.
+# Click on "Modify network".
+# Check the "Show advanced options" box and select Manual from the Proxy Settings menu.
+# Enter your host machine's IP address in the "Proxy hostname" field, and 5555 in the "proxy port" field and enter the URL to be bypassed.
+# Then click Save.
+
 == Latest version
 
 * <b>WAAT-Java v1.5.0 is available from the {WAAT-Java dist}[http://github.com/anandbagmar/WAAT/tree/master/dist] folder.</b>

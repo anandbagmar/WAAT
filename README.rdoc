@@ -56,7 +56,6 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
     * npm install wd    # get appium client
     * appium-doctor    # check if everything is correctly set
 * Appium.exe (zip file) (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
-* Apache Maven (zip file) - https://maven.apache.org/download.cgi - Set environment variable M2_HOME under 'System variables'.
 * Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 * Add all the environment variables set(in steps 1,2 and 5) along with platform-tools and npm(node package manager)path to the PATH variable.
 * So, your PATH variable would look something like: C:\Windows\System32;%JAVA_HOME%\bin;%ANDROID_HOME%\bin;%M2_HOME%\bin;C:\Users\Administrator\AppData\Local\Android\android-sdk\platform-tools;C:\Program Files\nodejs\node_modules\npm\bin;

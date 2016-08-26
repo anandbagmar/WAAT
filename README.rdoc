@@ -46,6 +46,7 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 * Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
 * Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 
+
 <b>Appium setup for Android- in Windows</b>
 
 * JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html and set environment variable JAVA_HOME under 'System variables'.
@@ -60,14 +61,16 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 * Add all the environment variables set(in steps 1,2 and 5) along with platform-tools and npm(node package manager)path to the PATH variable.
 * So, your PATH variable would look something like: C:\Windows\System32;%JAVA_HOME%\bin;%ANDROID_HOME%\bin;%M2_HOME%\bin;C:\Users\Administrator\AppData\Local\Android\android-sdk\platform-tools;C:\Program Files\nodejs\node_modules\npm\bin;
 
-* Proxy setup for Android device:
-1. Click Settings.
-2. In Settings, click Wi-Fi.
-3. Click and hold WiredSSID until a box pops up.
-4. Click on "Modify network".
-5. Check the "Show advanced options" box and select Manual from the Proxy Settings menu.
-6. Enter your host machine's IP address in the "Proxy hostname" field, and 5555 in the "proxy port" field and enter the URL to be bypassed.
-7. Then click Save.
+
+<b>Proxy setup for Android device</b>
+
+* Click Settings.
+* In Settings, click Wi-Fi.
+* Click and hold WiredSSID until a box pops up.
+* Click on "Modify network".
+* Check the "Show advanced options" box and select Manual from the Proxy Settings menu.
+* Enter your host machine's IP address in the "Proxy hostname" field, and 5555 in the "proxy port" field and enter the URL to be bypassed.
+* Then click Save.
 
 == Latest version
 

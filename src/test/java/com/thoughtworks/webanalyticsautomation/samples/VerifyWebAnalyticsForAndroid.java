@@ -36,7 +36,7 @@ public class VerifyWebAnalyticsForAndroid extends TestBase{
     private InputFileType inputFileType = InputFileType.XML;
     private boolean keepLoadedFileInMemory = true;
     private String log4jPropertiesAbsoluteFilePath = Utils.getAbsolutePath(new String[] {"resources","log4j.properties"});
-    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"src", "test", "sampledata", "TestData.xml"});
+    private String inputDataFileName = Utils.getAbsolutePath(new String[] {"src", "test", "sampledata", "MobileTestData.xml"});
     private String actionName = "OpenWAATArticleOnBlog_Proxy";
     private MobileDriverScriptRunnerHelper mobileDriverScirptRunnerHelper;
 
@@ -49,10 +49,10 @@ public class VerifyWebAnalyticsForAndroid extends TestBase{
     @Test
     public void captureVerifyAnalyticsDataForAndroidMobile()
     {
-        String baseURL = "http://essenceoftesting.blogspot.com";
-        String navigateToURL = baseURL + "/search/label/waat";
+        String baseURL = "https://www.thoughtworks.com";
+        String navigateToURL = baseURL + "/mingle/signup/";
         ArrayList<String> urlPatterns = new ArrayList<String>();
-        urlPatterns.add("https://ssl.google-analytics.com/__");
+        urlPatterns.add("https://www.google-analytics.com/");
         int minimumNumberOfPackets = 1;
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         Proxy mobileProxy=(Proxy) engine.getAppiumBasedProxyPlugin();

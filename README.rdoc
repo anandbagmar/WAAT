@@ -33,10 +33,10 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 * Download Java JDK http://www.oracle.com/technetwork/java/javase/downloads/index.html
 * Download Android SDK https://developer.android.com/sdk/index.html
 * Add ANDROID_HOME and JAVA_HOME to sh profile (in order not to set them every time) echo "export JAVA_HOME=$(/usr/libexec/java_home)" >> ~/.bash_profile echo "export ANDROID_HOME=/usr/local/adt/sdk" >> ~/.bash_profile
-* Install Android build and platform tools $ANDROID_HOME/tools/android update sdk --no-ui --obsolete --force
+* Install Android build and platform tools $ANDROID_HOME/tools/android update sdk --no-ui --force
 * Install Appium
-* Using npm modules $ npm install -g appium
-* Directly from git repository git clone https://github.com/appium/appium.git link : https://nishantverma.gitbooks.io/appium-for-android/content/system_installation/installing_appium.html
+** Using npm modules $ npm install -g appium
+** Directly from git repository git clone https://github.com/appium/appium.git link : https://nishantverma.gitbooks.io/appium-for-android/content/system_installation/installing_appium.html
 * Proxy setup for Android device:
 1. Click Settings.
 2. In Settings, click Wi-Fi.

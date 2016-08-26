@@ -38,22 +38,22 @@ public class ProxyDebugger implements WaatPlugin {
         logger.info("Number of matching URLs to be found - " + minimumNumberOfPackets);
         int numberOfPacketsCaptured = entries.size();
 
-        logger.info("******************************************** URL captured ********************************************");
-        for (HarEntry entry : entries){
-            System.out.println(entry.getRequest().getUrl());
-        }
-        logger.info("******************************************** URL captured ********************************************");
-
+//        logger.debug("******************************************** URL captured ********************************************");
+//        for (HarEntry entry : entries){
+//            logger.debug(entry.getRequest().getUrl());
+//        }
+//        logger.debug("******************************************** URL captured ********************************************");
+        logger.info("Finding log entries for criteria - " + urlPatterns.toString());
         for (int packetNumber=numberOfPacketsCaptured-1; packetNumber>=0 && minimumNumberOfPackets>0; packetNumber--)
         {
             HarEntry entry = entries.get(packetNumber);
-            logger.info("Found log entries matching criteria - " + urlPatterns.toString());
+            String requestUrl = entry.getRequest().getUrl();
+            logger.info("Checking url - " + requestUrl);
             if (entry.getRequest() != null) {
-                String requestUrl = entry.getRequest().getUrl();
                 if (isURLMatching(urlPatterns, requestUrl)) {
                     HashMap<String, String> queryParams = new HashMap<String, String>();
                     minimumNumberOfPackets--;
-                    logger.info("Found match - " + requestUrl);
+                    logger.info("Found match for URL - " + requestUrl);
                     String decodedURL = getDecodedURLFromPacket(requestUrl);
                     capturedSections.add(convertToSection(decodedURL));
                 }

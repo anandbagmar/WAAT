@@ -14,3 +14,6 @@ dist/backup/**
 /build/
 build/
 lib/
+/WAAT.iml
+/WAAT.iws
+/WAAT.ipr

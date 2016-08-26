@@ -30,40 +30,35 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 
 <b>Appium setup for Android- in OS X</b>
 
-1. Brew: 
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-2. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
-3. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
-4. Set ANDROID_HOME and JAVA_HOME
+* Brew: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+* JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
+* Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
+* Set ANDROID_HOME and JAVA_HOME
   * Open Terminal and Navigate to Home Directory.
   * Execute command touch .bash_profile
   * Execute command open -e .bash_profile and set the path a shown in image below( Change the path to the android sdk downloaded)
   * Save the file and Execute "set" in your terminal and restart your terminal for the changes to reflect.
-5. Node.js and Appium:
+* Node.js and Appium:
   * brew install node    # get node.js
   * npm install -g appium     # get appium
   * npm install wd    # get appium client
   * appium-doctor     # check if everything is correctly set
-6. Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
-7. Any IDE: Eclipse - https://www.eclipse.org/downloads/
+* Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
+* Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 
 <b>Appium setup for Android- in Windows</b>
-## Prerequisites:
-1. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
-  * Set environment variable JAVA_HOME under 'System variables'.
-2. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
-  * Set environment variable ANDROID_HOME under 'System variables'.
-3. Node.js - https://nodejs.org/en/download/. Then run following commands on cmd:
+
+* JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html and set environment variable JAVA_HOME under 'System variables'.
+* Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17] and set environment variable ANDROID_HOME under 'System variables'.
+* Node.js - https://nodejs.org/en/download/. Then run following commands on cmd:
     * npm install -g appium    # get appium
     * npm install wd    # get appium client
     * appium-doctor    # check if everything is correctly set
-4. Appium.exe (zip file) (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
-5. Apache Maven (zip file) - https://maven.apache.org/download.cgi - Set environment variable M2_HOME under 'System variables'.
-6. Any IDE: Eclipse - https://www.eclipse.org/downloads/
-7. Add all the environment variables set(in steps 1,2 and 5) along with platform-tools and npm(node package manager)path to the PATH variable: 
-
-So, your PATH variable would look something like:
-C:\Windows\System32;%JAVA_HOME%\bin;%ANDROID_HOME%\bin;%M2_HOME%\bin;C:\Users\Administrator\AppData\Local\Android\android-sdk\platform-tools;C:\Program Files\nodejs\node_modules\npm\bin;
+* Appium.exe (zip file) (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
+* Apache Maven (zip file) - https://maven.apache.org/download.cgi - Set environment variable M2_HOME under 'System variables'.
+* Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
+* Add all the environment variables set(in steps 1,2 and 5) along with platform-tools and npm(node package manager)path to the PATH variable.
+* So, your PATH variable would look something like: C:\Windows\System32;%JAVA_HOME%\bin;%ANDROID_HOME%\bin;%M2_HOME%\bin;C:\Users\Administrator\AppData\Local\Android\android-sdk\platform-tools;C:\Program Files\nodejs\node_modules\npm\bin;
 
 * Proxy setup for Android device:
 1. Click Settings.

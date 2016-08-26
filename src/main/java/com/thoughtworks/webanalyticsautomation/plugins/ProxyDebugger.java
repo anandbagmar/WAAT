@@ -34,9 +34,16 @@ public class ProxyDebugger implements WaatPlugin {
         Har har = proxy.getHar();
         List<HarEntry> entries = har.getLog().getEntries();
         ArrayList<Section> capturedSections = new ArrayList<>();
-        logger.debug("Number of requests captured - " + entries.size());
-        logger.debug("Number of matching URLs to be found - " + minimumNumberOfPackets);
+        logger.info("Number of requests captured - " + entries.size());
+        logger.info("Number of matching URLs to be found - " + minimumNumberOfPackets);
         int numberOfPacketsCaptured = entries.size();
+
+        logger.info("******************************************** URL captured ********************************************");
+        for (HarEntry entry : entries){
+            System.out.println(entry.getRequest().getUrl());
+        }
+        logger.info("******************************************** URL captured ********************************************");
+
         for (int packetNumber=numberOfPacketsCaptured-1; packetNumber>=0 && minimumNumberOfPackets>0; packetNumber--)
         {
             HarEntry entry = entries.get(packetNumber);
@@ -104,7 +111,7 @@ public class ProxyDebugger implements WaatPlugin {
 
     @Override
     public BrowserMobProxy getProxy(int port) {
-        logger.info("getProxy - " + port);
+        logger.info("Initializing BrowserMobProxy for the port - " + port);
         proxy= new BrowserMobProxyServer();
         proxy.start(port);
         proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS,
@@ -128,8 +135,8 @@ public class ProxyDebugger implements WaatPlugin {
 
     @Override
     public Object getSeleniumProxy(int port) {
-        logger.info ("Get Selenium");
-        BrowserMobProxy proxy = this.getProxy(0);
+        logger.info ("Get Proxy for the port "+ port);
+        BrowserMobProxy proxy = this.getProxy(port);
         return ClientUtil.createSeleniumProxy(proxy);
     }
 }

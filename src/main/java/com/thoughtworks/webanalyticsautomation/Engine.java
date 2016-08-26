@@ -183,4 +183,10 @@ public class Engine extends CONFIG {
         return pluginInstance.getSeleniumProxy(0);
     }
 
+    public Object getAppiumBasedProxyPlugin(){
+        logger.info("Get Appium Based Proxy Plugin");
+        WaatPlugin pluginInstance = PluginFactory.getWebAnalyticsPluginInstance(CONFIG.getWEB_ANALYTIC_TOOL());
+        return pluginInstance.getSeleniumProxy(5555);
+    }
+
 }

@@ -30,7 +30,6 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 
 <b>Appium setup for Android- in OS X</b>
 
-# Appium Mac OSX Setup For Android
 ## Prerequisites:
 1. Brew:
   * ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -49,7 +48,7 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 6. Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
 7. Any IDE: Eclipse - https://www.eclipse.org/downloads/
 
-# Appium Windows Setup For Android
+<b>Appium setup for Android- in Windows</b>
 ## Prerequisites:
 1. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
   * Set environment variable JAVA_HOME under 'System variables'.

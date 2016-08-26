@@ -87,17 +87,20 @@ public class Engine extends CONFIG {
     }
 
     private Result verifyWebAnalyticsData(String actionName, ArrayList<Section> actualSectionList, ArrayList<Section> expectedSectionList) {
-        if ((actualSectionList.size() == 0) && (expectedSectionList.size() != 0)) {
+        if ((actualSectionList.size() == 0) && (expectedSectionList.size() != 0))
+        {
             return new Result(actionName, Status.FAIL, getAllTagsFromExpectedSectionList(expectedSectionList));
-        } else {
+        }
+        else
+            {
             ArrayList<String> errorList = new ArrayList<String>();
             for (Section expectedSection : expectedSectionList) {
                 errorList.addAll(getListOfMissingTagsInActualSections(actualSectionList, expectedSection));
             }
-            if (errorList.size() != 0) {
-                errorList.addAll(addActualSectionsInErrorList(actualSectionList));
-            }
-            return new Result(actionName, errorList);
+                if (errorList.size() != 0) {
+                 errorList.addAll(addActualSectionsInErrorList(actualSectionList));
+                }
+            return new Result(actionName,errorList);
         }
     }
 
@@ -155,10 +158,9 @@ public class Engine extends CONFIG {
         boolean isExpectedTagPresent = false;
         //Done pattern matching to support variable values
         Pattern pattern = Pattern.compile(expectedTag);
-
         for (String actualTag : actualSectionTagList) {
             Matcher matcher = pattern.matcher(actualTag);
-            boolean result = matcher.matches();
+            boolean result = matcher.find();
             if (result) {
                 isExpectedTagPresent = true;
                 logger.debug("TAG FOUND: " + expectedTag);

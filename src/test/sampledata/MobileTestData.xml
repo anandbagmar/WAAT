@@ -1,0 +1,54 @@
+<!--
+        Sample Test Specification File
+
+        * Created by: Shilpa G
+        * Email: shilpag.398ckm@gmail.com
+        * Date: Aug 26, 2016
+        * Time: 2:16 PM
+        *
+        * Copyright 2010 Anand Bagmar (abagmar@gmail.com).  Distributed under the Apache 2.0 License
+-->
+
+<!--
+                                README for TestData specification
+
+        Section:
+                        A set of test data which includes the actionName for which
+                        the provided list of tags needs to be verified.
+
+        actionName:
+                        A (String) name representing the action done in the UI,
+                        for which we want to do Web Analytics Testing.
+
+        numberOfEventsTriggered:
+                        The number of events that "should" be triggered for the
+                        actionName specified.
+                        The (numerical) value provided for this attribute indicates
+                        the number of requests sent to the Web Analytic system for
+                        the action.
+
+        tagList:
+                        A delimited set of tags that you want to verify from any of
+                        the requests sent to analytics tool on the action performed.
+                        The tags specified are order independent, and case-SENSITIVE.
+
+                        NOTE: If you are using OmnitureDebugger, the tags are seen
+                        differently based on the UI Testing Framework being used.
+                        This is because of the difference in the way JavaScript is
+                        executed and results being interpreted by the individual
+                        UI framework.
+
+                        See the examples below for:
+                         > actionName: OpenUpcomingPage_OmnitureDebugger_Selenium
+                         > actionName: OpenUpcomingPage_OmnitureDebugger_WebDriver
+
+        delimiter:
+                        A separator used to distinguish between tags.
+                        || is the delimiter used in WAAT.
+-->
+
+<Sections>
+    <Section actionName="OpenWAATArticleOnBlog_Proxy"
+             numberOfEventsTriggered="1"
+             tagList="dt:Sign Up | Mingle||"/>
+</Sections>

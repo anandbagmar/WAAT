@@ -31,15 +31,15 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 <b>Appium setup for Android- in OS X</b>
 
 ## Prerequisites:
-1. Brew:
-  * ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+* Brew: 
+ * ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 2. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
 3. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
 4. Set ANDROID_HOME and JAVA_HOME
-   * Open Terminal and Navigate to Home Directory.
-   * Execute command touch .bash_profile
-   * Execute command open -e .bash_profile and set the path a shown in image below( Change the path to the android sdk downloaded)
-   * Save the file and Execute "set" in your terminal and restart your terminal for the changes to reflect.
+  * Open Terminal and Navigate to Home Directory.
+  * Execute command touch .bash_profile
+  * Execute command open -e .bash_profile and set the path a shown in image below( Change the path to the android sdk downloaded)
+  * Save the file and Execute "set" in your terminal and restart your terminal for the changes to reflect.
 5. Node.js and Appium:
   * brew install node    # get node.js
   * npm install -g appium     # get appium

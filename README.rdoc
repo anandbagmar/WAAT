@@ -38,13 +38,13 @@ For any other questions, comments, help, email <b>Anand Bagmar @ abagmar@gmail.c
 * Using npm modules $ npm install -g appium
 * Directly from git repository git clone https://github.com/appium/appium.git link : https://nishantverma.gitbooks.io/appium-for-android/content/system_installation/installing_appium.html
 * Proxy setup for Android device:
-# Click Settings.
-# In Settings, click Wi-Fi.
-# Click and hold WiredSSID until a box pops up.
-# Click on "Modify network".
-# Check the "Show advanced options" box and select Manual from the Proxy Settings menu.
-# Enter your host machine's IP address in the "Proxy hostname" field, and 5555 in the "proxy port" field and enter the URL to be bypassed.
-# Then click Save.
+1. Click Settings.
+2. In Settings, click Wi-Fi.
+3. Click and hold WiredSSID until a box pops up.
+4. Click on "Modify network".
+5. Check the "Show advanced options" box and select Manual from the Proxy Settings menu.
+6. Enter your host machine's IP address in the "Proxy hostname" field, and 5555 in the "proxy port" field and enter the URL to be bypassed.
+7. Then click Save.
 
 == Latest version
 

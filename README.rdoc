@@ -1,3 +1,4 @@
+{<img alt='Stories in Ready' src='https://badge.waffle.io/anandbagmar/WAAT.png?label=ready&title=Ready' />}[https://waffle.io/anandbagmar/WAAT]
 == WAAT
 
 /**

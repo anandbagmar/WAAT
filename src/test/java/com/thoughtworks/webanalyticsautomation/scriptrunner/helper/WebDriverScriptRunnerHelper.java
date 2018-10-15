@@ -43,6 +43,7 @@ public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
             driver = new InternetExplorerDriver();
             driver.get(BASE_URL);
         } else if (browser.equals(BROWSER.chrome)) {
+            System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.get(BASE_URL);
         }
@@ -51,7 +52,8 @@ public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
     }
 
     private void instantiateFireFoxDriver(DesiredCapabilities capabilities) {
-        driver = new FirefoxDriver(capabilities);
+        System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver.exe");
+        driver = new FirefoxDriver();
         driver.get(BASE_URL);
     }
 

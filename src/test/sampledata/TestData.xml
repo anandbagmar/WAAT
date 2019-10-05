@@ -80,7 +80,7 @@
 
     <Section actionName="OpenWAATArticleOnBlog_Proxy"
              numberOfEventsTriggered="1"
-             tagList="utmul=en-us||
+             tagList="utmr=https://essenceoftesting.blogspot.com/search/label/waat||
                                     utmhn=www.slideshare.net||
                                     utmcs=UTF-8||"/>
 

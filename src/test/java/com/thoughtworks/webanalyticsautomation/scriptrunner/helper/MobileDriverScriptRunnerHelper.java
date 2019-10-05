@@ -2,12 +2,15 @@ package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
 import com.thoughtworks.webanalyticsautomation.common.BROWSER;
 import com.thoughtworks.webanalyticsautomation.common.Utils;
+import com.thoughtworks.webanalyticsautomation.runUtils.WebDriverUtils;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 /**
@@ -27,7 +31,7 @@ public class MobileDriverScriptRunnerHelper extends ScriptRunnerHelper{
 
     private  AppiumDriverLocalService service;
     private  AppiumServiceBuilder serBuilder;
-    private  AndroidDriver<MobileElement> driverAndroid;
+    private  AppiumDriver driverAndroid;
     FileInputStream input;
     Properties prop=new Properties();
 
@@ -40,23 +44,25 @@ public class MobileDriverScriptRunnerHelper extends ScriptRunnerHelper{
     }
 
     private void instantiateChromeDriver(DesiredCapabilities capabilities) {
-        driverAndroid =new AndroidDriver<>(service.getUrl(), capabilities);
+        driverAndroid = new AppiumDriver(service.getUrl(), capabilities);
+//        driverAndroid =new AndroidDriver<>(service.getUrl(), capabilities);
         driverAndroid.get(BASE_URL);
     }
 
     @Override
     public void startDriverUsingProxy(Proxy proxy) {
-
-        String mobilePropertyFilePath = Utils.getAbsolutePath(new String[] {"resources","mobileSetUp.properties"});
-        try {
-
-            input= new FileInputStream(mobilePropertyFilePath);
-            prop.load(input);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.setProperty("webdriver.chrome.driver", WebDriverUtils.getPathForChromeDriver());
+//
+//        String mobilePropertyFilePath = Utils.getAbsolutePath(new String[] {"resources","mobileSetUp.properties"});
+//        try {
+//
+//            input= new FileInputStream(mobilePropertyFilePath);
+//            prop.load(input);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         logger.info("Initializing the appium server at port 7000");
         serBuilder=new AppiumServiceBuilder().withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js")).usingPort(7000);
@@ -70,8 +76,11 @@ public class MobileDriverScriptRunnerHelper extends ScriptRunnerHelper{
         DesiredCapabilities capabilities = new DesiredCapabilities();
         if(browser.equals(BROWSER.chrome))
         {
-            capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, prop.getProperty("BROWSER_NAME"));
-            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, prop.getProperty("DEVICE_NAME"));
+            capabilities.setCapability("chromedriverExecutable", WebDriverManager.chromedriver().getBinaryPath());
+            capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "MyDevice");
+            capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+            capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
             capabilities.setCapability(MobileCapabilityType.ACCEPT_SSL_CERTS, true);
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("ignore-certificate-errors");
@@ -86,12 +95,14 @@ public class MobileDriverScriptRunnerHelper extends ScriptRunnerHelper{
 
     @Override
     public void stopDriver() {
-        if(null !=this.driverAndroid)
+        if(null !=this.driverAndroid) {
+            driverAndroid.close();
+        }
         driverAndroid.quit();
     }
 
     @Override
-    public Object getDriverInstance() {
+    public AppiumDriver getDriverInstance() {
         if (null == driverAndroid) {
             logger.info("Driver is null");
         }

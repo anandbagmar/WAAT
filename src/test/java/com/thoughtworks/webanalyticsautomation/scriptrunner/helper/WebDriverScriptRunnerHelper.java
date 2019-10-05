@@ -1,15 +1,25 @@
 package com.thoughtworks.webanalyticsautomation.scriptrunner.helper;
 
 import com.thoughtworks.webanalyticsautomation.common.BROWSER;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.SkipException;
+
+import java.util.logging.Level;
 
 /**
  * Created by: Anand Bagmar
@@ -30,46 +40,86 @@ public class WebDriverScriptRunnerHelper extends ScriptRunnerHelper {
 
     @Override
     public void startDriver() {
-        String os = System.getProperty("os.name").toLowerCase();
-        logger.info ("Starting WebDriver on OS: " + os + " for browser: " + browser.name());
-        if (browser.equals(BROWSER.firefox)) {
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            instantiateFireFoxDriver(capabilities);
-        }
-        else if (browser.equals(BROWSER.iehta)) {
-            if (!os.contains("win")) {
-                throw new SkipException("Skipping this test as Internet Explorer browser is NOT available on " + os);
-            }
-            driver = new InternetExplorerDriver();
-            driver.get(BASE_URL);
-        } else if (browser.equals(BROWSER.chrome)) {
-            System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\chromedriver.exe");
-            driver = new ChromeDriver();
-            driver.get(BASE_URL);
-        }
-        logger.info ("Driver started: " + browser.name());
-        logger.info ("Page title: " + driver.getTitle());
+        startDriverUsingProxy(null);
     }
 
-    private void instantiateFireFoxDriver(DesiredCapabilities capabilities) {
-        System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\geckodriver.exe");
-        driver = new FirefoxDriver();
+    private void instantiateChromeDriver(Proxy proxy) {
+        System.setProperty("webdriver.chrome.logfile", "out/chromedriver.log");
+        System.setProperty("webdriver.chrome.verboseLogging", "true");
+        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver",WebDriverManager.chromedriver().getBinaryPath());
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        if (null != proxy) {
+            chromeOptions.setCapability(CapabilityType.PROXY, proxy);
+        }
+        driver = new ChromeDriver(chromeOptions);
+        driver.get(BASE_URL);
+    }
+
+    private void instantiateIEDriver(String os, Proxy proxy) {
+        WebDriverManager.iedriver().setup();
+        if (!os.contains("win")) {
+            throw new SkipException("Skipping this test as Internet Explorer browser is NOT available on " + os);
+        }
+        InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
+        if (null != proxy) {
+            internetExplorerOptions.setProxy(proxy);
+        }
+        driver = new InternetExplorerDriver(internetExplorerOptions);
+        driver.get(BASE_URL);
+    }
+
+    private void instantiateEdgeDriver(String os, Proxy proxy) {
+        WebDriverManager.edgedriver().setup();
+        if (!os.contains("win")) {
+            throw new SkipException("Skipping this test as Internet Explorer browser is NOT available on " + os);
+        }
+        EdgeOptions edgeOptions = new EdgeOptions();
+        if (null != proxy) {
+            edgeOptions.setProxy(proxy);
+        }
+        driver = new EdgeDriver(edgeOptions);
+        driver.get(BASE_URL);
+    }
+
+    private void instantiateFireFoxDriver(Proxy proxy) {
+        WebDriverManager.firefoxdriver().setup();
+        System.setProperty("webdriver.gecko.driver",WebDriverManager.firefoxdriver().getBinaryPath());
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        if (null != proxy) {
+//            firefoxOptions.setCapability(CapabilityType.PROXY, proxy);
+        }
+
+        driver = new FirefoxDriver(firefoxOptions);
         driver.get(BASE_URL);
     }
 
     @Override
     public void startDriverUsingProxy(Proxy proxy) {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(CapabilityType.PROXY, proxy);
-        instantiateFireFoxDriver(capabilities);
+        String os = System.getProperty("os.name").toLowerCase();
+        logger.info ("Starting WebDriver on OS: " + os + " for browser: " + browser.name());
+        if (browser.equals(BROWSER.firefox)) {
+            instantiateFireFoxDriver(proxy);
+        }
+        else if (browser.equals(BROWSER.edge)) {
+            instantiateEdgeDriver(os, proxy);
+        }
+        else if (browser.equals(BROWSER.iehta)) {
+            instantiateIEDriver(os, proxy);
+        } else if (browser.equals(BROWSER.chrome)) {
+            instantiateChromeDriver(proxy);
+        }
+        logger.info ("Driver started: " + browser.name());
+        logger.info ("Page title: " + driver.getTitle());
     }
 
     @Override
     public void stopDriver() {
         if (null != this.driver) {
             driver.close();
-            driver.quit();
         }
+        driver.quit();
     }
 
     @Override

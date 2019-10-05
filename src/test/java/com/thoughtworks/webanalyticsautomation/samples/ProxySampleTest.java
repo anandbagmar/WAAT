@@ -51,13 +51,46 @@ public class ProxySampleTest extends TestBase {
         String baseURL = "http://essenceoftesting.blogspot.com";
         String navigateToURL = baseURL + "/search/label/waat";
         ArrayList<String> urlPatterns = new ArrayList<String>();
-        urlPatterns.add("https://ssl.google-analytics.com/__");
+        urlPatterns.add("https://ssl.google-analytics.com/");
+        urlPatterns.add("__/utm.gif");
         int minimumNumberOfPackets = 1;
 
         engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
         Proxy seProxy = (Proxy) engine.getSeleniumBasedProxyPlugin();
 
         startWebDriver(BROWSER.firefox, baseURL, seProxy);
+        logger.info("Start capture");
+        engine.enableWebAnalyticsTesting(actionName);
+        logger.info("Do action");
+        driverInstance.get(navigateToURL);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) { }
+
+        logger.info("Verify result");
+        Result verificationResult = engine.verifyWebAnalyticsData(inputDataFileName, actionName, urlPatterns, minimumNumberOfPackets);
+
+        assertNotNull(verificationResult.getVerificationStatus(), "Verification status should NOT be NULL");
+        assertNotNull(verificationResult.getListOfErrors(), "Failure details should NOT be NULL");
+        logVerificationErrors(verificationResult);
+        assertEquals(verificationResult.getVerificationStatus(), Status.PASS, "Verification status should be PASS");
+        assertEquals(verificationResult.getListOfErrors().size(), 0, "Failure details should be empty");
+    }
+
+    @Test
+    public void captureAndVerifyDataReportedToWebAnalytics_Proxy_GoogleAnalytics_WebDriver_Chrome() throws
+            Exception {
+        String baseURL = "http://essenceoftesting.blogspot.com";
+        String navigateToURL = baseURL + "/search/label/waat";
+        ArrayList<String> urlPatterns = new ArrayList<String>();
+        urlPatterns.add("https://ssl.google-analytics.com/");
+        urlPatterns.add("__/utm.gif");
+        int minimumNumberOfPackets = 1;
+
+        engine = getInstance(webAnalyticTool, inputFileType, keepLoadedFileInMemory, log4jPropertiesAbsoluteFilePath);
+        Proxy seProxy = (Proxy) engine.getSeleniumBasedProxyPlugin();
+
+        startWebDriver(BROWSER.chrome, baseURL, seProxy);
         logger.info("Start capture");
         engine.enableWebAnalyticsTesting(actionName);
         logger.info("Do action");

@@ -10,6 +10,7 @@ import com.thoughtworks.webanalyticsautomation.common.Utils;
 import com.thoughtworks.webanalyticsautomation.inputdata.InputFileType;
 import com.thoughtworks.webanalyticsautomation.plugins.WebAnalyticTool;
 import com.thoughtworks.webanalyticsautomation.scriptrunner.helper.MobileDriverScriptRunnerHelper;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.MobileElement;
 import org.apache.log4j.Logger;
@@ -29,7 +30,7 @@ import static org.testng.Assert.assertNotNull;
 public class VerifyWebAnalyticsForAndroid extends TestBase{
 
 
-    protected static AndroidDriver<MobileElement> driverAndroid;
+    protected static AppiumDriver driverAndroid;
     private Logger logger = Logger.getLogger(getClass());
     private Engine engine;
     private WebAnalyticTool webAnalyticTool = WebAnalyticTool.PROXY;
@@ -49,8 +50,8 @@ public class VerifyWebAnalyticsForAndroid extends TestBase{
     @Test
     public void captureVerifyAnalyticsDataForAndroidMobile()
     {
-        String baseURL = "https://www.thoughtworks.com";
-        String navigateToURL = baseURL + "/mingle/signup/";
+        String baseURL = "http://essenceoftesting.blogspot.com";
+        String navigateToURL = baseURL + "/search/label/waat";
         ArrayList<String> urlPatterns = new ArrayList<String>();
         urlPatterns.add("https://www.google-analytics.com/");
         int minimumNumberOfPackets = 1;
@@ -83,7 +84,7 @@ public class VerifyWebAnalyticsForAndroid extends TestBase{
     private void startMobileDriver(BROWSER browser, String baseURL, Proxy mobileProxy) {
         mobileDriverScirptRunnerHelper = new MobileDriverScriptRunnerHelper(logger, browser, baseURL);
         mobileDriverScirptRunnerHelper.startDriverUsingProxy(mobileProxy);
-        driverAndroid = (AndroidDriver<MobileElement>) mobileDriverScirptRunnerHelper.getDriverInstance();
+        driverAndroid = mobileDriverScirptRunnerHelper.getDriverInstance();
     }
 
     @AfterMethod

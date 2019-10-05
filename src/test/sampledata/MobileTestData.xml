@@ -50,5 +50,6 @@
 <Sections>
     <Section actionName="OpenWAATArticleOnBlog_Proxy"
              numberOfEventsTriggered="1"
-             tagList="dt:Sign Up | Mingle||"/>
+             tagList="dl=https://essenceoftesting.blogspot.com/search/label/waat||
+                                    dt=Essence of Testing: waat||"/>
 </Sections>

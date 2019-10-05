@@ -10,5 +10,5 @@ package com.thoughtworks.webanalyticsautomation.common;
  */
 
 public enum BROWSER {
-    firefox, iehta, chrome
+    firefox, iehta, chrome, edge
 }

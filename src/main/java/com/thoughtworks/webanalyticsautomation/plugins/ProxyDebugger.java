@@ -6,12 +6,15 @@ import com.thoughtworks.webanalyticsautomation.scriptrunner.ScriptRunner;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
-import net.lightbody.bmp.core.har.*;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.core.har.HarEntry;
 import net.lightbody.bmp.proxy.CaptureType;
 import org.apache.log4j.Logger;
 
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.net.URLDecoder;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -113,7 +116,14 @@ public class ProxyDebugger implements WaatPlugin {
     public BrowserMobProxy getProxy(int port) {
         logger.info("Initializing BrowserMobProxy for the port - " + port);
         proxy= new BrowserMobProxyServer();
-        proxy.start(port);
+        InetAddress hostInetAddress = null;
+        try {
+            hostInetAddress = InetAddress.getByName(InetAddress.getLocalHost().getHostName());
+            proxy.start(port, hostInetAddress);
+        } catch (UnknownHostException e) {
+            logger.error(String.format("Unable to start proxy on host:port - '%s':'%s'\nError: %s", hostInetAddress.getHostName(), port, e.getMessage()), e);
+            throw new RuntimeException(e);
+        }
         proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS,
                 CaptureType.REQUEST_CONTENT,
                 CaptureType.REQUEST_BINARY_CONTENT,
@@ -135,8 +145,8 @@ public class ProxyDebugger implements WaatPlugin {
 
     @Override
     public Object getSeleniumProxy(int port) {
-        logger.info ("Get Proxy for the port "+ port);
         BrowserMobProxy proxy = this.getProxy(port);
+        logger.info ("Get Proxy for the port "+ proxy.getPort());
         return ClientUtil.createSeleniumProxy(proxy);
     }
 }

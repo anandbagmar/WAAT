@@ -54,6 +54,11 @@ public class OmnitureDebuggerSampleTest extends TestBase {
         captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.firefox);
     }
 
+    @Test
+    public void captureAndVerifyDataReportedToWebAnalytics_OmnitureDebugger_Selenium_Chrome() throws Exception {
+        captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER.chrome);
+    }
+
     private void captureAndVerifyDataReportedToWebAnalytics_Omniture_Selenium(BROWSER browser) throws Exception {
         String baseURL = "http://digg.com";
         String navigateToURL = baseURL + "/channel/sports";

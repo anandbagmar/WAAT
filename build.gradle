@@ -8,7 +8,6 @@ targetCompatibility = 1.8
 def title = 'WAAT'
 version = 'v2.0'
 group = "com.github.anandbagmar"
-artifactId = "WAAT"
 
 repositories {
     mavenCentral()

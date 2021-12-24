@@ -1,7 +1,16 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
+buildscript {
+    ext {
+        gradleVersion = '7.1'
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "3.3"
+    id "java"
+    id "idea"
+    id 'com.github.johnrengelman.shadow' version '7.1.1'
+    id 'maven-publish'
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -11,28 +20,23 @@ version = 'v2.0'
 group = "com.github.anandbagmar"
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    compile 'commons-collections:commons-collections:3.2.2'
-    compile 'commons-lang:commons-lang:2.6'
-    compile 'log4j:log4j:1.2.17'
-    compile 'com.thoughtworks.xstream:xstream:1.3.1'
-    compile 'net.lightbody.bmp:browsermob-core:2.1.5'
-    compile 'org.seleniumhq.selenium:selenium-java:3.141.59'
-    compile group: 'io.appium', name: 'java-client', version: '7.0.0'
-
-    testCompile 'org.testng:testng:6.14.3'
-    testCompile 'org.uncommons:reportng:1.1.4'
-    testCompile 'org.apache.velocity:velocity:1.7'
-    testCompile 'velocity-tools:velocity-tools:2.0-beta1'
-    compile 'io.github.bonigarcia:webdrivermanager:3.7.1'
+    implementation "commons-collections:commons-collections:3.2.2"
+    implementation "log4j:log4j:1.2.17"
+    implementation "com.thoughtworks.xstream:xstream:1.3.1"
+    implementation "net.lightbody.bmp:browsermob-core:2.1.5"
+    implementation "org.seleniumhq.selenium:selenium-java:3.141.59"
+    implementation "io.appium:java-client:7.0.0"
+    implementation "org.testng:testng:7.4.0"
+    implementation "io.github.bonigarcia:webdrivermanager:+"
 }
 
 test {
-    // enable TestNG support (default is JUnit)
     useTestNG()
 }
 
@@ -43,27 +47,36 @@ jar {
     }
 }
 
-task fatJar(type: Jar) {
+shadowJar {
+    archiveBaseName.set("$project.name")
+    archiveClassifier.set('')
+    archiveVersion.set("$project.version")
+    zip64 true
     manifest {
-        attributes 'Implementation-Title': title,
-                'Implementation-Version': version
+            attributes 'Implementation-Title': title,
+                    'Implementation-Version': archiveVersion
     }
-    baseName = project.name + '-all'
-    from {
-        configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }
-    } {
-        exclude "META-INF/*.SF"
-        exclude "META-INF/*.DSA"
-        exclude "META-INF/*.RSA"
-    }
-    with jar
 }
 
-uploadArchives {
-    repositories {
-        flatDir {
-            name '*.jar'
-            dirs 'dist'
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+    archives shadowJar
+}
+
+wrapper {
+    gradleVersion = project.gradleVersion // version from gradle.properties
+}
+
+publishing {
+    publications {
+        testing(MavenPublication) {
+            from components.java
+            artifact sourcesJar
         }
     }
 }
@@ -72,4 +85,8 @@ task copyJars(type: Copy) {
     from('build/libs')
     into('dist')
     include('*.jar')
+}
+
+wrapper {
+    gradleVersion = project.gradleVersion // version from gradle.properties
 }
